@@ -17,4 +17,11 @@ public class StudentImpl implements StudentInterface{
 		return null;
 	}
 
+	@Override
+	public Boolean registerStudent(String userName, String phoneNumber, String address, String userId,
+			String userPassword, String type, String rollNumber, String branch, Boolean isVerified) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -9,4 +9,7 @@ public interface StudentInterface {
 
 	public ReportCard viewReportCard(Student student);
 	
+	public Boolean registerStudent(String userName, String phoneNumber, String address, String userId, String userPassword, String type,
+			String rollNumber, String branch, Boolean isVerified);
+
 }
