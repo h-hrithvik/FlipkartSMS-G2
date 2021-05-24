@@ -56,22 +56,22 @@ public class ProfessorClient {
 		
 	}
 
-	public void returnToLogin() {
+	private void returnToLogin() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void addGrade(String professorId) {
+	private void addGrade(String professorId) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void viewStudents(String professorId) {
+	private void viewStudents(String professorId) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void getCourses(String professorId) {
+	private void getCourses(String professorId) {
 		// TODO Auto-generated method stub
 		
 	}
