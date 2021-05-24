@@ -14,6 +14,18 @@ public class Notification {
 	private String paymentId;
 	private String studentId;
 	
+	public Notification() {
+		super();
+	}
+	
+	public Notification(String notificationId, String message, String paymentId, String studentId) {
+		super();
+		this.notificationId = notificationId;
+		this.message = message;
+		this.paymentId = paymentId;
+		this.studentId = studentId;
+	}
+	
 	
 	public String getNotificationId() {
 		return notificationId;
@@ -21,6 +33,7 @@ public class Notification {
 	public void setNotificationId(String notificationId) {
 		this.notificationId = notificationId;
 	}
+	
 	
 	public String getMessage() {
 		return message;
