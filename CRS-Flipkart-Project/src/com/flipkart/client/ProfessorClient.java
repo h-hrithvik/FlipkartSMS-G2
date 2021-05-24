@@ -15,16 +15,16 @@ public class ProfessorClient {
 	{
 		Scanner sc=new Scanner(System.in);
 		
-		int in;
-		in=sc.nextInt();
+		int in=1;
 		while(in!=4)
 		{
+			
 			System.out.println("Select Option: ");
 			System.out.println("1. View Courses");
 			System.out.println("2. View Enrolled Students");
 			System.out.println("3. Add grade");
 			System.out.println("4. Logout");
-			
+			in=sc.nextInt();
 			//input user
 			
 			switch(in)
@@ -49,7 +49,7 @@ public class ProfessorClient {
 				default:
 					System.out.println("Select right option.");
 			}
-			in=sc.nextInt();
+			
 		}
 		sc.close();
 		
