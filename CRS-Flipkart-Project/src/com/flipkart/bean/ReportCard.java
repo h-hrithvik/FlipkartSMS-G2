@@ -3,10 +3,7 @@
  */
 package com.flipkart.bean;
 import java.util.HashMap;
-/**
- * @author naman
- *
- */
+
 public class ReportCard {
 	private String studentId;
 	private HashMap<String, String> grades = new HashMap<String, String>();
