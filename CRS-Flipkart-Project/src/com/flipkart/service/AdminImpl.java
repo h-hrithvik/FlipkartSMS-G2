@@ -29,9 +29,9 @@ public class AdminImpl implements AdminInterface{
 	}
 
 	@Override
-	public List<Student> approveStudent(String studentId, List<Student> studentList) {
+	public boolean approveStudent(String studentId) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override
@@ -45,5 +45,7 @@ public class AdminImpl implements AdminInterface{
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 	
 }
