@@ -1,9 +1,12 @@
 package com.flipkart.service;
 
+import com.flipkart.bean.ReportCard;
+import com.flipkart.bean.Student;
+
 public interface StudentInterface {
 	
-	public String getStudentId(String userId);
+	public Boolean checkIsVerified(Student student);
 
-	public String getBranch(String userId);
-
+	public ReportCard viewReportCard(Student student);
+	
 }
