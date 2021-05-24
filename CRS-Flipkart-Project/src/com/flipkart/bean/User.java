@@ -16,6 +16,16 @@ public class User {
 	private String userPassword;
 	private String type;
 	
+	public User(String userName, String phoneNumber, String address, String userId, String userPassword, String type) {
+		super();
+		this.userName = userName;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.type = type;
+	}
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -52,5 +62,11 @@ public class User {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", phoneNumber=" + phoneNumber + ", address=" + address + ", userId="
+				+ userId + ", userPassword=" + userPassword + ", type=" + type + "]";
+	}
+
 }
