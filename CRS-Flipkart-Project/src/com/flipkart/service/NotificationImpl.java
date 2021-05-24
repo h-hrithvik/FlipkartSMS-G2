@@ -9,7 +9,7 @@ import com.flipkart.bean.Notification;
  * @author lenovo
  *
  */
-public class NotificationImplementation implements NotificationInterface {
+public class NotificationImpl implements NotificationInterface {
 
 	@Override
 	public int sendNotification(Notification notification, int studentId) {
