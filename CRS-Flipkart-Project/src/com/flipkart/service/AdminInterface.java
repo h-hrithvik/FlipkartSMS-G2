@@ -11,9 +11,9 @@ import com.flipkart.bean.*;
  */
 public interface AdminInterface {
 	
-	public void removeCourse(String courseId, List<Course>coursecatalog);
-	public void addCourse(Course course,List<Course>courseCatalog);
-	public List<Student> approveStudent(String studentId,List<Student>studentList);
+	public void removeCourse(String courseId);
+	public void addCourse(Course course);
+	public boolean approveStudent(String studentId);
 	public void addProfessor(Professor professor);
 	public void generateReport(ReportCard reportCard);	
 }

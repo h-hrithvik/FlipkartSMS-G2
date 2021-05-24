@@ -17,21 +17,21 @@ import com.flipkart.bean.Student;
 public class AdminImpl implements AdminInterface{
 
 	@Override
-	public void removeCourse(String courseId, List<Course> coursecatalog) {
+	public void removeCourse(String courseId) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addCourse(Course course, List<Course> courseCatalog) {
+	public void addCourse(Course course) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<Student> approveStudent(String studentId, List<Student> studentList) {
+	public boolean approveStudent(String studentId) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override
@@ -45,5 +45,7 @@ public class AdminImpl implements AdminInterface{
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 	
 }
