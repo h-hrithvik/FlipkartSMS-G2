@@ -9,7 +9,7 @@ package com.flipkart.bean;
  */
 public class Student extends User{
 	
-	private String rollNumber;
+	private String studentId;
 	private String branch;
 	private Boolean isVerified;
 	
@@ -17,16 +17,16 @@ public class Student extends User{
 	public Student(String userName, String phoneNumber, String address, String userId, String userPassword, String type,
 			String rollNumber, String branch, Boolean isVerified) {
 		super(userName, phoneNumber, address, userId, userPassword, type);
-		this.rollNumber = rollNumber;
+		this.studentId = rollNumber;
 		this.branch = branch;
 		this.isVerified = isVerified;
 	}
 
 	public String getRollNumber() {
-		return rollNumber;
+		return studentId;
 	}	
 	public void setRollNumber(String rollNumber) {
-		this.rollNumber = rollNumber;
+		this.studentId = rollNumber;
 	}
 	public String getBranch() {
 		return branch;
@@ -43,7 +43,7 @@ public class Student extends User{
 	
 	@Override
 	public String toString() {
-		return "Student [rollNumber=" + rollNumber + ", branch=" + branch + ", isVerified=" + isVerified + "]";
+		return "Student [rollNumber=" + studentId + ", branch=" + branch + ", isVerified=" + isVerified + "]";
 	}
 	
 }
