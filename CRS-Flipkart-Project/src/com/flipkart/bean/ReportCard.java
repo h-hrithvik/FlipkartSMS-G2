@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class ReportCard {
 	private String studentId;
-	HashMap<String, String> grades = new HashMap<String, String>();
+	private HashMap<String, String> grades = new HashMap<String, String>();
 	private int sem;
 	private int CPI;
 	
@@ -51,6 +51,7 @@ public class ReportCard {
 	public void setCPI(int cPI) {
 		CPI = cPI;
 	}
+	
 	@Override
 	public String toString() {
 		return "Grade [studentId=" + studentId + ", grades=" + grades + ", sem=" + sem + ", CPI=" + CPI + "]";
