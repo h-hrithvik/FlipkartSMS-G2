@@ -14,7 +14,25 @@ public class Course {
 	private String instructorId;
 	private int seats = 10;
 	
+	public Course() {
+		super();
+	}
 	
+	
+	public Course(String courseId, String courseName, String instructorId, int seats) {
+		super();
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.instructorId = instructorId;
+		this.seats = seats;
+	}
+	
+	public int getSeats() {
+		return seats;
+	}
+	public void setSeats(int seats) {
+		this.seats = seats;
+	}
 	public String getCourseId() {
 		return courseId;
 	}
