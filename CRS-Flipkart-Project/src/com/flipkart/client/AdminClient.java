@@ -24,7 +24,8 @@ public class AdminClient {
 			System.out.println("2. Delete Course from catalog");
 			System.out.println("3. Approve Students");
 			System.out.println("4. Add Professor");
-			System.out.println("5. Exit Admin Menu");
+			System.out.println("5. Generate Report Card");
+			System.out.println("6. Exit Admin Menu");
 			in=scanner.nextInt();
 				
 			switch(in) {
@@ -43,8 +44,12 @@ public class AdminClient {
 			case 4:
 				addProfessor();
 				break;
-				
+			
 			case 5:
+				generateReport();
+				break;
+				
+			case 6:
 				returnToLogin();
 				break;
 				
@@ -70,6 +75,10 @@ public class AdminClient {
 			
 	}
 	private void returnToLogin()
+	{
+		
+	}
+	private void generateReport()
 	{
 		
 	}
