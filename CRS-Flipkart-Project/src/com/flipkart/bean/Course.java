@@ -12,6 +12,7 @@ public class Course {
 	private String courseId;
 	private String courseName;
 	private String instructorId;
+	@SuppressWarnings("unused")
 	private int seats = 10;
 	
 	public Course() {
