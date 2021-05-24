@@ -3,10 +3,7 @@
  */
 package com.flipkart.bean;
 
-/**
- * @author naman
- *
- */
+
 public class Grade {
 	private String studentId;
 	private int sem;
