@@ -6,6 +6,7 @@ package com.flipkart.service;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.exception.AddCourseException;
 
 /**
  * @author arya_
@@ -20,7 +21,7 @@ public class AdminOperation implements AdminInterface {
 	}
 
 	@Override
-	public void addCourse(Course course) {
+	public void addCourse(Course course) throws AddCourseException {
 		// TODO Auto-generated method stub
 
 	}

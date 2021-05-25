@@ -4,6 +4,7 @@
 package com.flipkart.service;
 
 import com.flipkart.bean.*;
+import com.flipkart.exception.AddCourseException;
 
 /**
  * @author arya_
@@ -23,7 +24,7 @@ public interface AdminInterface {
 	 * 
 	 * @param course
 	 */
-	public void addCourse(Course course);
+	public void addCourse(Course course) throws AddCourseException;
 
 	/**
 	 * Function to approve student
