@@ -24,7 +24,7 @@ import com.flipkart.exception.UserNotApprovedExecption;
 import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.utils.DBUtils;
 /**
- * @author arya_
+ * @author JEDI-02
  *
  */
 public class AdminDaoImpl {
