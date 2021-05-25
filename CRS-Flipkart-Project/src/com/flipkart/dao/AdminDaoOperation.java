@@ -24,10 +24,10 @@ import com.flipkart.exception.UserNotApprovedExecption;
 import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.utils.DBUtils;
 /**
- * @author JEDI-02
+ * @author arya_
  *
  */
-public class AdminDaoImpl {
+public class AdminDaoOperation {
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
 	/**
