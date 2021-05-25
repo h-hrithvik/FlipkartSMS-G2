@@ -20,12 +20,16 @@ public class GradeNotAddedException extends Exception{
 
     /**
      * Getter function for studentId
-     * @return studentId
+     * @return
      */
     public int getStudentId()
     {
         return studentId;
     }
 
+    @Override
+    public String getMessage() {
+        return  "Grade not allotted yet to: " + studentId;
+    }
 
 }
