@@ -3,16 +3,15 @@
  */
 package com.flipkart.bean;
 
-
 public class Grade {
 	private String studentId;
-	private int sem;
+	private int semester;
 	private String grade;
-	
+
 	public Grade(String studentId, int sem, String grade) {
 		super();
 		this.studentId = studentId;
-		this.sem = sem;
+		this.semester = sem;
 		this.grade = grade;
 	}
 
@@ -29,11 +28,11 @@ public class Grade {
 	}
 
 	public int getSem() {
-		return sem;
+		return semester;
 	}
 
 	public void setSem(int sem) {
-		this.sem = sem;
+		this.semester = sem;
 	}
 
 	public String getGrade() {
@@ -43,5 +42,5 @@ public class Grade {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	
+
 }

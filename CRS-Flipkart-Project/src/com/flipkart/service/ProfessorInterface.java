@@ -13,12 +13,32 @@ import com.flipkart.bean.Student;
  *
  */
 public interface ProfessorInterface {
-	
+
+	/**
+	 * Function to get all the courses
+	 * 
+	 * @param professorId
+	 * @return list of all the courses
+	 */
 	public List<Course> getCourses(String professorId);
-	
-	public List<Student> viewStudents(String professorId);
-	
-	public boolean addGrade(String studentId, String courseId , String grade);
-	
-	
+
+	/**
+	 * Function to get list of students registered for a course
+	 * 
+	 * @param professorId
+	 * @param courseId
+	 * @return list of registered students
+	 */
+	public List<Student> viewStudents(String courseId);
+
+	/**
+	 * Function to add grade for a student registered in a course
+	 * 
+	 * @param studentId
+	 * @param courseId
+	 * @param grade
+	 * @return status if the grade is successfully registered or not
+	 */
+	public boolean addGrade(String studentId, String courseId, String grade);
+
 }

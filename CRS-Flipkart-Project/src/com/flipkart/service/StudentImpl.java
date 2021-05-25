@@ -3,7 +3,7 @@ package com.flipkart.service;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.bean.Student;
 
-public class StudentImpl implements StudentInterface{
+public class StudentImpl implements StudentInterface {
 
 	@Override
 	public Boolean checkIsVerified(Student student) {

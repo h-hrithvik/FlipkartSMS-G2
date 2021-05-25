@@ -9,27 +9,31 @@ package com.flipkart.bean;
  */
 public class SemesterRegistration {
 	private String coursesAdded[];
-	private int sem;
+	private int semester;
 	private String studentId;
-	
+
 	public String[] getCoursesAdded() {
 		return coursesAdded;
 	}
+
 	public void setCoursesAdded(String[] coursesAdded) {
 		this.coursesAdded = coursesAdded;
 	}
+
 	public int getSem() {
-		return sem;
+		return semester;
 	}
+
 	public void setSem(int sem) {
-		this.sem = sem;
+		this.semester = sem;
 	}
+
 	public String getStudentId() {
 		return studentId;
 	}
+
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
-	
-	
+
 }

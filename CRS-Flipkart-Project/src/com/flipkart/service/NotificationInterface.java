@@ -10,9 +10,23 @@ import com.flipkart.bean.Notification;
  *
  */
 public interface NotificationInterface {
-	
-	
-	public int sendNotification(Notification notification , int studentId);
-	
-	public Notification generateNotifications(String message , String paymentId,String studentId);
+
+	/**
+	 * Function to send notification to student
+	 * 
+	 * @param notification
+	 * @param studentId
+	 * @return if the notification is sent
+	 */
+	public boolean sendNotification(Notification notification, int studentId);
+
+	/**
+	 * Function to create notification
+	 * 
+	 * @param message
+	 * @param paymentId
+	 * @param studentId
+	 * @return notification generated
+	 */
+	public Notification generateNotifications(String message, String paymentId, String studentId);
 }

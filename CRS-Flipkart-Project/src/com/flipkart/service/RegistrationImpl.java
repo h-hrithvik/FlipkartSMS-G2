@@ -5,7 +5,7 @@ import java.util.List;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 
-public class RegistrationImpl implements RegistrationInterface{
+public class RegistrationImpl implements RegistrationInterface {
 
 	@Override
 	public boolean addCourse(String courseId, String studentId, List<Course> courseList) {
