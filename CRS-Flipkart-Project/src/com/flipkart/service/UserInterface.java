@@ -1,6 +1,8 @@
 package com.flipkart.service;
 
 import com.flipkart.bean.User;
+import com.flipkart.exception.UserAlreadyExistException;
+import com.flipkart.exception.UserNotFoundException;
 
 public interface UserInterface {
 	/**
@@ -9,7 +11,7 @@ public interface UserInterface {
 	 * @param user
 	 * @return status if the user is created or not
 	 */
-	public boolean addUser(User user);
+	public boolean addUser(User user) throws UserAlreadyExistException;
 
 	/**
 	 * Function to verify credentials while login
@@ -18,7 +20,7 @@ public interface UserInterface {
 	 * @param userPassword
 	 * @return status if the credentials are valid
 	 */
-	public boolean verifyCredentials(String userId, String userPassword);
+	public boolean verifyCredentials(String userId, String userPassword) throws UserNotFoundException;
 
 	/**
 	 * Function to change password of the user
@@ -27,5 +29,5 @@ public interface UserInterface {
 	 * @param newPassword
 	 * @return status success/failure
 	 */
-	public boolean changePassword(String userId, String newPassword);
+	public boolean changePassword(String userId, String newPassword) throws UserNotFoundException;
 }
