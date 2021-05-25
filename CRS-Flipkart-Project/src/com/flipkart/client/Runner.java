@@ -12,11 +12,11 @@ public class Runner {
 	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		boolean loogedin = false;
+		boolean loggedIn = false;
 		printMenu();
 		int Input=sc.nextInt();
 		
-		while(Input!=4)
+		while(Input!=4 && loggedIn)
 		{
 			switch(Input)
 			{	

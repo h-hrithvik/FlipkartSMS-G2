@@ -26,7 +26,8 @@ public class StudentClient {
     {
 
         is_registered = getRegistrationStatus(studentId);
-        while (loggedin)
+        boolean loggedin = false;
+        while (loggedin && is_registered)
         {
             System.out.println("*****************************");
             System.out.println("**********Student Menu*********");
@@ -109,6 +110,7 @@ public class StudentClient {
      */
     private boolean getRegistrationStatus(int studentId)
     {
+		return false;
         //TODO
     }
 
@@ -128,6 +130,7 @@ public class StudentClient {
      */
     private List<Course> viewCourse(int studentId)
     {
+		return null;
         //TODO
     }
 
@@ -138,6 +141,7 @@ public class StudentClient {
      */
     private List<Course> viewRegisteredCourse(int studentId)
     {
+		return null;
        //TODO
     }
 
@@ -158,8 +162,5 @@ public class StudentClient {
     {
         //TODO
     }
-
-
-
 
 }

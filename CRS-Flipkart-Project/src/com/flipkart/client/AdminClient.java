@@ -57,6 +57,7 @@ public class AdminClient {
 				System.out.println("Invalid Choice");
 			}
 		}
+		scanner.close();
 	}
 	private void addCourse()
 	{
