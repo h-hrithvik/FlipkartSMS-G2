@@ -4,8 +4,8 @@
 package com.flipkart.exception;
 
 /**
- * @author lenovo
- *
+ * @author JEDI-02
+ * Exception to check if the payment details exist.
  */
 public class PaymentNotFoundException extends Exception {
 	

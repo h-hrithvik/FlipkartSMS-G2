@@ -4,8 +4,8 @@
 package com.flipkart.exception;
 
 /**
- * @author Jedi-03
- *
+ * @author Jedi-02
+ * Exception to check if the course limit reached.
  */
 public class CourseLimitReachedException extends Exception{
 	

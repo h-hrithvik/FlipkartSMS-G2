@@ -4,8 +4,8 @@
 package com.flipkart.exception;
 
 /**
- * @author lenovo
- *
+ * @author JEDI-02
+ * Exception to check if the course was assigned to professor.
  */
 public class CourseNotAssignedToProfessorException extends Exception {
 	

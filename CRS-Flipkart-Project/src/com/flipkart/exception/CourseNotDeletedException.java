@@ -4,8 +4,8 @@
 package com.flipkart.exception;
 
 /**
- * @author lenovo
- *
+ * @author JEDI-02
+ *	Exception to check if course was delted successfully.
  */
 public class CourseNotDeletedException extends Exception {
 
