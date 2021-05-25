@@ -18,14 +18,6 @@ public class GradeNotAddedException extends Exception{
         this.studentId=studentId;
     }
 
-    /**
-     * Getter function for studentId
-     * @return
-     */
-    public int getStudentId()
-    {
-        return studentId;
-    }
 
     @Override
     public String getMessage() {
