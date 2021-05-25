@@ -31,6 +31,8 @@ public interface UserInterface {
 	 * @param newPassword
 	 * @throws UserNotFoundException
 	 * @return status success/failure
+	 * 
+	 * 
 	 */
 	public boolean changePassword(String userId, String newPassword) throws UserNotFoundException;
 }
