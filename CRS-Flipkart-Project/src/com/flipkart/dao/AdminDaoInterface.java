@@ -11,6 +11,7 @@ import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.ProfessorNotDeletedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;

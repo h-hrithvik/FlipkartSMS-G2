@@ -23,7 +23,6 @@ import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.exception.UserNotApprovedExecption;
 import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.utils.DBUtils;
-
 /**
  * @author arya_
  *
