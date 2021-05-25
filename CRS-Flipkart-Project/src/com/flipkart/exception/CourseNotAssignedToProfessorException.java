@@ -19,23 +19,6 @@ public class CourseNotAssignedToProfessorException extends Exception {
 		this.courseCode = courseCode;
 		this.professorId = professorId;
 	}
-	
-
-	/**
-	 * set professor id
-	 * @param professorId
-	 */
-	public void setProfessorId(String professorId) {
-		this.professorId = professorId;
-	}
-
-	/**
-	 * set course code
-	 * @param courseCode
-	 */
-	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
-	}
 
 
 	/**

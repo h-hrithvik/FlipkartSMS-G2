@@ -12,7 +12,7 @@ import com.flipkart.bean.Student;
  * @author hp
  *
  */
-public class ProfessorImpl implements ProfessorInterface {
+public class ProfessorOperation implements ProfessorInterface {
 
 	@Override
 	public List<Course> getCourses(String professorId) {

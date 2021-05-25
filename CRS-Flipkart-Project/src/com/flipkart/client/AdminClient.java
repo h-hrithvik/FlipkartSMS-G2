@@ -4,7 +4,7 @@
 package com.flipkart.client;
 import java.util.Scanner;
 
-import com.flipkart.service.AdminImpl;
+import com.flipkart.service.AdminOperation;
 import com.flipkart.service.AdminInterface;
 /**
  * @author arya_
@@ -14,7 +14,7 @@ public class AdminClient {
 
 	public void createMenu(){
 		
-		AdminInterface adminObj =new AdminImpl();
+		AdminInterface adminObj =new AdminOperation();
 		Scanner scanner = new Scanner(System.in);
 		int in=0;
 		while(in!=5) {
