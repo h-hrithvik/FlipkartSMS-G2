@@ -51,7 +51,7 @@ public class AdminDaoImpl {
 				throw new CourseNotFoundException(courseId);
 			}
 
-			System.out.println("Course with courseCode: " + courseId + " deleted.");
+			System.out.println("Course with courseId: " + courseId + " deleted.");
 			
 		}catch(SQLException se) {
 			
@@ -80,11 +80,11 @@ public class AdminDaoImpl {
 			
 			System.out.println(row + " course added");
 			if(row == 0) {
-				System.out.println("Course with courseCode: " + course.getCourseId() + "not added to catalog.");
+				System.out.println("Course with courseId: " + course.getCourseId() + "not added in catalog.");
 				throw new AddCourseException(course.getCourseId());
 			}
 			
-			System.out.println("Course with courseCode: " + course.getCourseId() + " is added to catalog."); 
+			System.out.println("Course with courseId: " + course.getCourseId() + " is added to catalog."); 
 			
 		}catch(SQLException se) {
 			
@@ -110,11 +110,8 @@ public class AdminDaoImpl {
 			
 			System.out.println(row + " student approved.");
 			if(row == 0) {
-				//logger.error("Student with studentId: " + studentId + " not found.");
 				throw new StudentNotFoundForVerificationException(studentId);
 			}
-			
-			//logger.info("Student with studentId: " + studentId + " approved by admin.");
 			
 		}catch(SQLException se) {
 			
@@ -138,7 +135,7 @@ public class AdminDaoImpl {
 		}catch (UserNotApprovedExecption e) {
 			
 			System.out.println(e.getMessage());
-			throw new ProfessorNotAddedException(professor.getUserId());
+			throw new ProfessorNotAddedException(professor.getProfessorId());
 			
 		}catch (UserAlreadyExistException e) {
 			
@@ -153,22 +150,22 @@ public class AdminDaoImpl {
 			String sql = SQLQueriesConstants.ADD_PROFESSOR_QUERY;
 			statement = connection.prepareStatement(sql);
 			
-			statement.setString(1, professor.getUserId());
+			statement.setString(1, professor.getProfessorId());
 			statement.setString(2, professor.getDepartment());
 			int row = statement.executeUpdate();
 
 			System.out.println(row + " professor added.");
 			if(row == 0) {
-				System.out.println("Professor with professorId: " + professor.getUserId() + " not added.");
-				throw new ProfessorNotAddedException(professor.getUserId());
+				System.out.println("Professor with professorId: " + professor.getProfessorId() + " not added.");
+				throw new ProfessorNotAddedException(professor.getProfessorId());
 			}
 			
-			System.out.println("Professor with professorId: " + professor.getUserId() + " added."); 
+			System.out.println("Professor with professorId: " + professor.getProfessorId() + " added."); 
 			
 		}catch(SQLException se) {
 			
 			System.out.println(se.getMessage());
-			throw new UserAlreadyExistException(professor.getUserId());
+			throw new UserAlreadyExistException(professor.getProfessorId());
 			
 		} 
 	}
