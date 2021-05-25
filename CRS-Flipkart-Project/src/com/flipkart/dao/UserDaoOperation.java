@@ -7,13 +7,17 @@ import java.sql.SQLException;
 
 import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.exception.UserNotFoundException;
-import com.flipkart.utils.DBUtil;
+import com.flipkart.utils.DBUtils;
 
 public class UserDaoOperation implements UserDaoInterface {
-
+	/**
+	 * @param userID
+	 * @param password
+	 * @throws UserNotFoundException
+	 */
 	@Override
 	public boolean verifyCredentials(String userId, String password) throws UserNotFoundException {
-		Connection connection = DBUtil.getConnection();
+		Connection connection = DBUtils.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.UPDATE_PASSWORD);
 			statement.setString(1, password);
@@ -33,10 +37,15 @@ public class UserDaoOperation implements UserDaoInterface {
 		}
 		return false;
 	}
-
+	/**
+	 * Method to verify credentials of Users from DataBase
+	 * @param userId
+	 * @param password
+	 * @throws UserNotFoundException
+	 */
 	@Override
 	public boolean updatePassword(String userId, String password) throws UserNotFoundException {
-		Connection connection = DBUtil.getConnection();
+		Connection connection = DBUtils.getConnection();
 		try {
 			PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.VERIFY_CREDENTIALS);
 			preparedStatement.setString(1,userId);
@@ -58,10 +67,15 @@ public class UserDaoOperation implements UserDaoInterface {
 		}
 		return false;
 	}
-
+	/**
+	 * Method to get Role of User from DataBase
+	 * @param userId
+	 * @throws UserNotFoundException
+	 * @return Role
+	 */
 	@Override
 	public String getRole(String userId) throws UserNotFoundException {
-		Connection connection = DBUtil.getConnection();
+		Connection connection = DBUtils.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ROLE);
 			statement.setString(1, userId);
