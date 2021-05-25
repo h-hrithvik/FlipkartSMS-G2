@@ -11,6 +11,7 @@ import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 
 /**
@@ -71,8 +72,9 @@ public class AdminOperation implements AdminInterface {
 	/**
 	 * Function to generate report 
 	 * @param reportCard
+	 * @throws StudentNotRegisteredException
 	 */
-	public void generateReport(ReportCard reportCard){
+	public void generateReport(ReportCard reportCard)throws StudentNotRegisteredException{
 		// TODO Auto-generated method stub
 
 	}
