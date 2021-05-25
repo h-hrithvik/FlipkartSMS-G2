@@ -13,7 +13,7 @@ import java.util.List;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.EnrolledStudent;
 import com.flipkart.constant.SQLQueriesConstants;
-import com.flipkart.utils.DBUtil;
+import com.flipkart.utils.DBUtils;
 
 /**
  * @author hp
@@ -29,7 +29,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 	 */
 	@Override
 	public List<Course> getCoursesByProfessor(String profId) {
-		Connection connection=DBUtil.getConnection();
+		Connection connection=DBUtils.getConnection();
 		List<Course> courseList=new ArrayList<Course>();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_COURSES);
@@ -67,7 +67,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 	 */
 	@Override
 	public List<EnrolledStudent> getStudents(String profId) {
-		Connection connection=DBUtil.getConnection();
+		Connection connection=DBUtils.getConnection();
 		List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ENROLLED_STUDENTS);
@@ -103,7 +103,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 	 * @return: returns the status after adding the grade
 	 */
 	public Boolean addGrade(String studentId,String courseId,int semester,String grade) {
-		Connection connection=DBUtil.getConnection();
+		Connection connection=DBUtils.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.ADD_GRADE);
 			

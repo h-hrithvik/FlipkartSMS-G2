@@ -18,7 +18,7 @@ public interface UserDaoInterface {
 	 * @throws UserNotFoundException
 	 * @return Update Password operation Status
 	 */
-	//TODO Duplicate Function. Please remove it if its not necessary
+
 	public boolean updatePassword(String userId, String password) throws UserNotFoundException;
 	
 	/**
@@ -29,11 +29,5 @@ public interface UserDaoInterface {
 	 */
 	public String getRole(String userId) throws UserNotFoundException;
 	
-	
-	/**
-	 * Method to update password of user in DataBase
-	 * @param userID
-	 * @param newPassword
-	 * @return Update Password operation Status
-	 */
+
 }
