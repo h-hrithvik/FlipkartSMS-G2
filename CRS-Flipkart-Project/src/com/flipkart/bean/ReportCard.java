@@ -2,56 +2,62 @@
  * 
  */
 package com.flipkart.bean;
+
 import java.util.HashMap;
 
 public class ReportCard {
 	private String studentId;
 	private HashMap<String, String> grades = new HashMap<String, String>();
-	private int sem;
-	private int CPI;
-	
+	private int semester;
+	private float CPI;
+
 	public ReportCard() {
 		super();
 	}
-	public ReportCard(String studentId, HashMap<String, String> grades, int sem, int cPI) {
+
+	public ReportCard(String studentId, HashMap<String, String> grades, int sem, float CPI) {
 		super();
 		this.studentId = studentId;
 		this.grades = grades;
-		this.sem = sem;
-		CPI = cPI;
+		this.semester = sem;
+		this.CPI = CPI;
 	}
-	
+
 	public String getStudentId() {
 		return studentId;
 	}
+
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
-	
+
 	public HashMap<String, String> getGrades() {
 		return grades;
 	}
+
 	public void setGrades(HashMap<String, String> grades) {
 		this.grades = grades;
 	}
-	
+
 	public int getSem() {
-		return sem;
+		return semester;
 	}
+
 	public void setSem(int sem) {
-		this.sem = sem;
+		this.semester = sem;
 	}
-	
-	public int getCPI() {
+
+	public float getCPI() {
 		return CPI;
 	}
-	public void setCPI(int cPI) {
-		CPI = cPI;
+
+	public void setCPI(float CPI) {
+		this.CPI = CPI;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Grade [studentId=" + studentId + ", grades=" + grades + ", sem=" + sem + ", CPI=" + CPI + "]";
+		return "Grade [studentId=" + studentId + ", grades=" + grades + ", sem=" + semester + ", CPI=" + CPI + "]";
 	}
-	
+
 }

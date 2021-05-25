@@ -12,9 +12,9 @@ import com.flipkart.bean.Notification;
 public class NotificationImpl implements NotificationInterface {
 
 	@Override
-	public int sendNotification(Notification notification, int studentId) {
+	public boolean sendNotification(Notification notification, int studentId) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override

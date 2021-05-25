@@ -21,7 +21,7 @@ public class SeatNotAvailableException extends Exception{
 
     /**
      * Message returned when exception is thrown
-     * @return error message
+     * @return string: error message
      */
     @Override
     public String getMessage() {

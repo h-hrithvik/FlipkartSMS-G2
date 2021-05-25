@@ -18,7 +18,10 @@ public class GradeNotAddedException extends Exception{
         this.studentId=studentId;
     }
 
-
+    /**
+     * Message returned when exception is thrown
+     * @return string: error message
+     */
     @Override
     public String getMessage() {
         return  "Grade not allotted yet to: " + studentId;

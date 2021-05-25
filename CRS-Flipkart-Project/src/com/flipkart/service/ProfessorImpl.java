@@ -21,7 +21,7 @@ public class ProfessorImpl implements ProfessorInterface {
 	}
 
 	@Override
-	public List<Student> viewStudents(String professorId) {
+	public List<Student> viewStudents(String courseId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -31,7 +31,5 @@ public class ProfessorImpl implements ProfessorInterface {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
 
 }
