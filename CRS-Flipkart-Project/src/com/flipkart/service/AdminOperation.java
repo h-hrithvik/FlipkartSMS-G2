@@ -11,7 +11,7 @@ import com.flipkart.bean.ReportCard;
  * @author arya_
  *
  */
-public class AdminImpl implements AdminInterface {
+public class AdminOperation implements AdminInterface {
 
 	@Override
 	public void removeCourse(String courseId) {
@@ -46,7 +46,7 @@ public class AdminImpl implements AdminInterface {
 	@Override
 	public void removeProfessor(String prefessorId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
