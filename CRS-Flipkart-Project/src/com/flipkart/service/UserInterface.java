@@ -9,6 +9,7 @@ public interface UserInterface {
 	 * Function to add new user to system
 	 * 
 	 * @param user
+	 * @throws UserAlreadyExistException
 	 * @return status if the user is created or not
 	 */
 	public boolean addUser(User user) throws UserAlreadyExistException;
@@ -18,6 +19,7 @@ public interface UserInterface {
 	 * 
 	 * @param userId
 	 * @param userPassword
+	 * @throws UserNotFoundException
 	 * @return status if the credentials are valid
 	 */
 	public boolean verifyCredentials(String userId, String userPassword) throws UserNotFoundException;
@@ -27,6 +29,7 @@ public interface UserInterface {
 	 * 
 	 * @param userId
 	 * @param newPassword
+	 * @throws UserNotFoundException
 	 * @return status success/failure
 	 */
 	public boolean changePassword(String userId, String newPassword) throws UserNotFoundException;
