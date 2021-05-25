@@ -21,13 +21,6 @@ public class CourseNotDeletedException extends Exception {
 	}
 	
 	
-	/*
-	 * Setter for courseCode.
-	 * */
-	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
-	}
-
 	
 	/**
 	 * Message thrown by exception
