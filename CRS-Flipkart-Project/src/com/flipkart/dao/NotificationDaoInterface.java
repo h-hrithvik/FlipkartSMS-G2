@@ -8,7 +8,7 @@ import com.flipkart.constant.NotificationType;
 
 /**
  *
- * @author JEDI-03
+ * @author JEDI-02
  * used for adding the notification to the database
  *
  */
