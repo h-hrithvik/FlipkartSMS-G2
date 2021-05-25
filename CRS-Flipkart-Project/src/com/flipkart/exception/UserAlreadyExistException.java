@@ -4,7 +4,7 @@
 package com.flipkart.exception;
 
 
-public class UserAlreadyExist extends Exception{
+public class UserAlreadyExistException extends Exception{
 	private String userId;
 
 	/***
@@ -12,7 +12,7 @@ public class UserAlreadyExist extends Exception{
 	 * @param userId
 	 */
 	
-	public UserAlreadyExist(String userId) {
+	public UserAlreadyExistException(String userId) {
 		super();
 		this.userId = userId;
 	}

@@ -4,7 +4,7 @@
 package com.flipkart.exception;
 
 
-public class UserNotApproved extends Exception{
+public class UserNotApprovedExecption extends Exception{
 	private String userId;
 
 	/***
@@ -12,7 +12,7 @@ public class UserNotApproved extends Exception{
 	 * @param userId
 	 */
 	
-	public UserNotApproved(String userId) {
+	public UserNotApprovedExecption(String userId) {
 		super();
 		this.userId = userId;
 	}
