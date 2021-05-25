@@ -12,7 +12,6 @@ import java.util.List;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.EnrolledStudent;
-import com.flipkart.bean.Student;
 import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
@@ -99,7 +98,8 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 	/**
 	 * Method to Grade a student using SQL Commands
 	 * @param: profId: professor id 
-	 * @param: courseCode: course code for the corresponding 
+	 * @param: courseId: course code for the corresponding 
+	 * @param: semester: semester for the corresponding 
 	 * @return: returns the status after adding the grade
 	 */
 	public Boolean addGrade(String studentId,String courseId,int semester,String grade) {
