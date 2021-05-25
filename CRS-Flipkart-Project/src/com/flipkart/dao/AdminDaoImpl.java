@@ -98,7 +98,7 @@ public class AdminDaoImpl {
 	/**
 	 * Approve Student using SQL commands
 	 * @param studentId
-	 * @throws StudentNotFoundException
+	 * @throws StudentNotFoundForVerificationException
 	 */
 	public void approveStudent(String studentId) throws StudentNotFoundForVerificationException{
 		statement = null;
@@ -125,8 +125,7 @@ public class AdminDaoImpl {
 	 * Add professor using SQL commands
 	 * @param professor
 	 * @throws ProfessorNotAddedException
-	 * @throws UserIdAlreadyInUseException 
-	 * @throws UserNotAddedException 
+	 * @throws UserAlreadyExistException 
 	 */
 	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException{
 		try {
@@ -174,8 +173,8 @@ public class AdminDaoImpl {
 	/**
 	 * Method to add user using SQL commands
 	 * @param user
-	 * @throws UserNotAddedException
-	 * @throws UserIdAlreadyInUseException 
+	 * @throws UserNotApprovedExecption
+	 * @throws UserAlreadyExistException 
 	 */
 	public void addUser(User user) throws UserNotApprovedExecption, UserAlreadyExistException{
 		statement = null;
@@ -212,6 +211,7 @@ public class AdminDaoImpl {
 	 * 
 	 * @param professorId
 	 * @throws ProfessorNotAddedException
+	 * @throws ProfessorNotDeletedException
 	 */
 	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException,ProfessorNotDeletedException{
 		statement = null;
