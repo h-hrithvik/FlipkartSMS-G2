@@ -187,7 +187,8 @@ public class AdminDaoImpl {
 			statement.setString(2, user.getUserName());
 			statement.setString(3, user.getUserPassword());
 			statement.setString(4, user.getType().toString());
-			statement.setString(5, user.getAddress());
+			statement.setString(5, user.getPhoneNumber().toString());
+			statement.setString(6, user.getAddress());
 			int row = statement.executeUpdate();
 			
 			System.out.println(row + " user added.");
