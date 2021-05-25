@@ -68,7 +68,7 @@ public interface AdminDaoInterface {
 	 * @param professorId
 	 * @throws ProfessorNotAddedException
 	 */
-	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException;
+	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException,UserNotFoundException;
 
 	/**
 	 * Function to generate report

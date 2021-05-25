@@ -16,6 +16,7 @@ import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.ProfessorNotDeletedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
@@ -212,8 +213,28 @@ public class AdminDaoImpl {
 	 * @param professorId
 	 * @throws ProfessorNotAddedException
 	 */
-	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException{
-		
+	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException,ProfessorNotDeletedException{
+		statement = null;
+		try {
+			String sql = SQLQueriesConstants.DELETE_COURSE_QUERY;	// TO BE CHANGED
+			statement = connection.prepareStatement(sql);
+			
+			statement.setString(1,prefessorId);
+			int row = statement.executeUpdate();
+			
+			System.out.println(row + " entries deleted.");
+			if(row == 0) {
+				System.out.println(prefessorId+ " not found!");
+				throw new ProfessorNotAddedException(prefessorId);
+			}
+
+			System.out.println("Professor with prefessorId: " + prefessorId + " deleted.");
+			
+		}catch(SQLException se) {
+			
+			System.out.println(se.getMessage());
+			throw new ProfessorNotDeletedException(prefessorId);		
+		}
 	}
 
 	/**
