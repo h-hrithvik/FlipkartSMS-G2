@@ -208,13 +208,21 @@ public class AdminDaoImpl {
 			
 		}
 	}
-	
 	/**
-	 * Assign courses to Professor using SQL commands
-	 * @param courseCode
+	 * Method to delete Professor from DB
+	 * 
 	 * @param professorId
-	 * @throws CourseNotFoundException
-	 * @throws UserNotFoundException 
+	 * @throws ProfessorNotAddedException
+	 */
+	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException{
+		
+	}
+
+	/**
+	 * Function to generate report
+	 * 
+	 * @param reportCard
+	 * @throws StudentNotRegisteredException
 	 */
 	public void generateReport(ReportCard reportCard) throws StudentNotRegisteredException{
 		
