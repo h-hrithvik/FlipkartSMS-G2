@@ -15,6 +15,7 @@ public class ProfessorNotAddedException extends Exception {
 
     /**
      * Message returned when exception is thrown
+     * @return string: error message
      */
     @Override
     public String getMessage() {
