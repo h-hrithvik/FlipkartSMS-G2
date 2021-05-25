@@ -11,13 +11,14 @@ import com.flipkart.exception.PaymentNotFoundException;
 public class RegistrationOperation implements RegistrationInterface {
 
 	@Override
-	public boolean addCourse(String courseId, String studentId, List<Course> courseList) throws AddCourseException{
+	public boolean addCourse(String courseId, String studentId, List<Course> courseList) throws AddCourseException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean dropCourse(String courseId, String studentId, List<Course> registeredCourseList)throws CourseNotDeletedException {
+	public boolean dropCourse(String courseId, String studentId, List<Course> registeredCourseList)
+			throws CourseNotDeletedException {
 		// TODO Auto-generated method stub
 		return false;
 	}

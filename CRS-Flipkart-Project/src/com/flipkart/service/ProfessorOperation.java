@@ -30,7 +30,8 @@ public class ProfessorOperation implements ProfessorInterface {
 	}
 
 	@Override
-	public boolean addGrade(String studentId, String courseId, String grade) throws StudentNotRegisteredException, StudentNotFoundForVerificationException{
+	public boolean addGrade(String studentId, String courseId, String grade)
+			throws StudentNotRegisteredException, StudentNotFoundForVerificationException {
 		// TODO Auto-generated method stub
 		return false;
 	}

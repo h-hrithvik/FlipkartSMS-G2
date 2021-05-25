@@ -1,7 +1,5 @@
 package com.flipkart.service;
 
-
-
 import com.flipkart.bean.ReportCard;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.StudentNotRegisteredException;
@@ -43,6 +41,7 @@ public interface StudentInterface {
 	 * @return status is new student successfully created or not
 	 */
 	public Boolean registerStudent(String userName, String phoneNumber, String address, String userId,
-			String userPassword, String type, String rollNumber, String branch, Boolean isVerified) throws UserAlreadyExistException;
+			String userPassword, String type, String rollNumber, String branch, Boolean isVerified)
+			throws UserAlreadyExistException;
 
 }

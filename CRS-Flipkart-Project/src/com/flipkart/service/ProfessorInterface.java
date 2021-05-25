@@ -45,6 +45,7 @@ public interface ProfessorInterface {
 	 * @throws StudentNotFoundForVerificationException
 	 * @throws StudentNotRegisteredException
 	 */
-	public boolean addGrade(String studentId, String courseId, String grade) throws StudentNotRegisteredException, StudentNotFoundForVerificationException;
+	public boolean addGrade(String studentId, String courseId, String grade)
+			throws StudentNotRegisteredException, StudentNotFoundForVerificationException;
 
 }

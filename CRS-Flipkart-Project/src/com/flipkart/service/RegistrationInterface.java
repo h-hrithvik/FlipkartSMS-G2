@@ -23,10 +23,12 @@ public interface RegistrationInterface {
 	 * @param courseId
 	 * @param studentId
 	 * @param registeredCourseList
-	 * @return true/false for successful/unsuccessful operation of dropping a course.
+	 * @return true/false for successful/unsuccessful operation of dropping a
+	 *         course.
 	 * @throws CourseNotDeletedException
 	 */
-	public boolean dropCourse(String courseId, String studentId, List<Course> registeredCourseList) throws CourseNotDeletedException;
+	public boolean dropCourse(String courseId, String studentId, List<Course> registeredCourseList)
+			throws CourseNotDeletedException;
 
 	/**
 	 *
@@ -55,5 +57,5 @@ public interface RegistrationInterface {
 	 * @throws PaymentNotFoundException on unsuccessful payment
 	 */
 	public double payFee(String studentId) throws PaymentNotFoundException;
-	
+
 }

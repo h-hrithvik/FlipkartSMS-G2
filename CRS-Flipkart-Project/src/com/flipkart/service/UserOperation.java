@@ -7,7 +7,7 @@ import com.flipkart.exception.UserNotFoundException;
 public class UserOperation implements UserInterface {
 
 	@Override
-	public boolean addUser(User user) throws UserAlreadyExistException{
+	public boolean addUser(User user) throws UserAlreadyExistException {
 		// TODO Auto-generated method stub
 		return false;
 	}

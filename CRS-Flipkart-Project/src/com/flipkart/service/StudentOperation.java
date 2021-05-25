@@ -8,7 +8,7 @@ import com.flipkart.exception.UserAlreadyExistException;
 public class StudentOperation implements StudentInterface {
 
 	@Override
-	public Boolean checkIsVerified(Student student) throws StudentNotRegisteredException  {
+	public Boolean checkIsVerified(Student student) throws StudentNotRegisteredException {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -21,7 +21,8 @@ public class StudentOperation implements StudentInterface {
 
 	@Override
 	public Boolean registerStudent(String userName, String phoneNumber, String address, String userId,
-			String userPassword, String type, String rollNumber, String branch, Boolean isVerified) throws UserAlreadyExistException{
+			String userPassword, String type, String rollNumber, String branch, Boolean isVerified)
+			throws UserAlreadyExistException {
 		// TODO Auto-generated method stub
 		return null;
 	}
