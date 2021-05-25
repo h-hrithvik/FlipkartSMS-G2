@@ -243,7 +243,31 @@ public class AdminDaoImpl {
 	 * @throws StudentNotRegisteredException
 	 */
 	public void generateReport(ReportCard reportCard) throws StudentNotRegisteredException{
-		
+		statement = null;
+		try {
+			
+			String sql = SQLQueriesConstants.GENERATE_REPORT_CARD;
+			statement = connection.prepareStatement(sql);
+			
+			statement.setString(1, reportCard.getStudentId());
+			statement.setInt(2, reportCard.getSem());
+			statement.setFloat(3, reportCard.getCPI());
+			int row = statement.executeUpdate();
+			
+			System.out.println(row + " Report Card Generated.");
+			if(row == 0) {
+				System.out.println("For student with StudentId: " + reportCard.getStudentId() + " no Report generated.");
+				throw new StudentNotRegisteredException(reportCard.getStudentId()); 
+			}
+
+			System.out.println("User with userId: " + reportCard.getStudentId() + " added."); 
+			
+		}catch(SQLException se) {
+			
+			System.out.println(se.getMessage());
+			throw new StudentNotRegisteredException(reportCard.getStudentId());
+			
+		}
 	}
 
 
