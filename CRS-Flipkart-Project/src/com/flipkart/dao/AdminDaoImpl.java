@@ -189,7 +189,7 @@ public class AdminDaoImpl {
 			statement.setString(1, user.getUserId());
 			statement.setString(2, user.getUserName());
 			statement.setString(3, user.getUserPassword());
-//			statement.setString(4, user.getRole().toString());
+			statement.setString(4, user.getType().toString());
 			statement.setString(5, user.getAddress());
 			int row = statement.executeUpdate();
 			
