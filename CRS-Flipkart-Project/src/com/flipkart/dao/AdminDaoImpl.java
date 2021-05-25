@@ -246,7 +246,7 @@ public class AdminDaoImpl {
 		statement = null;
 		try {
 			
-			String sql = SQLQueriesConstants.GENERATE_REPORT_CARD;
+			String sql = SQLQueriesConstants.ADD_REPORT_CARD;
 			statement = connection.prepareStatement(sql);
 			
 			statement.setString(1, reportCard.getStudentId());
