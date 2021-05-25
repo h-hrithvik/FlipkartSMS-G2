@@ -56,8 +56,8 @@ public class Runner {
 	public static void printMenu() {
 		System.out.println("1---> Signup");
 		System.out.println("2---> Login ");
-		System.out.println("3-----> Update password");
-		System.out.println("4------> Exit");
+		System.out.println("3---> Update Password");
+		System.out.println("4---> Exit");
 		System.out.println("Enter choice");
 	}
 
