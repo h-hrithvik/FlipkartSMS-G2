@@ -19,7 +19,7 @@ public interface UserInterface {
 	 * 
 	 * @param userId
 	 * @param userPassword
-	 * @throws UserNotFoundException
+	 * @throws UserNotFoundException if user is not found to verify credentials
 	 * @return status if the credentials are valid
 	 */
 	public boolean verifyCredentials(String userId, String userPassword) throws UserNotFoundException;

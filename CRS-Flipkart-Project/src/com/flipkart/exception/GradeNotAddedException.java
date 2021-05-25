@@ -2,29 +2,31 @@ package com.flipkart.exception;
 
 /**
  * Exception to check if student has been allotted grade by professor
+ * 
  * @author JEDI-02
  *
  */
-public class GradeNotAddedException extends Exception{
+public class GradeNotAddedException extends Exception {
 
-    private int studentId;
+	private int studentId;
 
-    /**
-     * Constructor
-     * @param studentId
-     */
-    public GradeNotAddedException(int studentId)
-    {
-        this.studentId=studentId;
-    }
+	/**
+	 * Constructor
+	 * 
+	 * @param studentId
+	 */
+	public GradeNotAddedException(int studentId) {
+		this.studentId = studentId;
+	}
 
-    /**
-     * Message returned when exception is thrown
-     * @return string: error message
-     */
-    @Override
-    public String getMessage() {
-        return  "Grade not allotted yet to: " + studentId;
-    }
+	/**
+	 * Message returned when exception is thrown
+	 * 
+	 * @return string: error message
+	 */
+	@Override
+	public String getMessage() {
+		return "Grade not allotted yet to: " + studentId;
+	}
 
 }
