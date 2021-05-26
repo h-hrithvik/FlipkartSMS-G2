@@ -27,13 +27,13 @@ public class SQLQueriesConstants {
 	public static final String UPDATE_PASSWORD="update user set password=? where userId = ? ";
 		
 	// Student Queries
-	public static final String VIEW_REGISTERED_COURSES=" select * from course inner join semesterregistration on course.courseId = semesterregistration.courseId where semesterregistration.studentId = ?";
+	public static final String VIEW_REGISTERED_COURSES=" select * from course inner join semesterregistration on course.courseId = semesterregistration.courseId where semesterregistration.studentId = ? and semesterregistration.semester = ?";
 	public static final String VIEW_AVAILABLE_COURSES=" select * from course where courseId not in  (select courseId  from semesterregistration where studentId = ? and semester = ?) and seats > 0";
 	public static final String DECREMENT_COURSE_SEATS="update course set seats = seats-1 where courseId = ? ";
 	public static final String ADD_COURSE="insert into semesterregistration (studentId,courseId,semester,grade) values ( ?,?,?,? )";
 	public static final String DROP_COURSE_QUERY = "delete from semesterregistration where courseId = ? AND studentId = ? and semester = ?;";
 	public static final String INCREMENT_SEAT_QUERY  = "update course set seats = seats + 1 where courseId = ?;";
-	public static final String VIEW_GRADE = "select course.courseId,course.courseName,semesterregistration.grade from course inner join registeredcourse on course.courseCode = registeredcourse.courseCode where registeredcourse.studentId = ?;";	
+	public static final String VIEW_GRADE = "select course.courseId,course.courseName,semesterregistration.grade from course inner join semesterregistration on course.courseCode = semesterregistration.courseCode where semesterregistration.studentId = ? and semesterregistration.semester = ?;";	
 	public static final String GET_SEATS = "select seats from course where courseId = ?;";
 	public static final String INSERT_PAYMENT = "insert into payment(studentId_payment,paymentId,status,amount) values(?,?,?,?);";
 	public static final String GET_NOTIFICATION = "select * from payment where studentId_payment = ?;";

@@ -23,7 +23,7 @@ public interface RegistrationDaoInterface {
 	 * @return boolean indicating if the course is added successfully
 	 * @throws SQLException
 	 */
-	public boolean addCourse(String courseId, String studentId, List<Course> courseList) throws SQLException;
+	public boolean addCourse(String courseId, String studentId, int semester) throws SQLException;
 
 	/**
 	 * Drop Course selected by student
@@ -34,7 +34,7 @@ public interface RegistrationDaoInterface {
 	 * @throws CourseNotFoundException
 	 * @throws SQLException
 	 */
-	public boolean removeCourse(String courseId, String studentId, List<Course> registeredCourseList) throws SQLException;
+	public boolean removeCourse(String courseId, String studentId, int semester) throws SQLException;
 
 	/**
 	 * Method to get the list of courses available from course catalog
