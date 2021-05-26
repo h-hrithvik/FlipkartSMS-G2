@@ -27,7 +27,7 @@ import com.flipkart.utils.DBUtils;
  * @author arya_
  *
  */
-public class AdminDaoOperation {
+public class AdminDaoOperation implements AdminDaoInterface{
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
 	/**
