@@ -5,12 +5,20 @@ package com.flipkart.bean;
 
 import java.util.HashMap;
 
+/**
+ * @author JEDI-02
+ * Class to implement Report Card
+ *
+ */
 public class ReportCard {
 	private String studentId;
 	private HashMap<String, String> grades = new HashMap<String, String>();
 	private int semester;
 	private float CPI;
 
+	/**
+	 * Constructors to instantiate a report card object
+	 */
 	public ReportCard() {
 		super();
 	}
@@ -23,6 +31,10 @@ public class ReportCard {
 		this.CPI = CPI;
 	}
 
+	/**
+	 * Getter Setters for the Report Card
+	 *
+	 */
 	public String getStudentId() {
 		return studentId;
 	}
@@ -55,6 +67,10 @@ public class ReportCard {
 		this.CPI = CPI;
 	}
 
+	/**
+	 * Method to Convert professor Id to string
+	 * @return ID as string value
+	 */
 	@Override
 	public String toString() {
 		return "Grade [studentId=" + studentId + ", grades=" + grades + ", sem=" + semester + ", CPI=" + CPI + "]";

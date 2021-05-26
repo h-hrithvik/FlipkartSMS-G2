@@ -4,8 +4,8 @@
 package com.flipkart.bean;
 
 /**
- * @author lenovo
- *
+ * @author JEDI-02
+ *	Course Class
  */
 public class Course {
 
@@ -18,6 +18,13 @@ public class Course {
 		super();
 	}
 
+	/**
+	 * Constructor to instantiate Course object
+	 * @param courseId
+	 * @param courseName
+	 * @param instructorId
+	 * @param seats
+	 */
 	public Course(String courseId, String courseName, String instructorId, int seats) {
 		super();
 		this.courseId = courseId;
@@ -26,6 +33,10 @@ public class Course {
 		this.seats = seats;
 	}
 
+	/**
+	 * Getters Setters Methods
+	 *
+	 */
 	public int getSeats() {
 		return seats;
 	}

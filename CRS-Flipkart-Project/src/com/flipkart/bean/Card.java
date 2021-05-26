@@ -4,8 +4,8 @@
 package com.flipkart.bean;
 
 /**
- * @author hp
- *
+ * @author JEDI-02
+ *	Card Class
  */
 public class Card {
 
@@ -14,6 +14,10 @@ public class Card {
 	private String bankName;
 	private String IFSCcode;
 
+	/**
+	 * Getters Setters Methods for the class
+	 *
+	 */
 	public String getCardNumber() {
 		return cardNumber;
 	}

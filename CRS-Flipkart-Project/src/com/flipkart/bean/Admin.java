@@ -1,5 +1,10 @@
 package com.flipkart.bean;
-
+/**
+ *
+ * @author JEDI-02
+ * Admin Class
+ *
+ */
 public class Admin extends User {
 
 	private String adminId;
@@ -10,6 +15,11 @@ public class Admin extends User {
 		this.adminId = adminId;
 	}
 
+	/**
+	 * Setter Getter for adminId
+	 *
+	 */
+
 	public String getAdminId() {
 		return adminId;
 	}
@@ -18,6 +28,10 @@ public class Admin extends User {
 		this.adminId = adminId;
 	}
 
+	/**
+	 * function to convert id to string.
+	 * @return
+	 */
 	@Override
 	public String toString() {
 		return "Admin [adminId=" + adminId + "]";
