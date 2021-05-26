@@ -29,9 +29,9 @@ public class AdminMenuCRS {
 		
 		int in=0;
 		while(in!=7) {
-			System.out.println("---------------------------");
-			System.out.println("        ADMIN MENU");
-			System.out.println("---------------------------");
+			System.out.println("------------------------------------------");
+			System.out.println("            ADMIN MENU");
+			System.out.println("------------------------------------------");
 
 			System.out.println("1. Add Course to catalog");
 			System.out.println("2. Delete Course from catalog");
@@ -41,7 +41,8 @@ public class AdminMenuCRS {
 			System.out.println("6. Remove Professor");
 			System.out.println("7. Exit Admin Menu");
 
-			System.out.println("ENTER YOUR CHOICE");
+			System.out.println("------------------------------------------");
+			System.out.println("  ENTER YOUR CHOICE");
 			System.out.println();
 
 			in=scanner.nextInt();

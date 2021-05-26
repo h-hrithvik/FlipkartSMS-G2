@@ -11,7 +11,7 @@ import com.flipkart.utils.DBUtils;
 
 public class UserDaoOperation implements UserDaoInterface {
 	/**
-	 * @param userID
+	 * @param userId
 	 * @param password
 	 * @throws UserNotFoundException
 	 */
@@ -82,7 +82,6 @@ public class UserDaoOperation implements UserDaoInterface {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ROLE);
 			statement.setString(1, userId);
 			ResultSet resultSet = statement.executeQuery();
-			System.out.println("Is is being prnt" + resultSet);
 			if (!resultSet.next())
 				throw new UserNotFoundException(userId);
 			else

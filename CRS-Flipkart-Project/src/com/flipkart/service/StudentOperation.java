@@ -49,9 +49,8 @@ public class StudentOperation implements StudentInterface {
 		// TODO Auto-generated method stub
 		String studentId;
 		try {
-			System.out.println("here");
+
 			Student newStudent = new Student(userName,phoneNumber,address,userId,password,role,rollNumber,branch,isVerified);
-//			System.out.println(newStudent);
 			studentId = studentDaoInterface.addStudent(newStudent);
 			
 		}

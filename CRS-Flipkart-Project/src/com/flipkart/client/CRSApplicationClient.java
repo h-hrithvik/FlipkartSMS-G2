@@ -22,9 +22,9 @@ public class CRSApplicationClient {
 	public static void main(String[] args) throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
 		boolean loggedIn = false;
-		System.out.println("************************************************************");
-		System.out.println("*******   WELCOME to Course Registration System!!!  ********");
-		System.out.println("************************************************************");
+		System.out.println("=============================================================");
+		System.out.println("*******   WELCOME to Course Registration System!!!  *********");
+		System.out.println("==============================================================");
 
 		printMenu();
 		int Input=sc.nextInt();
@@ -49,10 +49,15 @@ public class CRSApplicationClient {
 	}
 
 	public static void printMenu() {
+		System.out.println("------------------------------------------");
+		System.out.println("			  MAIN MENU");
+		System.out.println("------------------------------------------");
 		System.out.println("1. Signup");
 		System.out.println("2. Login ");
 		System.out.println("3. Exit");
-		System.out.println("Please enter your choice");
+		System.out.println("------------------------------------------");
+		System.out.println("  ENTER YOUR CHOICE");
+		System.out.println();
 	}
 	
 	private static void registerStudent() {
@@ -95,7 +100,10 @@ public class CRSApplicationClient {
 
 		String userId, password;
 		try {
-			System.out.println("-----------------Login------------------");
+			System.out.println("------------------------------------------");
+			System.out.println("                LOGIN");
+			System.out.println("------------------------------------------");
+
 			System.out.println("Email:");
 			userId = sc.next();
 			System.out.println("Password:");
@@ -110,12 +118,12 @@ public class CRSApplicationClient {
 				RoleConstants userRole = RoleConstants.stringToName(role);
 				switch (userRole) {
 				case ADMIN:
-					System.out.println(" Login Successful");
+					System.out.println(" Login Successful!");
 					AdminMenuCRS adminMenu = new AdminMenuCRS();
 					adminMenu.createMenu();
 					break;
 				case PROFESSOR:
-					System.out.println(" Login Successful");
+					System.out.println(" Login Successful!");
 					ProfessorMenuCRS professorMenu = new ProfessorMenuCRS();
 					professorMenu.professorMenu(userId);
 
@@ -124,12 +132,12 @@ public class CRSApplicationClient {
 					StudentInterface studentInterface = new StudentOperation();
 					int isApproved = studentInterface.checkIsVerified(userId);
 					if (isApproved == 1) {
-						System.out.println( " Login Successful");
+						System.out.println( " Login Successful!");
 						StudentMenuCRS studentMenu = new StudentMenuCRS();
 						studentMenu.create_menu(userId);
 
 					} else {
-						System.out.println("You have not been approved by the admin!!!");
+						System.out.println("You have not been approved by the admin!");
 						loggedin = false;
 					}
 					break;
