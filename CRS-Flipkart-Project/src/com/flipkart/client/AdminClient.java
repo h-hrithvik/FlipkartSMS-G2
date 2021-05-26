@@ -5,7 +5,9 @@ package com.flipkart.client;
 import java.util.Scanner;
 
 import com.flipkart.service.AdminOperation;
+import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
@@ -67,7 +69,22 @@ public class AdminClient {
 	}
 	private void addCourse()
 	{
-			
+		System.out.println("Enter Course Code:");
+		String courseCode = scanner.nextLine();
+		
+		System.out.println("Enter Course Name:");
+		String courseName = scanner.next();
+		
+		System.out.println("Enter InstructorId:");
+		String instructorId = scanner.next();
+				
+		Course course = new Course(courseCode, courseName, instructorId, 10);
+		
+		try {
+			adminObj.addCourse(course);
+		} catch (AddCourseException e) {
+			System.out.println(e.getMessage());
+		}	
 	}
 	private void deleteCourse()
 	{
