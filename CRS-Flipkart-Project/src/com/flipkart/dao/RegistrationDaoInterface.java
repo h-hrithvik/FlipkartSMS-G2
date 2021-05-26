@@ -15,6 +15,9 @@ import com.flipkart.bean.ReportCard;
  */
 public interface RegistrationDaoInterface {
 
+	public int numOfRegisteredCourses(String studentId, int semester) throws SQLException;
+	
+	public boolean isRegistered(String courseCode, String studentId, int semester) throws SQLException;
 	/**
 	 * Method to add course in database
 	 * 

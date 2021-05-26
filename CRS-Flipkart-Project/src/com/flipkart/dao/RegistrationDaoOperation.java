@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.flipkart.bean.Course;
@@ -23,6 +24,44 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 	private PreparedStatement stmt = null;
 
+	@Override
+	public int numOfRegisteredCourses(String studentId, int semester) throws SQLException{
+		
+		Connection conn = DBUtils.getConnection();
+		
+		int count = 0;
+		try {
+
+			stmt = conn.prepareStatement(SQLQueriesConstants.NUMBER_OF_REGISTERED_COURSES);
+			stmt.setString(1, studentId);
+			stmt.setInt(2,  semester);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				count++;
+			}
+			return count;
+
+		}
+		catch (SQLException e) 
+		{
+
+			System.out.println(e.getMessage());
+
+		} 
+		catch (Exception e)
+		{
+
+			System.out.println(e.getMessage());
+		}
+		finally
+		{
+			stmt.close();
+			conn.close();
+		}
+		
+		return count;
+	}
+	
 	@Override
 	public boolean addCourse(String courseId, String studentId, int semester) throws SQLException {
 
@@ -50,6 +89,40 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 		}
 		return false;
 	}
+	
+	@Override
+	public boolean isRegistered(String courseCode, String studentId, int semetser) throws SQLException{
+		
+		Connection conn = DBUtils.getConnection();
+		
+		boolean check = false;
+		try
+		{
+			stmt = conn.prepareStatement(SQLQueriesConstants.IS_REGISTERED);
+			stmt.setString(1, courseCode);
+			stmt.setString(2, studentId);
+			stmt.setInt(3, semetser);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next())
+			{
+				check = true;
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		finally
+		{
+			stmt.close();
+			conn.close();
+		}
+		
+		return check;
+		
+	}
+
 
 	@Override
 	public boolean removeCourse(String courseId, String studentId, int semester) throws SQLException {
@@ -76,7 +149,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			conn.close();
 		}
 
-		return false;
+		return true;
 	}
 
 	@Override
@@ -144,9 +217,19 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt.setString(1, studentId);
 			stmt.setInt(2, semester);
 			ResultSet queryResult = stmt.executeQuery();
+			
+			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_REGISTERED_COURSES);
+			stmt.setString(1, studentId);
+			stmt.setInt(2, semester);
+			ResultSet queryResult2 = stmt.executeQuery();
+			
+			HashMap<String, String> grades = new HashMap<String, String>();
+			while(queryResult2.next()) {
+				grades.put(queryResult2.getString("course.courseId"), queryResult2.getString("semesterregistration.grade"));
+			}
 
 			while(queryResult.next()) {
-				reportCard = new ReportCard(studentId, semester, queryResult.getFloat("cpi"));
+				reportCard = new ReportCard(studentId,grades, semester, queryResult.getFloat("cpi"));
 			}
 
 		} catch (Exception e) {
