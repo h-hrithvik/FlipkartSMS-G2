@@ -1,9 +1,11 @@
 package com.flipkart.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.flipkart.bean.*;
 import com.flipkart.exception.AddCourseException;
+import com.flipkart.exception.CourseLimitReachedException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.PaymentNotFoundException;
 
@@ -15,8 +17,9 @@ public interface RegistrationInterface {
 	 * @param courseList
 	 * @return true/false for successful/unsuccessful operation of adding a course.
 	 * @throws AddCourseException
+	 * @throws SQLException 
 	 */
-	public boolean addCourse(String courseId, String studentId, List<Course> courseList) throws AddCourseException;
+	public boolean addCourse(String courseId, String studentId, int semester) throws AddCourseException, CourseLimitReachedException, SQLException;
 
 	/**
 	 *
@@ -26,29 +29,33 @@ public interface RegistrationInterface {
 	 * @return true/false for successful/unsuccessful operation of dropping a
 	 *         course.
 	 * @throws CourseNotDeletedException
+	 * @throws SQLException 
 	 */
-	public boolean dropCourse(String courseId, String studentId, List<Course> registeredCourseList)
-			throws CourseNotDeletedException;
+	public boolean dropCourse(String courseId, String studentId, int semester)
+			throws CourseNotDeletedException, SQLException;
 
 	/**
 	 *
 	 * @return list of courses available
+	 * @throws SQLException 
 	 */
-	public List<Course> viewCourses();
+	public List<Course> viewCourses(String studentId, int semester) throws SQLException;
 
 	/**
 	 *
 	 * @param studentId
 	 * @return list of registered courses by a student.
+	 * @throws SQLException 
 	 */
-	public List<Course> viewRegisteredCourses(String studentId);
+	public List<Course> viewRegisteredCourses(String studentId, int semester) throws SQLException;
 
 	/**
 	 *
 	 * @param studentId
 	 * @return report card of the student as an object of class ReportCard
+	 * @throws SQLException 
 	 */
-	public ReportCard viewReportCard(String studentId);
+	public ReportCard viewReportCard(String studentId,  int semester) throws SQLException;
 
 	/**
 	 *

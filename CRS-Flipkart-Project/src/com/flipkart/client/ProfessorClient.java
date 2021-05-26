@@ -67,7 +67,7 @@ public class ProfessorClient {
 		
 	}
 
-	private void addGrade(String professorId) {
+	private void addGrade(String professorId){
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		
@@ -110,7 +110,7 @@ public class ProfessorClient {
 				System.out.println("Invalid data entered, try again!");
 			}
 		}
-		catch(GradeNotAddedException ex)
+		catch(Exception ex)
 		{
 			System.out.println(ex.getMessage());
 			

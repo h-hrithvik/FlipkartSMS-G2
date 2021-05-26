@@ -1,44 +1,86 @@
 package com.flipkart.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.dao.RegistrationDaoInterface;
+import com.flipkart.dao.RegistrationDaoOperation;
 import com.flipkart.exception.AddCourseException;
+import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.CourseLimitReachedException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.PaymentNotFoundException;
+import com.flipkart.exception.StudentNotRegisteredException;
 
 public class RegistrationOperation implements RegistrationInterface {
 
+	private RegistrationOperation() {
+	}
+
+	RegistrationDaoInterface registrationDaoInterface = new RegistrationDaoOperation();
+
 	@Override
-	public boolean addCourse(String courseId, String studentId, List<Course> courseList) throws AddCourseException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addCourse(String courseId, String studentId, int semester) throws AddCourseException, CourseLimitReachedException, SQLException {
+
+		try {
+			if (registrationDaoInterface.numOfRegisteredCourses(studentId, semester) == 6) {
+				throw new CourseLimitReachedException(semester);
+			}
+			if (registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
+				throw new CourseAlreadyRegisteredException(courseId);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch(CourseLimitReachedException e) {
+			e.printStackTrace();
+		} catch (CourseAlreadyRegisteredException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return registrationDaoInterface.addCourse(courseId, studentId, semester);
 	}
 
 	@Override
-	public boolean dropCourse(String courseId, String studentId, List<Course> registeredCourseList)
-			throws CourseNotDeletedException {
+	public boolean dropCourse(String courseId, String studentId, int semester)
+			throws CourseNotDeletedException, SQLException {
 		// TODO Auto-generated method stub
-		return false;
+		try {
+			if(!registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
+				throw new StudentNotRegisteredException(studentId);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (StudentNotRegisteredException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return registrationDaoInterface.removeCourse(courseId, studentId, semester);
 	}
 
 	@Override
-	public List<Course> viewCourses() {
+	public List<Course> viewCourses(String studentId, int semester) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		return registrationDaoInterface.viewCourses(studentId, semester);
 	}
 
 	@Override
-	public List<Course> viewRegisteredCourses(String studentId) {
+	public List<Course> viewRegisteredCourses(String studentId, int semester) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		return registrationDaoInterface.viewRegisteredCourses(studentId, semester);
 	}
 
 	@Override
-	public ReportCard viewReportCard(String studentId) {
+	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return registrationDaoInterface.viewReportCard(studentId, semester);
 	}
 
 	@Override

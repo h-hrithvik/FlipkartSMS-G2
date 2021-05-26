@@ -3,8 +3,11 @@
  */
 package com.flipkart.bean;
 
+import java.util.HashMap;
+
 public class ReportCard {
 	private String studentId;
+	private HashMap<String, String> grades = new HashMap<String, String>();
 	private int semester;
 	private float CPI;
 
@@ -12,9 +15,10 @@ public class ReportCard {
 		super();
 	}
 
-	public ReportCard(String studentId, int sem, float CPI) {
+	public ReportCard(String studentId, HashMap<String, String> grades, int sem, float CPI) {
 		super();
 		this.studentId = studentId;
+		this.grades = grades;
 		this.semester = sem;
 		this.CPI = CPI;
 	}
@@ -25,6 +29,14 @@ public class ReportCard {
 
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
+	}
+
+	public HashMap<String, String> getGrades() {
+		return grades;
+	}
+
+	public void setGrades(HashMap<String, String> grades) {
+		this.grades = grades;
 	}
 
 	public int getSem() {
@@ -45,7 +57,7 @@ public class ReportCard {
 
 	@Override
 	public String toString() {
-		return "Grade [studentId=" + studentId + ", sem=" + semester + ", CPI=" + CPI + "]";
+		return "Grade [studentId=" + studentId + ", grades=" + grades + ", sem=" + semester + ", CPI=" + CPI + "]";
 	}
 
 }
