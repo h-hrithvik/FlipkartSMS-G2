@@ -101,7 +101,7 @@ public class ProfessorMenuCRS {
 			System.out.println("Enter semester");
 			semester=sc.nextInt();
 			sc.nextLine();
-			if(true)
+			if(ProfessorValidator.isValidCourse(coursesEnrolled, courseId) && ProfessorValidator.isValidStudent(enrolledStudents, studentId))
 			{
 				try {
 				professorobj.addGrade(studentId, courseId, semester,grade);
@@ -112,10 +112,10 @@ public class ProfessorMenuCRS {
 					System.out.println("Something went wrong "+e.getMessage());
 				}
 			}
-//			else
-//			{
-//				System.out.println("Invalid data entered, try again!");
-//			}
+			else
+			{
+				System.out.println("Invalid data entered, try again!");
+			}
 		}
 		catch(Exception ex)
 		{

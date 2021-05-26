@@ -24,10 +24,10 @@ public class ProfessorValidator {
 	{
 		boolean result=false;
 		//check if student exist in ihe students list
-		for(int i=0;i<students.size();i++)
+		for(EnrolledStudent student : students)
 		{
 			//role.equalsIgnoreCase("ADMIN")
-			if(students.get(i).getStudentId()==studentId)
+			if(student.getStudentId().equalsIgnoreCase(studentId))
 				result=true;
 				
 		}
