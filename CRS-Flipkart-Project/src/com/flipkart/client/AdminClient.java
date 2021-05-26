@@ -34,7 +34,8 @@ public class AdminClient {
 			System.out.println("3. Approve Students");
 			System.out.println("4. Add Professor");
 			System.out.println("5. Generate Report Card");
-			System.out.println("6. Exit Admin Menu");
+			System.out.println("6. Remove Professor");
+			System.out.println("7. Exit Admin Menu");
 			in=scanner.nextInt();
 				
 			switch(in) {
@@ -59,6 +60,10 @@ public class AdminClient {
 				break;
 				
 			case 6:
+				removeProfessor();
+				break;
+				
+			case 7:
 				returnToLogin();
 				break;
 				
@@ -86,6 +91,7 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}	
 	}
+	
 	private void deleteCourse()
 	{
 		System.out.println("Enter Course Code:");
@@ -97,6 +103,7 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}
 	}
+	
 	private boolean approveStudent()
 	{	
 		System.out.println("Enter Student's ID:");
@@ -111,6 +118,7 @@ public class AdminClient {
 		}
 		return false;
 	}
+	
 	private void addProfessor()
 	{
 		System.out.println("Enter Professor Name:");
@@ -138,6 +146,19 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	private void removeProfessor() throws ProfessorNotAddedException
+	{
+		System.out.println("Enter Professor Code:");
+		String professorId = scanner.next();
+		
+		try {
+			adminObj.removeProfessor(professorId);
+		} catch (ProfessorNotAddedException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	private void returnToLogin()
 	{
 		
