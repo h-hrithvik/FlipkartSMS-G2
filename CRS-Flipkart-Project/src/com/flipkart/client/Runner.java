@@ -97,12 +97,12 @@ public class Runner {
 				switch (userRole) {
 				case ADMIN:
 					System.out.println(" Login Successful");
-					AdminClient adminMenu = new AdminClient();
+					AdminMenuCRS adminMenu = new AdminMenuCRS();
 					adminMenu.createMenu();
 					break;
 				case PROFESSOR:
 					System.out.println(" Login Successful");
-					ProfessorClient professorMenu = new ProfessorClient();
+					ProfessorMenuCRS professorMenu = new ProfessorMenuCRS();
 					professorMenu.professorMenu(userId);
 
 					break;
