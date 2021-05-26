@@ -100,11 +100,7 @@ public class StudentMenuCRS {
 	private void registerCourses(String studentId) {
 		System.out.println("Enter Semester : ");
 		semester = sc.nextInt();
-		if (is_registered) {
-			System.out.println(" Registration is already completed");
-			return;
-		}
-
+		sc.nextLine();
 		int count = 0;
 		while (count < 6) {
 			try {

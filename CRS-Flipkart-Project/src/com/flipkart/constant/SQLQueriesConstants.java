@@ -46,5 +46,5 @@ public class SQLQueriesConstants {
 	public static final String IS_REGISTERED=" select courseId from semesterregistration where courseId=? and studentId=? and semester = ?";
 	public static final String ADD_REPORT_CARD=" insert into reportcard(studentId_report , cpi,semester) values (? , ? , ?);";
 	public static final String FETCH_GRADES=" select grade , courseId from semesterregistration where studentId=? and semester = ?";
-
+	public static final String DELETE_USER_QUERY = "delete from user where userId = ( ?)";
 }

@@ -70,7 +70,6 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt.setString(4, null);
 
 			stmt.executeUpdate();
-
 			stmt = conn.prepareStatement(SQLQueriesConstants.DECREMENT_COURSE_SEATS);
 			stmt.setString(1, courseId);
 			stmt.executeUpdate();
@@ -152,7 +151,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			while (queryResult.next()) {
 				availableCourseList
 						.add(new Course(queryResult.getString("courseId"), queryResult.getString("courseName"),
-								queryResult.getString("professorId"), queryResult.getInt("seats")));
+								queryResult.getString("instructorId"), queryResult.getInt("seats")));
 			}
 
 		} catch (Exception e) {
