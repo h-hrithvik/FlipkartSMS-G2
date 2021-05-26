@@ -6,6 +6,10 @@ import java.util.Scanner;
 
 import com.flipkart.service.AdminOperation;
 import com.flipkart.bean.Professor;
+import com.flipkart.exception.CourseNotDeletedException;
+import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
 /**
  * @author arya_
@@ -16,8 +20,7 @@ public class AdminClient {
 	AdminInterface adminObj =new AdminOperation();
 	Scanner scanner = new Scanner(System.in);
 
-	public void createMenu(){
-		
+	public void createMenu(){		
 		
 		int in=0;
 		while(in!=5) {
@@ -67,11 +70,18 @@ public class AdminClient {
 	}
 	private void deleteCourse()
 	{
-			
+		System.out.println("Enter Course Code:");
+		String courseCode = scanner.next();
+		
+		try {
+			adminObj.removeCourse(courseCode);
+		} catch (CourseNotFoundException | CourseNotDeletedException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	private void approveStudent()
-	{
-			
+	{	
+		
 	}
 	private void addProfessor()
 	{
@@ -94,7 +104,11 @@ public class AdminClient {
 		String address = scanner.next();
 				
 		Professor professor = new Professor(professorName,phoneNo,address,userId,password,"Professor");
-		
+		try {
+			adminObj.addProfessor(professor);
+		} catch (ProfessorNotAddedException | UserAlreadyExistException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	private void returnToLogin()
 	{
