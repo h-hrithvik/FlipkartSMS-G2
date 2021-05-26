@@ -12,7 +12,7 @@ import com.flipkart.bean.Course;
  *  The class displays the menu for student client
  *
  */
-public class StudentClient {
+public class StudentMenuCRS {
 
     Scanner sc = new Scanner(System.in);
 
