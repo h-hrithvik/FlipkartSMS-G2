@@ -7,11 +7,13 @@ import java.util.Scanner;
 import com.flipkart.service.AdminOperation;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.ReportCard;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
 /**
@@ -147,7 +149,10 @@ public class AdminClient {
 		}
 	}
 	
-	private void removeProfessor() throws ProfessorNotAddedException
+	/**
+	 * Method to delete Professor from DB
+	 */	
+	private void removeProfessor() 
 	{
 		System.out.println("Enter Professor Code:");
 		String professorId = scanner.next();
@@ -163,8 +168,26 @@ public class AdminClient {
 	{
 		
 	}
+	/**
+	 * Function to generate report
+	 */
 	private void generateReport()
 	{
+		System.out.println("Enter student Id:");
+		String studentCode = scanner.nextLine();
 		
+		System.out.println("Enter student Semester:");
+		int studentSem = scanner.nextInt();
+		
+		System.out.println("Enter Student CPI:");
+		float studentCpi = scanner.nextFloat();
+				
+		ReportCard reportCard = new ReportCard(studentCode, studentSem, studentCpi);
+		
+		try {
+			adminObj.generateReport(reportCard);
+		} catch (StudentNotRegisteredException e) {
+			System.out.println(e.getMessage());
+		}	
 	}
 }
