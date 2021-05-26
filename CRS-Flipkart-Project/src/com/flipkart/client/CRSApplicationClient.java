@@ -15,7 +15,7 @@ import com.flipkart.service.UserOperation;
 
 import static com.flipkart.constant.RoleConstants.STUDENT;
 
-public class Runner {
+public class CRSApplicationClient {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
