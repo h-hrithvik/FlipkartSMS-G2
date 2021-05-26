@@ -18,7 +18,7 @@ import com.flipkart.exception.ProfessorNotDeletedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
-
+import org.apache.log4j.Logger;
 /**
  * @author arya_
  *
@@ -33,14 +33,37 @@ public class AdminOperation implements AdminInterface {
 	 * @throws CourseNotFoundException
 	 * @throws CourseNotDeletedException
 	 */
+	private static Logger logger = Logger.getLogger(AdminOperation.class);
+	private static volatile AdminOperation instance = null;
+	
+	private AdminOperation()
+	{
+		
+	}
+	
+	/**
+	 * Method to make AdminOperation Singleton
+	 */
+	public static AdminOperation getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(AdminOperation.class){
+				instance = new AdminOperation();
+			}
+		}
+		return instance;
+	}
+	
+
+	AdminDaoInterface obj =AdminDaoOperation.getInstance();
 	public void removeCourse(String courseId) throws CourseNotFoundException, CourseNotDeletedException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
 			obj.deleteCourse(courseId);
 		} catch (CourseNotFoundException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} catch (CourseNotDeletedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
@@ -53,10 +76,9 @@ public class AdminOperation implements AdminInterface {
 	 */
 	public void addCourse(Course course) throws AddCourseException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
 			obj.addCourse(course);
 		} catch (AddCourseException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
@@ -70,11 +92,10 @@ public class AdminOperation implements AdminInterface {
 	 */
 	public boolean approveStudent(String studentId) throws StudentNotFoundForVerificationException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
 			obj.approveStudent(studentId);
 			return true;
 		} catch (StudentNotFoundForVerificationException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		return false;
 	}
@@ -89,12 +110,11 @@ public class AdminOperation implements AdminInterface {
 	 */
 	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
 			obj.addProfessor(professor);
 		} catch (ProfessorNotAddedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} catch (UserAlreadyExistException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
@@ -110,7 +130,6 @@ public class AdminOperation implements AdminInterface {
 	public void generateReport(String StudentId, int semester) throws StudentNotRegisteredException {
 
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
 			HashMap<String, String> gradecrd = obj.fetchGrades(StudentId, semester);
 			gradecrd.forEach((k, v) -> {
 				counter = counter + 1;
@@ -126,7 +145,7 @@ public class AdminOperation implements AdminInterface {
 			float CPI = sum / counter;
 			obj.generateReport(semester, StudentId, CPI);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
@@ -140,12 +159,11 @@ public class AdminOperation implements AdminInterface {
 	 */
 	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
 			obj.removeProfessor(professorId);
 		} catch (ProfessorNotAddedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} catch (ProfessorNotDeletedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
