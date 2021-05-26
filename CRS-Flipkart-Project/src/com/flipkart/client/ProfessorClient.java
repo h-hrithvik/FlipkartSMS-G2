@@ -67,7 +67,7 @@ public class ProfessorClient {
 		
 	}
 
-	private void addGrade(String professorId) throws StudentNotRegisteredException, StudentNotFoundForVerificationException, SQLException {
+	private void addGrade(String professorId) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		
@@ -96,8 +96,14 @@ public class ProfessorClient {
 			semester=sc.nextInt();
 			if(ProfessorValidator.isValidStudent(enrolledStudents, studentId) && ProfessorValidator.isValidCourse(coursesEnrolled, courseId))
 			{
+				try {
 				professorobj.addGrade(studentId, courseId, semester,grade);
 				System.out.println("Grade added successfully for "+studentId);
+				}
+				catch(Exception e)
+				{
+					System.out.println("Something went wrong "+e.getMessage());
+				}
 			}
 			else
 			{
