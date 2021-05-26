@@ -94,7 +94,10 @@ public class ProfessorMenuCRS {
 			System.out.println("-----------------------------------------------------------------------------------------");
 			List<Course> coursesEnrolled=new ArrayList<Course>();
 			coursesEnrolled	=professorobj.getCourses(professorId);
-			System.out.println("----------------Add Grade--------------");
+			System.out.println("------------------------------------------");
+			System.out.println("                 ADD GRADE                ");
+			System.out.println("------------------------------------------");
+
 			System.out.println("Enter student Id");
 			studentId=sc.nextLine();
 			System.out.println("Enter course Id");
