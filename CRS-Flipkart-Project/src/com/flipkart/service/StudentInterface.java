@@ -46,7 +46,7 @@ public interface StudentInterface {
 	 * @param address
 	 * @param userId
 	 * @param userPassword
-	 * @param type
+	 * @param role
 	 * @param rollNumber
 	 * @param branch
 	 * @param isVerified
@@ -54,7 +54,7 @@ public interface StudentInterface {
 	 * @return status is new student successfully created or not
 	 */
 	public String registerStudent(String userName, String phoneNumber, String address, String userId,
-			String userPassword, String type, String rollNumber, String branch, Boolean isVerified)
+			String userPassword, String role, String rollNumber, String branch, Boolean isVerified)
 			throws UserAlreadyExistException;
 
 }

@@ -4,10 +4,12 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
-
 import com.flipkart.exception.StudentNotRegisteredException;
+import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.StudentInterface;
 import com.flipkart.service.StudentOperation;
+
+import static com.flipkart.constant.Role.STUDENT;
 
 public class Runner {
 
@@ -48,14 +50,16 @@ public class Runner {
 	private static void registerStudent() {
 		Scanner sc=new Scanner(System.in);
 
-		String userId,name,password,address,country,branchName, mobileNumber;
-		int genderV, batch;
+		String userId,name,password,address,branch, mobileNumber,rollNumber;
+
 		try
 		{
 			//input all the student details
 			System.out.println("---------------Student Registration-------------");
 			System.out.println("Name:");
 			name=sc.nextLine();
+			System.out.println("Roll Number:");
+			rollNumber=sc.nextLine();
 			System.out.println("Email:");
 			userId=sc.next();
 			System.out.println("Password:");
@@ -63,22 +67,18 @@ public class Runner {
 			System.out.println("Mobile Number:");
 			mobileNumber=sc.next();
 			System.out.println("Branch:");
-			branchName=sc.nextLine();
-			System.out.println("Batch:");
-			batch=sc.nextInt();
-			sc.nextLine();
+			branch=sc.nextLine();
 			System.out.println("Address:");
 			address=sc.nextLine();
-			System.out.println("Country");
-			country=sc.next();
 
 			StudentOperation studentOperation = new StudentOperation();
-			studentOperation.registerStudent(name, userId, password, batch, branchName, address, country);
+			studentOperation.registerStudent(name, mobileNumber, address, userId,
+					password, String.valueOf(STUDENT), rollNumber, branch, false);
 
 		}
-		catch(StudentNotRegisteredException ex)
+		catch( UserAlreadyExistException ex)
 		{
-			System.out.println("Something went wrong! "+ex.getStudentName() +" not registered. Please try again");
+			ex.getMessage();
 		}
 	}
 
