@@ -28,7 +28,7 @@ public class AdminClient {
 	public void createMenu(){		
 		
 		int in=0;
-		while(in!=5) {
+		while(in!=7) {
 			
 			System.out.println("ADMIN MENU");
 			System.out.println("1. Add Course to catalog");
@@ -125,9 +125,6 @@ public class AdminClient {
 		System.out.println("Enter Professor Name:");
 		String professorName = scanner.next();
 		
-		System.out.println("Enter Department:");
-		String department = scanner.next();
-		
 		System.out.println("Enter Phone:");
 		String phoneNo = scanner.next();
 		
@@ -139,8 +136,14 @@ public class AdminClient {
 		
 		System.out.println("Enter Address:");
 		String address = scanner.next();
+		
+		System.out.println("Enter Professor Id:");
+		String professorId = scanner.next();
+		
+		System.out.println("Enter Department:");
+		String department = scanner.next();
 				
-		Professor professor = new Professor(professorName,phoneNo,address,userId,password,"Professor");
+		Professor professor = new Professor(professorName,phoneNo,address,userId,password,"Professor",professorId,department);
 		try {
 			adminObj.addProfessor(professor);
 		} catch (ProfessorNotAddedException | UserAlreadyExistException e) {
