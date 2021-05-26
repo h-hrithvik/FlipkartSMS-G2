@@ -34,9 +34,14 @@ public class AdminOperation implements AdminInterface {
 	 * @throws CourseNotDeletedException
 	 */
 	public void removeCourse(String courseId) throws CourseNotFoundException, CourseNotDeletedException {
-		
-		AdminDaoInterface adminDaoOperation=new AdminDaoOperation();
-
+		try {
+			AdminDaoOperation obj = new AdminDaoOperation();
+			obj.deleteCourse(courseId);
+		} catch (CourseNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (CourseNotDeletedException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	@Override
@@ -47,8 +52,12 @@ public class AdminOperation implements AdminInterface {
 	 * @throws AddCourseException
 	 */
 	public void addCourse(Course course) throws AddCourseException {
-		// TODO Auto-generated method stub
-
+		try {
+			AdminDaoOperation obj = new AdminDaoOperation();
+			obj.addCourse(course);
+		} catch (AddCourseException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	@Override
@@ -60,7 +69,13 @@ public class AdminOperation implements AdminInterface {
 	 * @return Approval Status
 	 */
 	public boolean approveStudent(String studentId) throws StudentNotFoundForVerificationException {
-		// TODO Auto-generated method stub
+		try {
+			AdminDaoOperation obj = new AdminDaoOperation();
+			obj.approveStudent(studentId);
+			return true;
+		} catch (StudentNotFoundForVerificationException e) {
+			System.out.println(e.getMessage());
+		}
 		return false;
 	}
 
