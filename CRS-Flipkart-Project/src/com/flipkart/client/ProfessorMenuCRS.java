@@ -100,7 +100,8 @@ public class ProfessorMenuCRS {
 			grade=sc.nextLine();
 			System.out.println("Enter semester");
 			semester=sc.nextInt();
-			if(ProfessorValidator.isValidStudent(enrolledStudents, studentId) && ProfessorValidator.isValidCourse(coursesEnrolled, courseId))
+			sc.nextInt();
+			if(true)
 			{
 				try {
 				professorobj.addGrade(studentId, courseId, semester,grade);
@@ -111,10 +112,10 @@ public class ProfessorMenuCRS {
 					System.out.println("Something went wrong "+e.getMessage());
 				}
 			}
-			else
-			{
-				System.out.println("Invalid data entered, try again!");
-			}
+//			else
+//			{
+//				System.out.println("Invalid data entered, try again!");
+//			}
 		}
 		catch(Exception ex)
 		{
@@ -149,7 +150,7 @@ public class ProfessorMenuCRS {
 		try
 		{
 			List<Course> coursesEnrolled=professorobj.getCourses(professorId);
-			System.out.println(String.format("%20s %20s %20s","COURSE ID","COURSE NAME","SEATS AVAILABLE" ));
+			System.out.println(String.format("%20s %20s %20s","COURSE ID","COURSE NAME","STUDENTS REGISTERED" ));
 			for(Course obj: coursesEnrolled)
 			{
 				System.out.println(String.format("%20s %20s %20s",obj.getCourseId(), obj.getCourseName(),10- obj.getSeats()));

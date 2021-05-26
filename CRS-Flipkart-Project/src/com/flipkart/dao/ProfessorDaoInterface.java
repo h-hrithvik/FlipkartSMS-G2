@@ -35,7 +35,7 @@ public interface ProfessorDaoInterface {
 	 * @param: courseCode: course code for the corresponding 
 	 * @return: returns the status after adding the grade
 	 */
-	public Boolean addGrade(String studentId,String courseId,int semester,String grade);
+	public boolean addGrade(String studentId,String courseId,int semester,String grade);
 
 
 }

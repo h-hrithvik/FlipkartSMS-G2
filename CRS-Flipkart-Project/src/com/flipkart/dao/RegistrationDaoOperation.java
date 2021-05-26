@@ -175,7 +175,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 			while (rs.next()) {
 				registeredCourseList.add(new Course(rs.getString("courseId"), rs.getString("courseName"),
-						rs.getString("professorId"), rs.getInt("seats")));
+						rs.getString("instructorId"), rs.getInt("seats")));
 
 			}
 		} catch (Exception e) {
