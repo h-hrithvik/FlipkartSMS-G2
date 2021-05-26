@@ -222,10 +222,13 @@ public class StudentMenuCRS {
 
 		System.out
 				.println(String.format("%-20s %-20s %-20s %-20s", "COURSE CODE", "COURSE NAME", "INSTRUCTOR", "SEATS"));
+		System.out.println("-----------------------------------------------------------------------------------------");
 		for (Course obj : course_available) {
 			System.out.println(String.format("%-20s %-20s %-20s %-20s", obj.getCourseId(), obj.getCourseName(),
 					obj.getInstructorId(), obj.getSeats()));
 		}
+		System.out.println("-----------------------------------------------------------------------------------------");
+
 
 		return course_available;
 		// TODO
@@ -250,6 +253,7 @@ public class StudentMenuCRS {
 			System.out.println("You haven't registered for any course");
 			return null;
 		}
+		System.out.println("-----------------------------------------------------------------------------------------");
 
 		System.out.println(String.format("%-20s %-20s %-20s", "COURSE CODE", "COURSE NAME", "INSTRUCTOR"));
 
@@ -258,6 +262,7 @@ public class StudentMenuCRS {
 			System.out.println(
 					String.format("%-20s %-20s %-20s ", obj.getCourseId(), obj.getCourseName(), obj.getInstructorId()));
 		}
+		System.out.println("-----------------------------------------------------------------------------------------");
 
 		return course_registered;
 		// TODO
@@ -277,10 +282,12 @@ public class StudentMenuCRS {
 			System.out.println(e.getMessage());
 		}
 
+
 		System.out.println(String.format("%-20s %-20s %-20s", "COURSE CODE", "COURSE NAME", "GRADE"));
+		System.out.println("-----------------------------------------------------------------------------------------");
 
 		if (grade_card == null) {
-			System.out.println("You haven't registered for any course");
+			System.out.println("You haven't registered for any course!");
 			return;
 		}
 		System.out.println("Student_ID : " + grade_card.getStudentId());
@@ -290,6 +297,7 @@ public class StudentMenuCRS {
 		for (HashMap.Entry<String, String> obj : grade_card.getGrades().entrySet()) {
 			System.out.println(String.format("%-20s %-20s", obj.getKey(), obj.getValue()));
 		}
+		System.out.println("-----------------------------------------------------------------------------------------");
 	}
 
 	/**
