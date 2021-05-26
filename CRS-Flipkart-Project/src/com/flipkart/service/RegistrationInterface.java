@@ -18,9 +18,10 @@ public interface RegistrationInterface {
 	 * @param courseList
 	 * @return true/false for successful/unsuccessful operation of adding a course.
 	 * @throws AddCourseException
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
-	public boolean addCourse(String courseId, String studentId, int semester) throws CourseNotFoundException,AddCourseException, CourseLimitReachedException, SQLException;
+	public boolean addCourse(String courseId, String studentId, int semester)
+			throws CourseNotFoundException, AddCourseException, CourseLimitReachedException, SQLException;
 
 	/**
 	 *
@@ -30,15 +31,15 @@ public interface RegistrationInterface {
 	 * @return true/false for successful/unsuccessful operation of dropping a
 	 *         course.
 	 * @throws CourseNotDeletedException
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public boolean dropCourse(String courseId, String studentId, int semester)
-			throws CourseNotDeletedException, SQLException,CourseNotFoundException;
+			throws CourseNotDeletedException, SQLException, CourseNotFoundException;
 
 	/**
 	 *
 	 * @return list of courses available
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public List<Course> viewCourses(String studentId, int semester) throws SQLException;
 
@@ -46,7 +47,7 @@ public interface RegistrationInterface {
 	 *
 	 * @param studentId
 	 * @return list of registered courses by a student.
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public List<Course> viewRegisteredCourses(String studentId, int semester) throws SQLException;
 
@@ -54,9 +55,9 @@ public interface RegistrationInterface {
 	 *
 	 * @param studentId
 	 * @return report card of the student as an object of class ReportCard
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
-	public ReportCard viewReportCard(String studentId,  int semester) throws SQLException;
+	public ReportCard viewReportCard(String studentId, int semester) throws SQLException;
 
 	/**
 	 *
