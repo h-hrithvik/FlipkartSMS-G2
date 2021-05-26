@@ -4,14 +4,18 @@
 package com.flipkart.bean;
 
 /**
- * @author arya_
- *
+ * @author JEDI-02
+ * Scholarsihp Class
  */
 public class SemesterRegistration {
 	private String coursesAdded[];
 	private int semester;
 	private String studentId;
 
+	/**
+	 * Getter Setter Methods for Course details
+	 *
+	 */
 	public String[] getCoursesAdded() {
 		return coursesAdded;
 	}

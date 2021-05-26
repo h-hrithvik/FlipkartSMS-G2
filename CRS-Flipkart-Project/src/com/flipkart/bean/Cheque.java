@@ -1,9 +1,19 @@
 package com.flipkart.bean;
 
+/**
+ * @author JEDI-02
+ *  Cheque Class
+ */
+
 public class Cheque extends Payment {
 	private String bankName;
 	private String chequeNumber;
 	private String holderName;
+
+	/**
+	 * Getter Setters Methods for Payment Class
+	 *
+	 */
 
 	public String getBankName() {
 		return bankName;

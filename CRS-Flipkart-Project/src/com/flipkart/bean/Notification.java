@@ -4,8 +4,8 @@
 package com.flipkart.bean;
 
 /**
- * @author lenovo
- *
+ * @author JEDI-02
+ * Notification Class
  */
 public class Notification {
 
@@ -14,6 +14,9 @@ public class Notification {
 	private String paymentId;
 	private String studentId;
 
+	/**
+	 * Constructor Classes to instantiate Notification Class
+	 */
 	public Notification() {
 		super();
 	}
@@ -26,6 +29,9 @@ public class Notification {
 		this.studentId = studentId;
 	}
 
+	/**
+	 * Getters Setters for Notification details
+	 */
 	public String getNotificationId() {
 		return notificationId;
 	}

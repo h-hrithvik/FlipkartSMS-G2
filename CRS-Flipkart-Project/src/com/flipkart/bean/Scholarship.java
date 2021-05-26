@@ -4,14 +4,18 @@
 package com.flipkart.bean;
 
 /**
- * @author hp
- *
+ * @author JEDI-02
+ * Scholarsihp Class
  */
 public class Scholarship extends Payment {
 
 	private String scholarId;
 	private float scholarAmount;
 
+	/**
+	 * Getter Setter Methods for Scholarship details
+	 *
+	 */
 	public String getScholarId() {
 		return scholarId;
 	}

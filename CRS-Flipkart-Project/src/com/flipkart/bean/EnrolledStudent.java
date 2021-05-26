@@ -14,7 +14,7 @@ public class EnrolledStudent {
 	int semester;
 	/**
 	 * Parameterized constructor
-	 * @param courseCode
+	 * @param courseId
 	 * @param courseName
 	 * @param studentId
 	 */

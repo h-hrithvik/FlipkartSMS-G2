@@ -4,8 +4,8 @@
 package com.flipkart.bean;
 
 /**
- * @author hp
- *
+ * @author JEDI-02
+ * Payment Class
  */
 public class Payment {
 	private String paymentId;
@@ -13,6 +13,10 @@ public class Payment {
 	private float amount;
 	private boolean status;
 
+	/**
+	 * Getters Setters for Payment details
+	 *
+	 */
 	public String getPaymentId() {
 		return paymentId;
 	}
