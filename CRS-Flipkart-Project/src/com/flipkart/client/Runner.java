@@ -30,9 +30,6 @@ public class Runner {
 					break;
 				case 2:
 					loginUser();
-					break;	
-				case 3:
-					updatePassword();
 					break;
 				default:
 					System.out.println("Enter a valid input");
@@ -41,10 +38,6 @@ public class Runner {
 			Input=sc.nextInt();
 		}
 		sc.close();
-	}
-	
-	private static void updatePassword() {
-
 	}
 
 	private static void registerStudent() {
@@ -89,7 +82,6 @@ public class Runner {
 	public static void printMenu() {
 		System.out.println("1---> Signup");
 		System.out.println("2---> Login ");
-		System.out.println("3---> Update Password");
 		System.out.println("4---> Exit");
 		System.out.println("Enter choice");
 	}
