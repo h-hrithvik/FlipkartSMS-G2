@@ -11,18 +11,19 @@ import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.CourseLimitReachedException;
 import com.flipkart.exception.CourseNotDeletedException;
+import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.PaymentNotFoundException;
 import com.flipkart.exception.StudentNotRegisteredException;
 
 public class RegistrationOperation implements RegistrationInterface {
 
-	private RegistrationOperation() {
+	public RegistrationOperation() {
 	}
 
 	RegistrationDaoInterface registrationDaoInterface = new RegistrationDaoOperation();
 
 	@Override
-	public boolean addCourse(String courseId, String studentId, int semester) throws AddCourseException, CourseLimitReachedException, SQLException {
+	public boolean addCourse(String courseId, String studentId, int semester) throws CourseNotFoundException,AddCourseException, CourseLimitReachedException, SQLException {
 
 		try {
 			if (registrationDaoInterface.numOfRegisteredCourses(studentId, semester) == 6) {

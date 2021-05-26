@@ -16,7 +16,7 @@ public interface StudentInterface {
 	 * @throws StudentNotRegisteredException
 	 * @return verified status
 	 */
-	public boolean checkIsVerified(String studentId) throws StudentNotRegisteredException;
+	public int checkIsVerified(String studentId) throws StudentNotRegisteredException;
 
 	/**
 	 * Function to view report card for student

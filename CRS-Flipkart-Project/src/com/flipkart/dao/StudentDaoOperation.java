@@ -78,15 +78,6 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		{
 			throw new UserAlreadyExistException(student.getUserId());
 		}
-		finally
-		{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage()+"SQL error");
-				e.printStackTrace();
-			}
-		}
 		return studentId;
 	}
 	
@@ -126,7 +117,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	 * @return boolean indicating if student is approved
 	 */
 	@Override
-	public boolean isApproved(String studentId) {
+	public int isApproved(String studentId) {
 		Connection connection=DBUtils.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.IS_APPROVED);
@@ -135,7 +126,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			
 			if(rs.next())
 			{
-				return rs.getBoolean(0);
+				return rs.getInt("isVerified");
 			}
 				
 		}
@@ -144,6 +135,6 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			System.out.println(e.getMessage());
 		}
 		
-		return false;
+		return 0;
 	}
 }

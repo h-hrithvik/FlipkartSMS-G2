@@ -10,7 +10,7 @@ package com.flipkart.constant;
 public class SQLQueriesConstants {
 
 	public static final String DELETE_COURSE_QUERY = "delete from course where courseId = ?";
-	public static final String ADD_COURSE_QUERY = "insert into course(courseId, courseName, instructorId ,seat) values (?, ?, ?, ?)";
+	public static final String ADD_COURSE_QUERY = "insert into course(courseId, courseName, instructorId ,seats) values (?, ?, ?, ?)";
 	public static final String VIEW_PENDING_ADMISSION_QUERY = "select userId, name, password, phonenumber, address, studentId from student natural join user where isVerified = 0";
 	public static final String APPROVE_STUDENT_QUERY = "update student set isVerified = 1 where studentId = ?";
 	public static final String ADD_USER_QUERY = "insert into user(userId, name, password, role,phonenumber, address) values (?, ?, ?, ?, ?, ?)";

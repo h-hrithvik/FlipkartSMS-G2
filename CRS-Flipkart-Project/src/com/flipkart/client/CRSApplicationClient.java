@@ -3,6 +3,8 @@ package com.flipkart.client;
 
 import java.util.Scanner;
 
+import javax.management.relation.Role;
+
 import com.flipkart.constant.RoleConstants;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
@@ -17,9 +19,10 @@ import static com.flipkart.constant.RoleConstants.STUDENT;
 
 public class CRSApplicationClient {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
 		boolean loggedIn = false;
+		System.out.println("*******   WELCOME to Student Registartion System!!!! ********");
 		printMenu();
 		int Input=sc.nextInt();
 		
@@ -42,6 +45,13 @@ public class CRSApplicationClient {
 		sc.close();
 	}
 
+	public static void printMenu() {
+		System.out.println("1---> Signup");
+		System.out.println("2---> Login ");
+		System.out.println("3---> Exit");
+		System.out.println("Please enter your choice");
+	}
+	
 	private static void registerStudent() {
 		Scanner sc = new Scanner(System.in);
 
@@ -74,7 +84,7 @@ public class CRSApplicationClient {
 		}
 	}
 
-	private static void loginUser() {
+	private static void loginUser() throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
 
 		String userId, password;
@@ -86,14 +96,12 @@ public class CRSApplicationClient {
 			password = sc.next();
 			UserInterface userInterface = new UserOperation();
 			boolean loggedin = userInterface.verifyCredentials(userId, password);
-			System.out.println(loggedin);
-			System.out.println("post login");
 			// 2 cases
 			// true->role->student->approved
 			if (loggedin) {
 				String role = userInterface.getRole(userId);
-//				Role userRole = Role.stringToName(role);
-				RoleConstants userRole = RoleConstants.stringToName("ADMIN");
+//				Role userRole = Role.(role);
+				RoleConstants userRole = RoleConstants.stringToName(role);
 				switch (userRole) {
 				case ADMIN:
 					System.out.println(" Login Successful");
@@ -106,20 +114,21 @@ public class CRSApplicationClient {
 					professorMenu.professorMenu(userId);
 
 					break;
-//				case STUDENT:
-//					StudentInterface studentInterface = new StudentOperation();
+				case STUDENT:
+					StudentInterface studentInterface = new StudentOperation();
 //					String studentId = studentInterface.getStudentId(userId);
-//					boolean isApproved = studentInterface.checkIsVerified(studentId);
-//					if (isApproved) {
-//						System.out.println( " Login Successful");
-//						StudentClient studentMenu = new StudentClient();
-//						studentMenu.create_menu(studentId);
-//
-//					} else {
-//						System.out.println("Failed to login, you have not been approved by the administration!");
-//						loggedin = false;
-//					}
-//					break;
+//					System.out.println(userId);
+					int isApproved = studentInterface.checkIsVerified(userId);
+					if (isApproved == 1) {
+						System.out.println( " Login Successful");
+						StudentMenuCRS studentMenu = new StudentMenuCRS();
+						studentMenu.create_menu(userId);
+
+					} else {
+						System.out.println("You have not been approved by the admin!!!");
+						loggedin = false;
+					}
+					break;
 				}
 
 			} else {
@@ -130,12 +139,4 @@ public class CRSApplicationClient {
 			System.out.println(ex.getMessage());
 		}
 	}
-
-	public static void printMenu() {
-		System.out.println("1---> Signup");
-		System.out.println("2---> Login ");
-		System.out.println("4---> Exit");
-		System.out.println("Enter choice");
-	}
-
 }

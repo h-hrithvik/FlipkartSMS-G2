@@ -53,11 +53,6 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 			System.out.println(e.getMessage());
 		}
-		finally
-		{
-			stmt.close();
-			conn.close();
-		}
 		
 		return count;
 	}
@@ -83,10 +78,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
-			stmt.close();
-			conn.close();
-		}
+		} 
 		return false;
 	}
 	
@@ -113,11 +105,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 		{
 			System.out.println(e.getMessage());
 		}
-		finally
-		{
-			stmt.close();
-			conn.close();
-		}
+		
 		
 		return check;
 		
@@ -144,10 +132,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		} finally {
-			stmt.close();
-			conn.close();
-		}
+		} 
 
 		return true;
 	}
@@ -172,10 +157,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		} finally {
-			stmt.close();
-			conn.close();
-		}
+		} 
 
 		return availableCourseList;
 	}
@@ -199,10 +181,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		} finally {
-			stmt.close();
-			conn.close();
-		}
+		} 
 
 		return registeredCourseList;
 	}
@@ -234,11 +213,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		} finally {
-			stmt.close();
-			conn.close();
-		}
-
+		} 
 		return reportCard;
 	}
 

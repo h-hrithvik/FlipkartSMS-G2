@@ -76,8 +76,8 @@ public class AdminDaoOperation implements AdminDaoInterface{
 			
 			statement.setString(1, course.getCourseId());
 			statement.setString(2, course.getCourseName());
-			
-			statement.setInt(3, 1);
+			statement.setString(3, course.getInstructorId());
+			statement.setInt(4,10);
 			int row = statement.executeUpdate();
 			
 			System.out.println(row + " course added");
@@ -130,7 +130,6 @@ public class AdminDaoOperation implements AdminDaoInterface{
 	 */
 	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException{
 		try {
-			System.out.println(professor.toString());
 			this.addUser(professor);
 			
 		}catch (UserNotApprovedExecption e) {
@@ -152,7 +151,8 @@ public class AdminDaoOperation implements AdminDaoInterface{
 			statement = connection.prepareStatement(sql);
 			
 			statement.setString(1, professor.getProfessorId());
-			statement.setString(2, professor.getDepartment());
+			statement.setString(2, professor.getProfessorId());
+			statement.setString(3, professor.getDepartment());
 			int row = statement.executeUpdate();
 
 			System.out.println(row + " professor added.");

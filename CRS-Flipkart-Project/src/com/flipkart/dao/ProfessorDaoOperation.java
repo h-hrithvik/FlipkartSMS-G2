@@ -46,15 +46,6 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		{
 			System.out.println(e.getMessage());
 		}
-		finally
-		{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		return courseList;
 		
 	}

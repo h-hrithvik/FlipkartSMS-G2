@@ -39,7 +39,7 @@ public class AdminMenuCRS {
 			System.out.println("6. Remove Professor");
 			System.out.println("7. Exit Admin Menu");
 			in=scanner.nextInt();
-				
+			scanner.nextLine();
 			switch(in) {
 			case 1:
 				addCourse();

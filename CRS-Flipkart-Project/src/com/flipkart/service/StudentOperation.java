@@ -18,7 +18,7 @@ public class StudentOperation implements StudentInterface {
 	
 
 	@Override
-	public boolean checkIsVerified(String studentId) throws StudentNotRegisteredException {
+	public int checkIsVerified(String studentId) throws StudentNotRegisteredException {
 		
 		// TODO Auto-generated method stub
 		

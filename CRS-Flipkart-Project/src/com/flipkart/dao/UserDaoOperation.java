@@ -15,6 +15,8 @@ public class UserDaoOperation implements UserDaoInterface {
 	 * @param password
 	 * @throws UserNotFoundException
 	 */
+//	Connection connection = DBUtils.getConnection();
+
 	@Override
 	public boolean updatePassword(String userId, String password) throws UserNotFoundException {
 		Connection connection = DBUtils.getConnection();
@@ -24,22 +26,18 @@ public class UserDaoOperation implements UserDaoInterface {
 			statement.setString(1, password);
 			statement.setString(2, userId);
 			ResultSet resultSet = statement.executeQuery();
-			if(!resultSet.next())
+			if (!resultSet.next())
 				throw new UserNotFoundException(userId);
 			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			}
-		}
+		} 
 		return false;
 	}
+
 	/**
 	 * Method to verify credentials of Users from DataBase
+	 * 
 	 * @param userId
 	 * @param password
 	 * @throws UserNotFoundException
@@ -48,29 +46,31 @@ public class UserDaoOperation implements UserDaoInterface {
 	public boolean verifyCredentials(String userId, String password) throws UserNotFoundException {
 		Connection connection = DBUtils.getConnection();
 		try {
-			PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.VERIFY_CREDENTIALS);
-			preparedStatement.setString(1,userId);
+			PreparedStatement preparedStatement = connection.prepareStatement(SQLQueriesConstants.VERIFY_CREDENTIALS);
+			preparedStatement.setString(1, userId);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			if(!resultSet.next())
+			if (!resultSet.next())
 				throw new UserNotFoundException(userId);
-			else if(password.equals(resultSet.getString("password"))) 
+			else if (password.equals(resultSet.getString("password")))
 				return true;
-			else 
+			else
 				return false;
 		} catch (SQLException e) {
-			System.out.println("SQL excep");
 			System.out.println(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			}
 		}
+//		finally {
+//			try {
+//				connection.close();
+//			} catch (SQLException e) {
+//				System.out.println(e.getMessage());
+//			}
+//		}
 		return false;
 	}
+
 	/**
 	 * Method to get Role of User from DataBase
+	 * 
 	 * @param userId
 	 * @throws UserNotFoundException
 	 * @return Role
@@ -82,19 +82,14 @@ public class UserDaoOperation implements UserDaoInterface {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.GET_ROLE);
 			statement.setString(1, userId);
 			ResultSet resultSet = statement.executeQuery();
-			if(!resultSet.next())
+			System.out.println("Is is being prnt" + resultSet);
+			if (!resultSet.next())
 				throw new UserNotFoundException(userId);
 			else
-				return resultSet.getNString("role");
+				return resultSet.getString("role");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			}
-		}
+		} 
 		return null;
 	}
 

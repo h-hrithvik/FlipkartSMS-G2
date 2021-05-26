@@ -7,6 +7,7 @@ import com.flipkart.bean.*;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseLimitReachedException;
 import com.flipkart.exception.CourseNotDeletedException;
+import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.PaymentNotFoundException;
 
 public interface RegistrationInterface {
@@ -14,25 +15,25 @@ public interface RegistrationInterface {
 	 *
 	 * @param courseId
 	 * @param studentId
-	 * @param semester
+	 * @param courseList
 	 * @return true/false for successful/unsuccessful operation of adding a course.
 	 * @throws AddCourseException
 	 * @throws SQLException 
 	 */
-	public boolean addCourse(String courseId, String studentId, int semester) throws AddCourseException, CourseLimitReachedException, SQLException;
+	public boolean addCourse(String courseId, String studentId, int semester) throws CourseNotFoundException,AddCourseException, CourseLimitReachedException, SQLException;
 
 	/**
 	 *
 	 * @param courseId
 	 * @param studentId
-	 * @param semester
+	 * @param registeredCourseList
 	 * @return true/false for successful/unsuccessful operation of dropping a
 	 *         course.
 	 * @throws CourseNotDeletedException
 	 * @throws SQLException 
 	 */
 	public boolean dropCourse(String courseId, String studentId, int semester)
-			throws CourseNotDeletedException, SQLException;
+			throws CourseNotDeletedException, SQLException,CourseNotFoundException;
 
 	/**
 	 *
