@@ -1,7 +1,7 @@
 package com.flipkart.constant;
 
 /**
- * @author anshuman
+ * @author JEDI-02
  */
 public enum RoleConstants {
     ADMIN,PROFESSOR,STUDENT;

@@ -4,7 +4,7 @@
 package com.flipkart.constant;
 
 /**
- * @author lenovo
+ * @author JEDI-02
  *
  */
 public class SQLQueriesConstants {
