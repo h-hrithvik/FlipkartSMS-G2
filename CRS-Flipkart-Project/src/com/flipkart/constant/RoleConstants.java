@@ -3,7 +3,7 @@ package com.flipkart.constant;
 /**
  * @author anshuman
  */
-public enum Role {
+public enum RoleConstants {
     ADMIN,PROFESSOR,STUDENT;
 
     /**
@@ -11,16 +11,16 @@ public enum Role {
      * @param role
      * @return Role object
      */
-    public static Role stringToName(String role)
+    public static RoleConstants stringToName(String role)
     {
-        Role userRole=null;
+        RoleConstants userRole=null;
 
         if(role.equalsIgnoreCase("ADMIN"))
-            userRole=Role.ADMIN;
+            userRole=RoleConstants.ADMIN;
         else if(role.equalsIgnoreCase("PROFESSOR"))
-            userRole=Role.PROFESSOR;
+            userRole=RoleConstants.PROFESSOR;
         else if(role.equalsIgnoreCase("STUDENT"))
-            userRole=Role.STUDENT;
+            userRole=RoleConstants.STUDENT;
         return userRole;
     }
 }
