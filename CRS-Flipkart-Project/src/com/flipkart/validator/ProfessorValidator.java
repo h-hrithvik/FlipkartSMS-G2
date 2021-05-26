@@ -20,7 +20,7 @@ public class ProfessorValidator {
 	 * @param studentId: current student
 	 * @return true, if student is valid. else, false.
 	 */
-	public static boolean isValidStudent(ArrayList<EnrolledStudent> students,String studentId)
+	public static boolean isValidStudent(List<EnrolledStudent> students,String studentId)
 	{
 		boolean result=false;
 		//check if student exist in ihe students list
@@ -40,7 +40,7 @@ public class ProfessorValidator {
 	 * @param courseId: course id for which grade needs to be added
 	 * @return true, if course is valid and taught by professor, else false.
 	 */
-	public static boolean isValidCourse(ArrayList<Course> assignedCourses,String courseCode)
+	public static boolean isValidCourse(List<Course> assignedCourses,String courseCode)
 	{
 		//check if course is valid
 		boolean result=false;

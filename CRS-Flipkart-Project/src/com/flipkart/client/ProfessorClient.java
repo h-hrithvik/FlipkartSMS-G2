@@ -10,9 +10,12 @@ import java.util.Scanner;
 
 import com.flipkart.service.ProfessorInterface;
 import com.flipkart.service.ProfessorOperation;
+import com.flipkart.validator.ProfessorValidator;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.EnrolledStudent;
 import com.flipkart.exception.GradeNotAddedException;
+import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.StudentNotRegisteredException;
 
 /**
  * @author hp
@@ -64,7 +67,7 @@ public class ProfessorClient {
 		
 	}
 
-	private void addGrade(String professorId) {
+	private void addGrade(String professorId) throws StudentNotRegisteredException, StudentNotFoundForVerificationException, SQLException {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		
@@ -106,10 +109,8 @@ public class ProfessorClient {
 			System.out.println(ex.getMessage());
 			
 		}
-		catch(SQLException ex)
-		{
-			System.out.println("Grade not added, SQL exception occured "+ex.getMessage());
-		}
+		
+		
 	}
 
 	private void viewStudents(String professorId) {
