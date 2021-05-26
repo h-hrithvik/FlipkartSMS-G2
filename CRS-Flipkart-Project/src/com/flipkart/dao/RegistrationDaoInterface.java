@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.exception.PaymentNotFoundException;
+import com.flipkart.bean.Payment;
 
 /**
  * @author WIN 10
@@ -63,8 +65,9 @@ public interface RegistrationDaoInterface {
 	 * @param studentId
 	 * @return Grade Card
 	 * @throws SQLException
+	 * @throws PaymentNotFoundException 
 	 */
-	public ReportCard viewReportCard(String studentId, int semester) throws SQLException;
+	public ReportCard viewReportCard(String studentId, int semester) throws SQLException, PaymentNotFoundException;
 
 	/**
 	 * Method to retrieve fee for the selected courses from the database and
@@ -74,6 +77,12 @@ public interface RegistrationDaoInterface {
 	 * @return Fee Student has to pay
 	 * @throws SQLException
 	 */
-	public double payFee(String studentId, int semester) throws SQLException;
+	public boolean payFee(Payment payment) throws SQLException,PaymentNotFoundException;
+	
+	/*
+	 * Method to check whether the given student has paid the fee or not
+	 * for given sem
+	 * */
+	public Payment viewFee(String studentId,int semester) throws SQLException;
 
 }

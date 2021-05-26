@@ -27,14 +27,17 @@ public interface StudentInterface {
 	 */
 	public ReportCard viewReportCard(String studentId, int semester) throws SQLException;
 
+	
+	
 	/**
 	 * Method to get Student ID from User ID
-	 * 
 	 * @param userId
 	 * @return Student ID
 	 */
 	public String getStudentId(String userId);
-
+	
+	
+	
 	/**
 	 * Function to register new student
 	 * 
