@@ -7,7 +7,6 @@ import java.util.Scanner;
 import com.flipkart.service.AdminOperation;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
-import com.flipkart.bean.ReportCard;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
@@ -185,11 +184,7 @@ public class AdminClient {
 		String studentId = scanner.nextLine();
 		
 		System.out.println("Enter student Semester:");
-		int studentSem = scanner.nextInt();
-		
-//		System.out.println("Enter Student CPI:");
-		float studentCpi = 0;
-						
+		int studentSem = scanner.nextInt();						
 		try {
 			adminObj.generateReport(studentId,studentSem);
 		} catch (StudentNotRegisteredException e) {
