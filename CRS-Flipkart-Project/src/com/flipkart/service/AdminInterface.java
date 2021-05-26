@@ -5,6 +5,13 @@ package com.flipkart.service;
 
 import com.flipkart.bean.*;
 import com.flipkart.exception.AddCourseException;
+import com.flipkart.exception.CourseNotDeletedException;
+import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.ProfessorNotDeletedException;
+import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.StudentNotRegisteredException;
+import com.flipkart.exception.UserAlreadyExistException;
 
 /**
  * @author arya_
@@ -13,45 +20,54 @@ import com.flipkart.exception.AddCourseException;
 public interface AdminInterface {
 
 	/**
-	 * Function to remove a course
+	 * Method to Delete Course from Course Catalog
 	 * 
 	 * @param courseId
+	 * @throws CourseNotFoundException
+	 * @throws CourseNotDeletedException
 	 */
-	public void removeCourse(String courseId);
+	public void removeCourse(String courseId) throws CourseNotFoundException, CourseNotDeletedException;
 
 	/**
-	 * Function to add a course
+	 * Method to add Course to Course Catalog
 	 * 
-	 * @param course
+	 * @param course : Course object storing details of a course
+	 * @throws AddCourseException
 	 */
 	public void addCourse(Course course) throws AddCourseException;
 
 	/**
-	 * Function to approve student
+	 * Method to approve a Student
 	 * 
 	 * @param studentId
-	 * @return status whether student is approved or not
+	 * @throws StudentNotFoundForVerificationException
+	 * @return Approval Status
 	 */
-	public boolean approveStudent(String studentId);
+	public boolean approveStudent(String studentId) throws StudentNotFoundForVerificationException;
 
 	/**
-	 * Function to add professor
+	 * Method to add Professor to DB
 	 * 
-	 * @param professor
+	 * @param professor : Professor Object storing details of a professor
+	 * @throws ProfessorNotAddedException
+	 * @throws UserAlreadyExistException
 	 */
-	public void addProfessor(Professor professor);
+	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException;
 
 	/**
-	 * Function to remove professor
+	 * Method to delete Professor from DB
 	 * 
-	 * @param prefessorId
+	 * @param professorId
+	 * @throws ProfessorNotAddedException
+	 * @throws ProfessorNotDeletedException 
 	 */
-	public void removeProfessor(String prefessorId);
+	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException;
 
 	/**
 	 * Function to generate report
-	 * 
-	 * @param reportCard
+	 * @param semester
+	 * @param userId
+	 * @throws StudentNotRegisteredException
 	 */
-	public void generateReport(ReportCard reportCard);
+	void generateReport(String userId, int semester) throws StudentNotRegisteredException;
 }

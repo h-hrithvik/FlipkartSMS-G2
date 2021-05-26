@@ -3,17 +3,31 @@
  */
 package com.flipkart.bean;
 
+/**
+ * @author JEDI-02
+ * Grade Class
+ */
 public class Grade {
 	private String studentId;
 	private int semester;
 	private String grade;
 
+	/**
+	 * Constructor to instantiate Grade Class
+	 * @param studentId
+	 * @param sem
+	 * @param grade
+	 */
 	public Grade(String studentId, int sem, String grade) {
 		super();
 		this.studentId = studentId;
 		this.semester = sem;
 		this.grade = grade;
 	}
+
+	/**
+	 * Getters Setters for Grade properties
+	 */
 
 	public Grade() {
 		super();

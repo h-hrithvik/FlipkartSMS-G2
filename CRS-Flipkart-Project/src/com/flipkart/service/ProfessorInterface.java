@@ -6,13 +6,15 @@ package com.flipkart.service;
 import java.util.List;
 
 import com.flipkart.bean.Course;
+import com.flipkart.bean.EnrolledStudent;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.GradeNotAddedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 
 /**
- * @author hp
+ * @author JEDI-02
  *
  */
 public interface ProfessorInterface {
@@ -29,11 +31,10 @@ public interface ProfessorInterface {
 	 * Function to get list of students registered for a course
 	 * 
 	 * @param professorId
-	 * @param courseId
 	 * @return list of registered students
 	 * @throws CourseNotFoundException
 	 */
-	public List<Student> viewStudents(String courseId) throws CourseNotFoundException;
+	public List<EnrolledStudent> viewStudents(String professorId) ;
 
 	/**
 	 * Function to add grade for a student registered in a course
@@ -45,6 +46,7 @@ public interface ProfessorInterface {
 	 * @throws StudentNotFoundForVerificationException
 	 * @throws StudentNotRegisteredException
 	 */
-	public boolean addGrade(String studentId, String courseId, String grade) throws StudentNotRegisteredException, StudentNotFoundForVerificationException;
+	public boolean addGrade(String studentId, String courseId,int  semester, String grade)
+			throws StudentNotRegisteredException, StudentNotFoundForVerificationException,GradeNotAddedException;
 
 }
