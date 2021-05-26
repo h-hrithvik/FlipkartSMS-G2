@@ -5,17 +5,20 @@ package com.flipkart.client;
 import java.util.Scanner;
 
 import com.flipkart.service.AdminOperation;
+import com.flipkart.bean.Professor;
 import com.flipkart.service.AdminInterface;
 /**
  * @author arya_
  *
  */
 public class AdminClient {
+	
+	AdminInterface adminObj =new AdminOperation();
+	Scanner scanner = new Scanner(System.in);
 
 	public void createMenu(){
 		
-		AdminInterface adminObj =new AdminOperation();
-		Scanner scanner = new Scanner(System.in);
+		
 		int in=0;
 		while(in!=5) {
 			
@@ -57,7 +60,6 @@ public class AdminClient {
 				System.out.println("Invalid Choice");
 			}
 		}
-		scanner.close();
 	}
 	private void addCourse()
 	{
@@ -73,7 +75,26 @@ public class AdminClient {
 	}
 	private void addProfessor()
 	{
-			
+		System.out.println("Enter Professor Name:");
+		String professorName = scanner.next();
+		
+		System.out.println("Enter Department:");
+		String department = scanner.next();
+		
+		System.out.println("Enter Phone:");
+		String phoneNo = scanner.next();
+		
+		System.out.println("Enter User Id:");
+		String userId = scanner.next();
+		
+		System.out.println("Enter Password:");
+		String password = scanner.next();
+		
+		System.out.println("Enter Address:");
+		String address = scanner.next();
+				
+		Professor professor = new Professor(professorName,phoneNo,address,userId,password,"Professor");
+		
 	}
 	private void returnToLogin()
 	{
