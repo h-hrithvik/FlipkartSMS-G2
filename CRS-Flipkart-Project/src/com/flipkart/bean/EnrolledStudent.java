@@ -11,23 +11,34 @@ public class EnrolledStudent {
 	private String courseName;
 	private String studentId;
 	
+	int semester;
 	/**
 	 * Parameterized constructor
 	 * @param courseCode
 	 * @param courseName
 	 * @param studentId
 	 */
-	public EnrolledStudent(String courseId, String courseName, String studentId) {
+	public EnrolledStudent(String courseId, String courseName, String studentId,int semester) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;
 		this.studentId = studentId;
+		this.semester=semester;
 	}
 	
 	/**
 	 * Method to get Course Code
 	 * @return Course Code
+	 *
 	 */
+	public int getSemester() {
+		return semester;
+	}
+
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+
 	public String getCourseId() {
 		return courseId;
 	}
