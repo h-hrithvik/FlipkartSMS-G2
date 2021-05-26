@@ -30,12 +30,18 @@ public class ProfessorMenuCRS {
 		int in=1;
 		while(in!=4)
 		{
-			
-			System.out.println("Select Option: ");
+			System.out.println("---------------------------");
+			System.out.println("        PROFESSOR MENU");
+			System.out.println("---------------------------");
+
 			System.out.println("1. View Courses");
 			System.out.println("2. View Enrolled Students");
 			System.out.println("3. Add grade");
 			System.out.println("4. Logout");
+
+			System.out.println("ENTER YOUR CHOICE");
+			System.out.println();
+
 			in=sc.nextInt();
 			//input user
 			

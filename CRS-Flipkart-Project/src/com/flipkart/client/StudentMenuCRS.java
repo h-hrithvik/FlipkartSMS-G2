@@ -38,9 +38,9 @@ public class StudentMenuCRS {
 
 		is_registered = getRegistrationStatus(studentId);
 		while (is_registered) {
-			System.out.println("*****************************");
-			System.out.println("**********Student Menu*********");
-			System.out.println("*****************************");
+			System.out.println("---------------------------");
+			System.out.println("        STUDENT MENU");
+			System.out.println("---------------------------");
 			System.out.println("1. Course Registration");
 			System.out.println("2. Add Course");
 			System.out.println("3. Drop Course");
@@ -49,7 +49,9 @@ public class StudentMenuCRS {
 			System.out.println("6. View grade card");
 			System.out.println("7. Make Payment");
 			System.out.println("8. Logout");
-			System.out.println("*****************************");
+			System.out.println("---------------------------");
+			System.out.println("Please enter your choice");
+			System.out.println();
 
 			int choice = sc.nextInt();
 

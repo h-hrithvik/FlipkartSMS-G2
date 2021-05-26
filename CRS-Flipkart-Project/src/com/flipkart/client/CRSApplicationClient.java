@@ -22,7 +22,10 @@ public class CRSApplicationClient {
 	public static void main(String[] args) throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
 		boolean loggedIn = false;
-		System.out.println("*******   WELCOME to Student Registartion System!!!! ********");
+		System.out.println("************************************************************");
+		System.out.println("*******   WELCOME to Course Registration System!!!  ********");
+		System.out.println("************************************************************");
+
 		printMenu();
 		int Input=sc.nextInt();
 		
@@ -46,9 +49,9 @@ public class CRSApplicationClient {
 	}
 
 	public static void printMenu() {
-		System.out.println("1---> Signup");
-		System.out.println("2---> Login ");
-		System.out.println("3---> Exit");
+		System.out.println("1. Signup");
+		System.out.println("2. Login ");
+		System.out.println("3. Exit");
 		System.out.println("Please enter your choice");
 	}
 	
@@ -59,7 +62,10 @@ public class CRSApplicationClient {
 
 		try {
 			// input all the student details
-			System.out.println("---------------Student Registration-------------");
+			System.out.println("------------------------------------------");
+			System.out.println("        STUDENT REGISTRATION");
+			System.out.println("------------------------------------------");
+
 			System.out.println("Name:");
 			name = sc.nextLine();
 			System.out.println("Roll Number:");
