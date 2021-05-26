@@ -29,8 +29,10 @@ public class AdminMenuCRS {
 		
 		int in=0;
 		while(in!=7) {
-			
-			System.out.println("ADMIN MENU");
+			System.out.println("---------------------------");
+			System.out.println("        ADMIN MENU");
+			System.out.println("---------------------------");
+
 			System.out.println("1. Add Course to catalog");
 			System.out.println("2. Delete Course from catalog");
 			System.out.println("3. Approve Students");
@@ -38,6 +40,10 @@ public class AdminMenuCRS {
 			System.out.println("5. Generate Report Card");
 			System.out.println("6. Remove Professor");
 			System.out.println("7. Exit Admin Menu");
+
+			System.out.println("ENTER YOUR CHOICE");
+			System.out.println();
+
 			in=scanner.nextInt();
 			scanner.nextLine();
 			switch(in) {
@@ -73,6 +79,7 @@ public class AdminMenuCRS {
 			}
 		}
 	}
+
 	/**
 	 * Method to add course to DB
 	 */
@@ -95,6 +102,7 @@ public class AdminMenuCRS {
 			System.out.println(e.getMessage());
 		}	
 	}
+
 	/**
 	 * Method to delete course from DB
 	 */
@@ -109,6 +117,7 @@ public class AdminMenuCRS {
 			System.out.println(e.getMessage());
 		}
 	}
+
 	/**
 	 * Method to approve studentId
 	 */
@@ -126,6 +135,7 @@ public class AdminMenuCRS {
 		}
 		return false;
 	}
+
 	/**
 	 * Method to add Professor from DB
 	 */
