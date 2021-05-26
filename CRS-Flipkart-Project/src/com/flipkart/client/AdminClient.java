@@ -9,6 +9,7 @@ import com.flipkart.bean.Professor;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
 /**
@@ -81,7 +82,17 @@ public class AdminClient {
 	}
 	private void approveStudent()
 	{	
+		System.out.println("Enter Student's ID:");
+		String studentUserIdApproval = scanner.nextLine();
 		
+		try {
+			adminObj.approveStudent(studentUserIdApproval);
+			//send notification from system
+			notificationInterface.sendNotification(NotificationType.REGISTRATION_APPROVAL, studentUserIdApproval, null,0);
+	
+		} catch (StudentNotFoundForVerificationException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	private void addProfessor()
 	{
