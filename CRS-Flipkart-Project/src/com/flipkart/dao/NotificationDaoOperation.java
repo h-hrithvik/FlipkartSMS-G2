@@ -9,9 +9,8 @@ import java.util.UUID;
 import com.flipkart.constant.ModeOfPaymentConstants;
 import com.flipkart.constant.NotificationTypeConstants;
 import com.flipkart.constant.SQLQueriesConstants;
-import com.flipkart.service.NotificationOperation;
 import com.flipkart.utils.DBUtils;
-
+import org.apache.log4j.Logger;
 public class NotificationDaoOperation implements NotificationDaoInterface{
     /**
      *
@@ -21,6 +20,32 @@ public class NotificationDaoOperation implements NotificationDaoInterface{
      * @return notification Id
      * @throws SQLException
      */
+	private static volatile NotificationDaoOperation instance=null;
+	private static Logger logger = Logger.getLogger(NotificationDaoOperation.class);
+	
+	/**
+	 * Default Constructor
+	 */
+	private NotificationDaoOperation()
+	{
+
+	}
+	
+	/**
+	 * Method to make NotificationDaoOperation Singleton
+	 * @return
+	 */
+	public static NotificationDaoOperation getInstance()
+	{
+		if(instance==null)
+		{
+			// This is a synchronized block, when multiple threads will access this instance
+			synchronized(NotificationDaoOperation.class){
+				instance=new NotificationDaoOperation();
+			}
+		}
+		return instance;
+	}
     @Override
     public int sendNotification(NotificationTypeConstants type, int studentId,ModeOfPaymentConstants modeOfPayment) throws SQLException{
         int notificationId=0;
