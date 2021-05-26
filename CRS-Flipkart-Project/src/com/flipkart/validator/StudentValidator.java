@@ -11,7 +11,7 @@ import com.flipkart.exception.CourseLimitReachedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.SeatNotAvailableException;
 /**
- * @author lenovo
+ * @author JEDI-02
  *
  */
 
@@ -41,9 +41,9 @@ public class StudentValidator {
 	
 	/**
 	 * Method to validate if couseCode is valid or not
-	 * @param courseCode
+	 * @param courseId
 	 * @param availableCourseList
-	 * @return couseCode is valid or not
+	 * @return if couseCode is valid or not
 	 */
 	public static boolean isValidCourseCode(String courseId,ArrayList<Course>availableCourseList) 
 	{
