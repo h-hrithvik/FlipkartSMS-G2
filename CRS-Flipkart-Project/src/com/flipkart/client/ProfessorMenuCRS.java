@@ -101,7 +101,7 @@ public class ProfessorMenuCRS {
 			System.out.println("Enter semester");
 			semester=sc.nextInt();
 			sc.nextLine();
-			if(ProfessorValidator.isValidCourse(coursesEnrolled, courseId) && ProfessorValidator.isValidStudent(enrolledStudents, studentId))
+			if(ProfessorValidator.isValidEntry(enrolledStudents, studentId,courseId,semester))
 			{
 				try {
 				professorobj.addGrade(studentId, courseId, semester,grade);
