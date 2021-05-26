@@ -16,7 +16,8 @@ import com.flipkart.service.RegistrationOperation;
 
 /**
  *
- * @author anshuman The class displays the menu for student client
+ * @author JEDI-02
+ * The class displays the menu for student client
  *
  */
 public class StudentMenuCRS {
