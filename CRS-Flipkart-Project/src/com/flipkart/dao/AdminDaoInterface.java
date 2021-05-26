@@ -77,6 +77,6 @@ public interface AdminDaoInterface {
 	 * @param reportCard
 	 * @throws StudentNotRegisteredException
 	 */
-	public void generateReport(ReportCard reportCard) throws StudentNotRegisteredException;
+	public void generateReport(int semester,String StudentId,float CPI) throws StudentNotRegisteredException;
 
 }

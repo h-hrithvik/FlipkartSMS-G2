@@ -5,7 +5,9 @@ package com.flipkart.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
@@ -242,32 +244,54 @@ public class AdminDaoOperation implements AdminDaoInterface{
 	 * @param reportCard
 	 * @throws StudentNotRegisteredException
 	 */
-	public void generateReport(ReportCard reportCard) throws StudentNotRegisteredException{
+	public void generateReport(int semester,String StudentId,float CPI) throws StudentNotRegisteredException{
 		statement = null;
 		try {
 			
 			String sql = SQLQueriesConstants.ADD_REPORT_CARD;
 			statement = connection.prepareStatement(sql);
 			
-			statement.setString(1, reportCard.getStudentId());
-			statement.setInt(2, reportCard.getSem());
-			statement.setFloat(3, reportCard.getCPI());
+			statement.setString(1, StudentId);
+			statement.setInt(2, semester);
+			statement.setFloat(3, CPI);
 			int row = statement.executeUpdate();
 			
 			System.out.println(row + " Report Card Generated.");
 			if(row == 0) {
-				System.out.println("For student with StudentId: " + reportCard.getStudentId() + " no Report generated.");
-				throw new StudentNotRegisteredException(reportCard.getStudentId()); 
+				System.out.println("For student with StudentId: " + StudentId + " no Report generated.");
+				throw new StudentNotRegisteredException(StudentId); 
 			}
 
-			System.out.println("User with userId: " + reportCard.getStudentId() + " added."); 
+			System.out.println("User with userId: " + StudentId + " added."); 
 			
 		}catch(SQLException se) {
 			
 			System.out.println(se.getMessage());
-			throw new StudentNotRegisteredException(reportCard.getStudentId());
+			throw new StudentNotRegisteredException(StudentId);
 			
 		}
+	}
+	
+	public HashMap<String, String> fetchGrades(String StudentId,int semester) {
+		statement = null;
+		try {
+			String sql = SQLQueriesConstants.FETCH_GRADES;
+			statement = connection.prepareStatement(sql);
+			statement.setString(1,StudentId );
+			statement.setInt(2, semester);
+			ResultSet resultSet = statement.executeQuery();
+			HashMap<String, String> gradecrd = new HashMap<String, String>();
+			while(resultSet.next())
+			{
+				String courseId = resultSet.getString("courseId");
+				String grade = resultSet.getString("grade");
+				gradecrd.put(courseId, grade);
+			}
+			return gradecrd;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 
 
