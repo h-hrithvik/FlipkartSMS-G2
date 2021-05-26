@@ -7,11 +7,13 @@ import java.util.Scanner;
 import com.flipkart.service.AdminOperation;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.ReportCard;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
 /**
@@ -26,7 +28,7 @@ public class AdminClient {
 	public void createMenu(){		
 		
 		int in=0;
-		while(in!=5) {
+		while(in!=7) {
 			
 			System.out.println("ADMIN MENU");
 			System.out.println("1. Add Course to catalog");
@@ -64,8 +66,7 @@ public class AdminClient {
 				break;
 				
 			case 7:
-				returnToLogin();
-				break;
+				return;
 				
 			default:
 				System.out.println("Invalid Choice");
@@ -124,9 +125,6 @@ public class AdminClient {
 		System.out.println("Enter Professor Name:");
 		String professorName = scanner.next();
 		
-		System.out.println("Enter Department:");
-		String department = scanner.next();
-		
 		System.out.println("Enter Phone:");
 		String phoneNo = scanner.next();
 		
@@ -138,8 +136,14 @@ public class AdminClient {
 		
 		System.out.println("Enter Address:");
 		String address = scanner.next();
+		
+		System.out.println("Enter Professor Id:");
+		String professorId = scanner.next();
+		
+		System.out.println("Enter Department:");
+		String department = scanner.next();
 				
-		Professor professor = new Professor(professorName,phoneNo,address,userId,password,"Professor");
+		Professor professor = new Professor(professorName,phoneNo,address,userId,password,"Professor",professorId,department);
 		try {
 			adminObj.addProfessor(professor);
 		} catch (ProfessorNotAddedException | UserAlreadyExistException e) {
@@ -147,7 +151,10 @@ public class AdminClient {
 		}
 	}
 	
-	private void removeProfessor() throws ProfessorNotAddedException
+	/**
+	 * Method to delete Professor from DB
+	 */	
+	private void removeProfessor() 
 	{
 		System.out.println("Enter Professor Code:");
 		String professorId = scanner.next();
@@ -159,12 +166,26 @@ public class AdminClient {
 		}
 	}
 	
-	private void returnToLogin()
-	{
-		
-	}
+	/**
+	 * Function to generate report
+	 */
 	private void generateReport()
 	{
+		System.out.println("Enter student Id:");
+		String studentCode = scanner.nextLine();
 		
+		System.out.println("Enter student Semester:");
+		int studentSem = scanner.nextInt();
+		
+		System.out.println("Enter Student CPI:");
+		float studentCpi = scanner.nextFloat();
+				
+		ReportCard reportCard = new ReportCard(studentCode, studentSem, studentCpi);
+		
+		try {
+			adminObj.generateReport(reportCard);
+		} catch (StudentNotRegisteredException e) {
+			System.out.println(e.getMessage());
+		}	
 	}
 }
