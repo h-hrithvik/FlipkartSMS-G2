@@ -69,7 +69,5 @@ public interface AdminInterface {
 	 * @param reportCard
 	 * @throws StudentNotRegisteredException
 	 */
-	public void generateReport(ReportCard reportCard) throws StudentNotRegisteredException;
-
 	void generateReport(String userId, int semester) throws StudentNotRegisteredException;
 }

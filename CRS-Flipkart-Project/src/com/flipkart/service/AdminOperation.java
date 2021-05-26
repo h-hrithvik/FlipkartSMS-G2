@@ -83,18 +83,20 @@ public class AdminOperation implements AdminInterface {
 		}
 	}
 
-	@Override
+	
 	/**
 	 * Function to generate report
 	 * 
 	 * @param reportCard
 	 * @throws StudentNotRegisteredException
 	 */
+	int counter=0,sum=0;
+	@Override
 	public void generateReport(String StudentId,int semester) throws StudentNotRegisteredException {
+		
 		try {
 			AdminDaoOperation obj = new AdminDaoOperation();
 			HashMap<String, String> gradecrd = obj.fetchGrades(StudentId, semester);
-			int counter=0,sum=0;
 			gradecrd.forEach((k,v) -> {
 				counter = counter+1;
 				if(v == "A")
@@ -130,4 +132,5 @@ public class AdminOperation implements AdminInterface {
 			System.out.println(e.getMessage());
 		}
 	}
+
 }

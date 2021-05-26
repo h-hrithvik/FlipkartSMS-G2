@@ -181,18 +181,16 @@ public class AdminClient {
 	private void generateReport()
 	{
 		System.out.println("Enter student Id:");
-		String studentCode = scanner.nextLine();
+		String studentId = scanner.nextLine();
 		
 		System.out.println("Enter student Semester:");
 		int studentSem = scanner.nextInt();
 		
 //		System.out.println("Enter Student CPI:");
 		float studentCpi = 0;
-				
-		ReportCard reportCard = new ReportCard(studentCode, studentSem, studentCpi);
-		
+						
 		try {
-			adminObj.generateReport(reportCard);
+			adminObj.generateReport(studentId,studentSem);
 		} catch (StudentNotRegisteredException e) {
 			System.out.println(e.getMessage());
 		}	
