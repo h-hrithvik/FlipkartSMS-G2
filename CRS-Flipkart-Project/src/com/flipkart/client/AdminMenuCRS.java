@@ -79,10 +79,10 @@ public class AdminMenuCRS {
 	private void addCourse()
 	{
 		System.out.println("Enter Course Code:");
-		String courseCode = scanner.next();
+		String courseCode = scanner.nextLine();
 		
 		System.out.println("Enter Course Name:");
-		String courseName = scanner.next();
+		String courseName = scanner.nextLine();
 		
 		System.out.println("Enter InstructorId:");
 		String instructorId = scanner.nextLine();
