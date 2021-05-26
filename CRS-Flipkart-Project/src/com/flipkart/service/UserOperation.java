@@ -17,7 +17,6 @@ public class UserOperation implements UserInterface {
 		return obj.updatePassword(userId, newPassword);
 	}
 
-
 	@Override
 	public String getRole(String userId) throws UserNotFoundException {
 		UserDaoOperation obj = new UserDaoOperation();

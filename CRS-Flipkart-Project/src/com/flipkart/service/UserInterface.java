@@ -25,12 +25,13 @@ public interface UserInterface {
 	 * 
 	 */
 	public boolean changePassword(String userId, String newPassword) throws UserNotFoundException;
-	
+
 	/**
 	 * Method to get role of a specific User
+	 * 
 	 * @param userId
 	 * @throws UserNotFoundException
 	 * @return Role of the User
 	 */
-    public String getRole(String userId) throws UserNotFoundException;
+	public String getRole(String userId) throws UserNotFoundException;
 }

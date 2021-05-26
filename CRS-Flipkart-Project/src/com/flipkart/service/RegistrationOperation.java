@@ -23,24 +23,20 @@ public class RegistrationOperation implements RegistrationInterface {
 	RegistrationDaoInterface registrationDaoInterface = new RegistrationDaoOperation();
 
 	@Override
-	public boolean addCourse(String courseId, String studentId, int semester) throws CourseNotFoundException,AddCourseException, CourseLimitReachedException, SQLException {
+	public boolean addCourse(String courseId, String studentId, int semester)
+			throws CourseNotFoundException, AddCourseException, CourseLimitReachedException, SQLException {
 
 		try {
 			if (registrationDaoInterface.numOfRegisteredCourses(studentId, semester) == 6) {
 				throw new CourseLimitReachedException(semester);
-			}
-			if (registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
+			} else if (registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
 				throw new CourseAlreadyRegisteredException(courseId);
 			}
-
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		catch(CourseLimitReachedException e) {
+		} catch (CourseLimitReachedException e) {
 			e.printStackTrace();
 		} catch (CourseAlreadyRegisteredException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -50,16 +46,13 @@ public class RegistrationOperation implements RegistrationInterface {
 	@Override
 	public boolean dropCourse(String courseId, String studentId, int semester)
 			throws CourseNotDeletedException, SQLException {
-		// TODO Auto-generated method stub
 		try {
-			if(!registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
+			if (!registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
 				throw new StudentNotRegisteredException(studentId);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (StudentNotRegisteredException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return registrationDaoInterface.removeCourse(courseId, studentId, semester);
@@ -67,26 +60,21 @@ public class RegistrationOperation implements RegistrationInterface {
 
 	@Override
 	public List<Course> viewCourses(String studentId, int semester) throws SQLException {
-		// TODO Auto-generated method stub
 		return registrationDaoInterface.viewCourses(studentId, semester);
 	}
 
 	@Override
 	public List<Course> viewRegisteredCourses(String studentId, int semester) throws SQLException {
-		// TODO Auto-generated method stub
 		return registrationDaoInterface.viewRegisteredCourses(studentId, semester);
 	}
 
 	@Override
 	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
-		// TODO Auto-generated method stub
-		
 		return registrationDaoInterface.viewReportCard(studentId, semester);
 	}
 
 	@Override
 	public double payFee(String studentId) throws PaymentNotFoundException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
