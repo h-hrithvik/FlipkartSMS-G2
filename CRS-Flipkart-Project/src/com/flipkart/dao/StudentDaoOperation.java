@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import com.flipkart.bean.Student;
 import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.exception.StudentNotRegisteredException;
+import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.StudentOperation;
 import com.flipkart.utils.DBUtils;
 
@@ -26,7 +27,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	/**
 	 * Default Constructor
 	 */
-	private StudentDaoOperation()
+	public StudentDaoOperation()
 	{
 		
 	}
@@ -38,7 +39,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	 * @throws StudentNotRegisteredException
 	 */
 	@Override
-	public String addStudent(Student student) throws StudentNotRegisteredException{
+	public String addStudent(Student student) throws UserAlreadyExistException{
 		
 		Connection connection=DBUtils.getConnection();
 		String studentId="";
@@ -72,7 +73,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		}
 		catch(Exception ex)
 		{
-			throw new StudentNotRegisteredException(student.getUserName());
+			throw new UserAlreadyExistException(student.getUserId());
 		}
 		finally
 		{
