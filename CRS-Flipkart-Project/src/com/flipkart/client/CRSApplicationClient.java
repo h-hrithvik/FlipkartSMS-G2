@@ -116,8 +116,6 @@ public class CRSApplicationClient {
 					break;
 				case STUDENT:
 					StudentInterface studentInterface = new StudentOperation();
-//					String studentId = studentInterface.getStudentId(userId);
-//					System.out.println(userId);
 					int isApproved = studentInterface.checkIsVerified(userId);
 					if (isApproved == 1) {
 						System.out.println( " Login Successful");

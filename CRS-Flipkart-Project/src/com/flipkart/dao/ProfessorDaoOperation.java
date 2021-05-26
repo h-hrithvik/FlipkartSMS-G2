@@ -74,15 +74,6 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		{
 			System.out.println(e.getMessage());
 		}
-		finally
-		{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		return enrolledStudents;
 	}
 	
@@ -93,12 +84,12 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 	 * @param: semester: semester for the corresponding 
 	 * @return: returns the status after adding the grade
 	 */
-	public Boolean addGrade(String studentId,String courseId,int semester,String grade) {
+	public boolean addGrade(String studentId,String courseId,int semester,String grade) {
 		Connection connection=DBUtils.getConnection();
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.ADD_GRADE);
 			
-			
+			System.out.println(grade + "   " + courseId);
 			statement.setString(1, grade);
 			statement.setString(2, courseId);
 			statement.setString(3, studentId);
@@ -113,15 +104,6 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		catch(SQLException e)
 		{
 			System.out.println(e.getMessage());
-		}
-		finally
-		{
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return false;
 	}

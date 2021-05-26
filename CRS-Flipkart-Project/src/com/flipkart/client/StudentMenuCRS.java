@@ -24,7 +24,7 @@ public class StudentMenuCRS {
 	Scanner sc = new Scanner(System.in);
 
 	RegistrationInterface registrationInterface = new RegistrationOperation();
-	private int semester;
+	private int semester = 1;
 
 	private boolean is_registered;
 
@@ -174,6 +174,7 @@ public class StudentMenuCRS {
 	 * @param studentId
 	 */
 	private void dropCourse(String studentId) {
+		sc.nextLine();
 		if (is_registered) {
 			List<Course> registeredCourseList = viewRegisteredCourse(studentId);
 
