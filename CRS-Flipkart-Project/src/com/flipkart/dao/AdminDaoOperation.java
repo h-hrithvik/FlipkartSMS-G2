@@ -260,8 +260,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, StudentId);
-			statement.setInt(2, semester);
-			statement.setFloat(3, CPI);
+			statement.setFloat(2, CPI);
+			statement.setInt(3, semester);
 			int row = statement.executeUpdate();
 
 			System.out.println(row + " Report Card Generated.");
