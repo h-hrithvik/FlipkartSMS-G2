@@ -3,6 +3,8 @@
  */
 package com.flipkart.dao;
 
+import java.util.HashMap;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.ReportCard;
@@ -78,5 +80,5 @@ public interface AdminDaoInterface {
 	 * @throws StudentNotRegisteredException
 	 */
 	public void generateReport(int semester,String StudentId,float CPI) throws StudentNotRegisteredException;
-
+	public HashMap<String, String> fetchGrades(String StudentId, int semester);
 }
