@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.flipkart.validator;
 
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import com.flipkart.bean.Student;
 
 /**
  * 
- * @author lenovo
+ * @author JEDI-02
  * Class for Admin Validator 
  * 
  */

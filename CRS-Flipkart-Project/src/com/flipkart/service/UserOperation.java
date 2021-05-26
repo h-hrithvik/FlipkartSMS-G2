@@ -11,12 +11,13 @@ public class UserOperation implements UserInterface {
 		UserDaoOperation obj = new UserDaoOperation();
 		return obj.verifyCredentials(userId, userPassword);
 	}
- 
+
 	@Override
 	public boolean changePassword(String userId, String newPassword) throws UserNotFoundException {
 		UserDaoOperation obj = new UserDaoOperation();
 		return obj.updatePassword(userId, newPassword);
 	}
+
 
 	@Override
 	public String getRole(String userId) throws UserNotFoundException {

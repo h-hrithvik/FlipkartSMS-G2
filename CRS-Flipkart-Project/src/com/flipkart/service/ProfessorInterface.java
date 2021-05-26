@@ -14,7 +14,7 @@ import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 
 /**
- * @author hp
+ * @author JEDI-02
  *
  */
 public interface ProfessorInterface {
@@ -31,7 +31,6 @@ public interface ProfessorInterface {
 	 * Function to get list of students registered for a course
 	 * 
 	 * @param professorId
-	 * @param courseId
 	 * @return list of registered students
 	 * @throws CourseNotFoundException
 	 */

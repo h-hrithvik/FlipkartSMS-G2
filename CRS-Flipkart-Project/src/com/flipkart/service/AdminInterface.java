@@ -40,7 +40,7 @@ public interface AdminInterface {
 	 * Method to approve a Student
 	 * 
 	 * @param studentId
-	 * @throws StudentNotFoundForApprovalException
+	 * @throws StudentNotFoundForVerificationException
 	 * @return Approval Status
 	 */
 	public boolean approveStudent(String studentId) throws StudentNotFoundForVerificationException;
@@ -61,12 +61,12 @@ public interface AdminInterface {
 	 * @throws ProfessorNotAddedException
 	 * @throws ProfessorNotDeletedException 
 	 */
-	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException, ProfessorNotDeletedException;
+	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException;
 
 	/**
 	 * Function to generate report
-	 * 
-	 * @param reportCard
+	 * @param semester
+	 * @param userId
 	 * @throws StudentNotRegisteredException
 	 */
 	void generateReport(String userId, int semester) throws StudentNotRegisteredException;
