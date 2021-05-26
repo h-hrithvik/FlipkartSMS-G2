@@ -21,7 +21,7 @@ public class CRSApplicationClient {
 
 	public static void main(String[] args) throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
-		boolean loggedIn = false;
+		boolean logge2dIn = false;
 		System.out.println("=============================================================");
 		System.out.println("*******   WELCOME to Course Registration System!!!  *********");
 		System.out.println("==============================================================");

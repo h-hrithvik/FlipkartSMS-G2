@@ -188,7 +188,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 	}
 
 	@Override
-	public ReportCard viewReportCard(String studentId, int semester) throws SQLException,PaymentNotFoundException {
+	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtils.getConnection();
 		ReportCard reportCard = null;
@@ -198,16 +198,8 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt.setInt(2, semester);
 			ResultSet queryResult = stmt.executeQuery();
 			
-			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_REGISTERED_COURSES);
-			stmt.setString(1, studentId);
-			stmt.setInt(2, semester);
-			ResultSet queryResult2 = stmt.executeQuery();
-			
-			HashMap<String, String> grades = new HashMap<String, String>();
-			while(queryResult2.next()) {
-				grades.put(queryResult2.getString("course.courseId"), queryResult2.getString("semesterregistration.grade"));
-			}
-
+			AdminDaoOperation obj = new AdminDaoOperation();
+			HashMap<String, String> grades = obj.fetchGrades(studentId, semester);
 			while(queryResult.next()) {
 				reportCard = new ReportCard(studentId,grades, semester, queryResult.getFloat("cpi"));
 			}
@@ -217,6 +209,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 		} 
 		return reportCard;
 	}
+
 
 	@Override
 	public boolean payFee(Payment payment) throws SQLException {
