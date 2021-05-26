@@ -196,16 +196,8 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt.setInt(2, semester);
 			ResultSet queryResult = stmt.executeQuery();
 			
-			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_REGISTERED_COURSES);
-			stmt.setString(1, studentId);
-			stmt.setInt(2, semester);
-			ResultSet queryResult2 = stmt.executeQuery();
-			
-			HashMap<String, String> grades = new HashMap<String, String>();
-			while(queryResult2.next()) {
-				grades.put(queryResult2.getString("course.courseId"), queryResult2.getString("semesterregistration.grade"));
-			}
-
+			AdminDaoOperation obj = new AdminDaoOperation();
+			HashMap<String, String> grades = obj.fetchGrades(studentId, semester);
 			while(queryResult.next()) {
 				reportCard = new ReportCard(studentId,grades, semester, queryResult.getFloat("cpi"));
 			}

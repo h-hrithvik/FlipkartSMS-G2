@@ -80,7 +80,6 @@ public class RegistrationOperation implements RegistrationInterface {
 	@Override
 	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
 		// TODO Auto-generated method stub
-		
 		return registrationDaoInterface.viewReportCard(studentId, semester);
 	}
 
