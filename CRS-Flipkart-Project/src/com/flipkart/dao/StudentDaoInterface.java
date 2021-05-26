@@ -5,6 +5,7 @@ package com.flipkart.dao;
 
 import com.flipkart.bean.Student;
 import com.flipkart.exception.StudentNotRegisteredException;
+import com.flipkart.exception.UserAlreadyExistException;
 
 /**
  * @author lenovo
@@ -18,7 +19,7 @@ public interface StudentDaoInterface {
 	 * @return true if student is added, else false
 	 * @throws StudentNotRegisteredException
 	 */
-	public String addStudent(Student student) throws StudentNotRegisteredException;
+	public String addStudent(Student student) throws UserAlreadyExistException;
 	
 	
 	/**

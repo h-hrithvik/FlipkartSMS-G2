@@ -1,18 +1,8 @@
 package com.flipkart.service;
 
-import com.flipkart.bean.User;
-import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.exception.UserNotFoundException;
 
 public interface UserInterface {
-	/**
-	 * Function to add new user to system
-	 * 
-	 * @param user
-	 * @throws UserAlreadyExistException
-	 * @return status if the user is created or not
-	 */
-	public boolean addUser(User user) throws UserAlreadyExistException;
 
 	/**
 	 * Function to verify credentials while login
@@ -35,4 +25,12 @@ public interface UserInterface {
 	 * 
 	 */
 	public boolean changePassword(String userId, String newPassword) throws UserNotFoundException;
+	
+	/**
+	 * Method to get role of a specific User
+	 * @param userId
+	 * @throws UserNotFoundException
+	 * @return Role of the User
+	 */
+    public String getRole(String userId) throws UserNotFoundException;
 }
