@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.flipkart.client;
 
 import java.util.Scanner;
@@ -10,6 +8,7 @@ import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.service.StudentInterface;
+import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.StudentOperation;
 import com.flipkart.service.UserInterface;
 import com.flipkart.service.UserOperation;
@@ -18,24 +17,24 @@ import static com.flipkart.constant.Role.STUDENT;
 
 public class Runner {
 
-	StudentOperation studentOperation = new StudentOperation();
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		boolean loggedIn = false;
 		printMenu();
-		int Input = sc.nextInt();
-
-		while (Input != 4) {
-			switch (Input) {
-			case 1:
-				registerStudent();
-				break;
-			case 2:
-				loginUser();
-				break;
-			default:
-				System.out.println("Enter a valid input");
+		int Input=sc.nextInt();
+		
+		while(Input!=4)
+		{
+			switch(Input)
+			{	
+				case 1:
+					registerStudent();
+					break;
+				case 2:
+					loginUser();
+					break;
+				default:
+					System.out.println("Enter a valid input");
 			}
 			printMenu();
 			Input = sc.nextInt();
