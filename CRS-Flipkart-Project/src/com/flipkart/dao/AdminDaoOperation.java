@@ -130,7 +130,7 @@ public class AdminDaoOperation implements AdminDaoInterface{
 	 */
 	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException{
 		try {
-			
+			System.out.println(professor.toString());
 			this.addUser(professor);
 			
 		}catch (UserNotApprovedExecption e) {
@@ -177,21 +177,29 @@ public class AdminDaoOperation implements AdminDaoInterface{
 	 * @throws UserNotApprovedExecption
 	 * @throws UserAlreadyExistException 
 	 */
-	public void addUser(User user) throws UserNotApprovedExecption, UserAlreadyExistException{
+	public void addUser(Professor user) throws UserNotApprovedExecption, UserAlreadyExistException{
 		statement = null;
+		System.out.println("imnside addproff dao");
 		try {
-			
-			String sql = SQLQueriesConstants.ADD_USER_QUERY;
-			statement = connection.prepareStatement(sql);
-			
-			statement.setString(1, user.getUserId());
-			statement.setString(2, user.getUserName());
-			statement.setString(3, user.getUserPassword());
-			statement.setString(4, user.getType().toString());
-			statement.setString(5, user.getPhoneNumber().toString());
-			statement.setString(6, user.getAddress());
-			int row = statement.executeUpdate();
-			
+				String sql = SQLQueriesConstants.ADD_USER_QUERY;
+				PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.ADD_USER_QUERY);
+				preparedStatement.setString(1, user.getUserId().toString());
+				preparedStatement.setString(2, user.getUserName().toString());
+				preparedStatement.setString(3, user.getUserPassword().toString());
+				preparedStatement.setString(4, user.getType().toString());
+				preparedStatement.setString(5, user.getPhoneNumber().toString());
+				preparedStatement.setString(6, user.getAddress().toString());
+				int row=preparedStatement.executeUpdate();
+//			statement = connection.prepareStatement(sql);
+//			
+//			statement.setString(1, user.getUserId().toString());
+//			statement.setString(2, user.getUserName().toString());
+//			statement.setString(3, user.getUserPassword().toString());
+//			statement.setString(4, user.getType().toString());
+//			statement.setString(5, user.getPhoneNumber().toString());
+//			statement.setString(6, user.getAddress().toString());
+//			int row = statement.executeUpdate();
+			System.out.println("Inside proff" + row);
 			System.out.println(row + " user added.");
 			if(row == 0) {
 				System.out.println("User with userId: " + user.getUserId() + " not added.");

@@ -22,7 +22,7 @@ public class StudentClient {
      * Method to generate Student Menu for course registration, addition, removal and fee payment
      * @param studentId student id
      */
-    public void create_menu(int studentId)
+    public void create_menu(String studentId)
     {
 
         is_registered = getRegistrationStatus(studentId);
@@ -89,7 +89,7 @@ public class StudentClient {
      * Select course for registration
      * @param studentId
      */
-    private void registerCourses(int studentId)
+    private void registerCourses(String studentId)
     {
         //TODO
     }
@@ -98,7 +98,7 @@ public class StudentClient {
      * Add course for registration
      * @param studentId
      */
-    private void addCourse(int studentId)
+    private void addCourse(String studentId)
     {
         //TODO
     }
@@ -108,7 +108,7 @@ public class StudentClient {
      * @param studentId
      * @return Registration Status
      */
-    private boolean getRegistrationStatus(int studentId)
+    private boolean getRegistrationStatus(String studentId)
     {
 		return false;
         //TODO
@@ -118,7 +118,7 @@ public class StudentClient {
      * Drop Course
      * @param studentId
      */
-    private void dropCourse(int studentId)
+    private void dropCourse(String studentId)
     {
         //TODO
     }
@@ -128,7 +128,7 @@ public class StudentClient {
      * @param studentId
      * @return List of available Courses
      */
-    private List<Course> viewCourse(int studentId)
+    private List<Course> viewCourse(String studentId)
     {
 		return null;
         //TODO
@@ -139,7 +139,7 @@ public class StudentClient {
      * @param studentId
      * @return List of Registered Courses
      */
-    private List<Course> viewRegisteredCourse(int studentId)
+    private List<Course> viewRegisteredCourse(String studentId)
     {
 		return null;
        //TODO
@@ -149,7 +149,7 @@ public class StudentClient {
      * View grade card for particular student
      * @param studentId
      */
-    private void viewGradeCard(int studentId)
+    private void viewGradeCard(String studentId)
     {
         //TODO
     }
@@ -158,7 +158,7 @@ public class StudentClient {
      * Make Payment for selected courses. Student is provided with an option to pay the fees and select the mode of payment.
      * @param studentId
      */
-    private void make_payment(int studentId)
+    private void make_payment(String studentId)
     {
         //TODO
     }

@@ -16,8 +16,9 @@ public class UserDaoOperation implements UserDaoInterface {
 	 * @throws UserNotFoundException
 	 */
 	@Override
-	public boolean verifyCredentials(String userId, String password) throws UserNotFoundException {
+	public boolean updatePassword(String userId, String password) throws UserNotFoundException {
 		Connection connection = DBUtils.getConnection();
+		System.out.println(connection);
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.UPDATE_PASSWORD);
 			statement.setString(1, password);
@@ -44,7 +45,7 @@ public class UserDaoOperation implements UserDaoInterface {
 	 * @throws UserNotFoundException
 	 */
 	@Override
-	public boolean updatePassword(String userId, String password) throws UserNotFoundException {
+	public boolean verifyCredentials(String userId, String password) throws UserNotFoundException {
 		Connection connection = DBUtils.getConnection();
 		try {
 			PreparedStatement preparedStatement=connection.prepareStatement(SQLQueriesConstants.VERIFY_CREDENTIALS);
@@ -57,6 +58,7 @@ public class UserDaoOperation implements UserDaoInterface {
 			else 
 				return false;
 		} catch (SQLException e) {
+			System.out.println("SQL excep");
 			System.out.println(e.getMessage());
 		} finally {
 			try {

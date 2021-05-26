@@ -13,7 +13,7 @@ public class SQLQueriesConstants {
 	public static final String ADD_COURSE_QUERY = "insert into course(courseId, courseName, instructorId ,seat) values (?, ?, ?, ?)";
 	public static final String VIEW_PENDING_ADMISSION_QUERY = "select userId, name, password, phonenumber, address, studentId from student natural join user where isVerified = 0";
 	public static final String APPROVE_STUDENT_QUERY = "update student set isVerified = 1 where studentId = ?";
-	public static final String ADD_USER_QUERY = "insert into user(userId, name, password, role,phonenumber, address) values (?, ?, ?, ?, ?, ?, ?)";
+	public static final String ADD_USER_QUERY = "insert into user(userId, name, password, role,phonenumber, address) values (?, ?, ?, ?, ?, ?)";
 	public static final String ADD_PROFESSOR_QUERY = "insert into professor(userIdf,professorId, department) values (?, ?, ?)";
 	public static final String DELETE_PROFESSOR_QUERY = "delete from professor where professorId = ( ?)";
 	public static final String ASSIGN_COURSE_QUERY = "update course set professorId = ? where courseCode = ?";

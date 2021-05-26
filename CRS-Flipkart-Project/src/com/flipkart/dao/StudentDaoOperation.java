@@ -42,6 +42,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	public String addStudent(Student student) throws UserAlreadyExistException{
 		
 		Connection connection=DBUtils.getConnection();
+//		System.out.println("here also");
 		String studentId="";
 		try{
 			//open db connection
@@ -53,9 +54,11 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			preparedStatement.setString(5, student.getPhoneNumber().toString());
 			preparedStatement.setString(6, student.getAddress().toString());
 			int rowsAffected=preparedStatement.executeUpdate();
+//			System.out.println(rowsAffected);
 			if(rowsAffected==1)
 			{
 				//add the student record
+//				System.out.println(rowsAffected);
 				//"insert into student (userId,branchName,batch,isApproved) values (?,?,?,?)";
 				PreparedStatement preparedStatementStudent;
 				preparedStatementStudent=connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT,Statement.RETURN_GENERATED_KEYS);

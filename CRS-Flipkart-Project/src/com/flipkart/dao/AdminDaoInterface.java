@@ -60,7 +60,7 @@ public interface AdminDaoInterface {
 	 * @throws UserNotApprovedExecption
 	 * @throws UserAlreadyExistException 
 	 */
-	public void addUser(User user) throws UserNotApprovedExecption, UserAlreadyExistException;
+	public void addUser(Professor user) throws UserNotApprovedExecption, UserAlreadyExistException;
 	
 	/**
 	 * Method to delete Professor from DB
