@@ -177,8 +177,8 @@ public class AdminClient {
 		System.out.println("Enter student Semester:");
 		int studentSem = scanner.nextInt();
 		
-		System.out.println("Enter Student CPI:");
-		float studentCpi = scanner.nextFloat();
+//		System.out.println("Enter Student CPI:");
+		float studentCpi = 0;
 				
 		ReportCard reportCard = new ReportCard(studentCode, studentSem, studentCpi);
 		
