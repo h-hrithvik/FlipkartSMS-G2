@@ -73,6 +73,9 @@ public class AdminClient {
 			}
 		}
 	}
+	/**
+	 * Method to add course to DB
+	 */	
 	private void addCourse()
 	{
 		System.out.println("Enter Course Code:");
@@ -92,7 +95,9 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}	
 	}
-	
+	/**
+	 * Method to delete course from DB
+	 */	
 	private void deleteCourse()
 	{
 		System.out.println("Enter Course Code:");
@@ -104,7 +109,9 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+	/**
+	 * Method to approve studentId
+	 */	
 	private boolean approveStudent()
 	{	
 		System.out.println("Enter Student's ID:");
@@ -119,7 +126,9 @@ public class AdminClient {
 		}
 		return false;
 	}
-	
+	/**
+	 * Method to add Professor from DB
+	 */	
 	private void addProfessor()
 	{
 		System.out.println("Enter Professor Name:");
