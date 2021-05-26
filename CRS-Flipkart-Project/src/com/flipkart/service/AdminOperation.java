@@ -6,6 +6,8 @@ package com.flipkart.service;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.dao.AdminDaoInterface;
+import com.flipkart.dao.AdminDaoOperation;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
@@ -29,7 +31,8 @@ public class AdminOperation implements AdminInterface {
 	 * @throws CourseNotDeletedException
 	 */
 	public void removeCourse(String courseId) throws CourseNotFoundException, CourseNotDeletedException {
-		// TODO Auto-generated method stub
+		
+		AdminDaoInterface adminDaoOperation=new AdminDaoOperation();
 
 	}
 
