@@ -100,7 +100,7 @@ public class ProfessorMenuCRS {
 			grade=sc.nextLine();
 			System.out.println("Enter semester");
 			semester=sc.nextInt();
-			sc.nextInt();
+			sc.nextLine();
 			if(true)
 			{
 				try {
