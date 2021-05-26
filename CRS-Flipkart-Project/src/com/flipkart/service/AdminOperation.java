@@ -3,6 +3,8 @@
  */
 package com.flipkart.service;
 
+import java.util.HashMap;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.ReportCard;
@@ -12,6 +14,7 @@ import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.ProfessorNotDeletedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
@@ -70,8 +73,14 @@ public class AdminOperation implements AdminInterface {
 	 * @throws UserAlreadyExistException
 	 */
 	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException {
-		// TODO Auto-generated method stub
-
+		try {
+			AdminDaoOperation obj = new AdminDaoOperation();
+			obj.addProfessor(professor);
+		} catch (ProfessorNotAddedException e) {
+			System.out.println(e.getMessage());
+		} catch (UserAlreadyExistException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	@Override
@@ -81,9 +90,27 @@ public class AdminOperation implements AdminInterface {
 	 * @param reportCard
 	 * @throws StudentNotRegisteredException
 	 */
-	public void generateReport(ReportCard reportCard) throws StudentNotRegisteredException {
-		// TODO Auto-generated method stub
-
+	public void generateReport(String StudentId,int semester) throws StudentNotRegisteredException {
+		try {
+			AdminDaoOperation obj = new AdminDaoOperation();
+			HashMap<String, String> gradecrd = obj.fetchGrades(StudentId, semester);
+			int counter=0,sum=0;
+			gradecrd.forEach((k,v) -> {
+				counter = counter+1;
+				if(v == "A")
+					sum += 4;
+				else if(v == "B")
+					sum += 3;
+				else if(v == "C")
+					sum += 2;
+				else
+					sum += 1;
+			});
+			float CPI = sum/counter;
+			obj.generateReport(semester, StudentId, CPI);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	@Override
@@ -93,9 +120,14 @@ public class AdminOperation implements AdminInterface {
 	 * @param professorId
 	 * @throws ProfessorNotAddedException
 	 */
-	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException {
-		// TODO Auto-generated method stub
-
+	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException {
+		try {
+			AdminDaoOperation obj = new AdminDaoOperation();
+			obj.removeProfessor(professorId);
+		} catch (ProfessorNotAddedException e) {
+			System.out.println(e.getMessage());
+		} catch (ProfessorNotDeletedException e) {
+			System.out.println(e.getMessage());
+		}
 	}
-
 }

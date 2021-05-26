@@ -8,6 +8,7 @@ import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.ProfessorNotDeletedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
@@ -58,8 +59,9 @@ public interface AdminInterface {
 	 * 
 	 * @param professorId
 	 * @throws ProfessorNotAddedException
+	 * @throws ProfessorNotDeletedException 
 	 */
-	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException;
+	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException, ProfessorNotDeletedException;
 
 	/**
 	 * Function to generate report
@@ -68,4 +70,6 @@ public interface AdminInterface {
 	 * @throws StudentNotRegisteredException
 	 */
 	public void generateReport(ReportCard reportCard) throws StudentNotRegisteredException;
+
+	void generateReport(String userId, int semester) throws StudentNotRegisteredException;
 }
