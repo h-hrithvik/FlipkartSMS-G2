@@ -7,11 +7,13 @@ import java.util.Scanner;
 import com.flipkart.service.AdminOperation;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
+import com.flipkart.bean.ReportCard;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
 /**
@@ -62,10 +64,9 @@ public class AdminClient {
 			case 6:
 				removeProfessor();
 				break;
-
+				
 			case 7:
-				returnToLogin();
-				break;
+				return;
 				
 			default:
 				System.out.println("Invalid Choice");
@@ -76,22 +77,22 @@ public class AdminClient {
 	{
 		System.out.println("Enter Course Code:");
 		String courseCode = scanner.nextLine();
-
+		
 		System.out.println("Enter Course Name:");
 		String courseName = scanner.next();
-
+		
 		System.out.println("Enter InstructorId:");
 		String instructorId = scanner.next();
-
+				
 		Course course = new Course(courseCode, courseName, instructorId, 10);
-
+		
 		try {
 			adminObj.addCourse(course);
 		} catch (AddCourseException e) {
 			System.out.println(e.getMessage());
-		}
+		}	
 	}
-
+	
 	private void deleteCourse()
 	{
 		System.out.println("Enter Course Code:");
@@ -103,22 +104,22 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
 	private boolean approveStudent()
-	{
+	{	
 		System.out.println("Enter Student's ID:");
 		String studentUserIdApproval = scanner.nextLine();
-
+		
 		try {
 			adminObj.approveStudent(studentUserIdApproval);
 			return true;
-
+	
 		} catch (StudentNotFoundForVerificationException e) {
 			System.out.println(e.getMessage());
 		}
 		return false;
 	}
-
+	
 	private void addProfessor()
 	{
 		System.out.println("Enter Professor Name:");
@@ -146,25 +147,42 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}
 	}
-
-	private void removeProfessor() throws ProfessorNotAddedException
+	
+	/**
+	 * Method to delete Professor from DB
+	 */
+	private void removeProfessor()
 	{
 		System.out.println("Enter Professor Code:");
 		String professorId = scanner.next();
-
+		
 		try {
 			adminObj.removeProfessor(professorId);
 		} catch (ProfessorNotAddedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
-
-	private void returnToLogin()
-	{
-		
-	}
+	
+	/**
+	 * Function to generate report
+	 */
 	private void generateReport()
 	{
-		
+		System.out.println("Enter student Id:");
+		String studentCode = scanner.nextLine();
+
+		System.out.println("Enter student Semester:");
+		int studentSem = scanner.nextInt();
+
+		System.out.println("Enter Student CPI:");
+		float studentCpi = scanner.nextFloat();
+
+		ReportCard reportCard = new ReportCard(studentCode, studentSem, studentCpi);
+
+		try {
+			adminObj.generateReport(reportCard);
+		} catch (StudentNotRegisteredException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
