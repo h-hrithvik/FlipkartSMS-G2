@@ -14,7 +14,7 @@ public interface RegistrationInterface {
 	 *
 	 * @param courseId
 	 * @param studentId
-	 * @param courseList
+	 * @param semester
 	 * @return true/false for successful/unsuccessful operation of adding a course.
 	 * @throws AddCourseException
 	 * @throws SQLException 
@@ -25,7 +25,7 @@ public interface RegistrationInterface {
 	 *
 	 * @param courseId
 	 * @param studentId
-	 * @param registeredCourseList
+	 * @param semester
 	 * @return true/false for successful/unsuccessful operation of dropping a
 	 *         course.
 	 * @throws CourseNotDeletedException
