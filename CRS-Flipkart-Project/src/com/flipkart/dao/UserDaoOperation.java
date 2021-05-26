@@ -5,11 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.utils.DBUtils;
 
 public class UserDaoOperation implements UserDaoInterface {
+	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
+	private static volatile UserDaoOperation instance=null;
 	/**
 	 * @param userId
 	 * @param password
@@ -17,10 +21,21 @@ public class UserDaoOperation implements UserDaoInterface {
 	 */
 //	Connection connection = DBUtils.getConnection();
 
+	public static UserDaoOperation getInstance()
+	{
+		if(instance==null)
+		{
+			// This is a synchronized block, when multiple threads will access this instance
+			synchronized(UserDaoOperation.class){
+				instance=new UserDaoOperation();
+			}
+		}
+		return instance;
+	}
+	
 	@Override
 	public boolean updatePassword(String userId, String password) throws UserNotFoundException {
 		Connection connection = DBUtils.getConnection();
-		System.out.println(connection);
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.UPDATE_PASSWORD);
 			statement.setString(1, password);
@@ -30,7 +45,7 @@ public class UserDaoOperation implements UserDaoInterface {
 				throw new UserNotFoundException(userId);
 			return true;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 		return false;
 	}
@@ -56,7 +71,7 @@ public class UserDaoOperation implements UserDaoInterface {
 			else
 				return false;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 //		finally {
 //			try {
@@ -87,7 +102,7 @@ public class UserDaoOperation implements UserDaoInterface {
 			else
 				return resultSet.getString("role");
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 		return null;
 	}
