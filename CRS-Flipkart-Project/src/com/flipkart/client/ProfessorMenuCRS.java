@@ -86,10 +86,12 @@ public class ProfessorMenuCRS {
 		{
 			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
 			enrolledStudents=professorobj.viewStudents(professorId);
+			System.out.println("-----------------------------------------------------------------------------------------");
 			for(EnrolledStudent obj: enrolledStudents)
 			{
 				System.out.println(String.format("%20s %20s %20s %20s",obj.getCourseId(), obj.getCourseName(),obj.getStudentId(),obj.getSemester()));
 			}
+			System.out.println("-----------------------------------------------------------------------------------------");
 			List<Course> coursesEnrolled=new ArrayList<Course>();
 			coursesEnrolled	=professorobj.getCourses(professorId);
 			System.out.println("----------------Add Grade--------------");
@@ -128,18 +130,21 @@ public class ProfessorMenuCRS {
 	}
 
 	private void viewStudents(String professorId) {
-		// TODO Auto-generated method stub
+
 		System.out.println(String.format("%20s %20s %20s %20s","COURSE ID","COURSE NAME","STUDENTS ID","SEMESTER" ));
+
 		try
 		{
 			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
 			enrolledStudents=professorobj.viewStudents(professorId);
+			System.out.println("-----------------------------------------------------------------------------------------");
 			for(EnrolledStudent obj: enrolledStudents)
 			{
 				System.out.println(String.format("%20s %20s %20s %20s",obj.getCourseId(), obj.getCourseName(),obj.getStudentId(),obj.getSemester()));
 			}
-			
+			System.out.println("-----------------------------------------------------------------------------------------");
 		}
+
 		catch(Exception ex)
 		{
 			System.out.println(ex.getMessage()+"Something went wrong, please try again later!");
@@ -147,15 +152,17 @@ public class ProfessorMenuCRS {
 	}
 
 	private void getCourses(String professorId) {
-		// TODO Auto-generated method stub
+
 		try
 		{
 			List<Course> coursesEnrolled=professorobj.getCourses(professorId);
 			System.out.println(String.format("%20s %20s %20s","COURSE ID","COURSE NAME","STUDENTS REGISTERED" ));
+			System.out.println("-----------------------------------------------------------------------------------------");
 			for(Course obj: coursesEnrolled)
 			{
 				System.out.println(String.format("%20s %20s %20s",obj.getCourseId(), obj.getCourseName(),10- obj.getSeats()));
-			}		
+			}
+			System.out.println("-----------------------------------------------------------------------------------------");
 		}
 		catch(Exception ex)
 		{
