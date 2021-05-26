@@ -140,12 +140,14 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 		Connection conn = DBUtils.getConnection();
 		ReportCard reportCard = null;
 		try {
-			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_GRADE);
+			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_REPORT_CARD);
 			stmt.setString(1, studentId);
 			stmt.setInt(2, semester);
 			ResultSet queryResult = stmt.executeQuery();
 
-//			code to generate or retrieve reportCard from queryResult
+			while(queryResult.next()) {
+				reportCard = new ReportCard(studentId, semester, queryResult.getFloat("cpi"));
+			}
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
