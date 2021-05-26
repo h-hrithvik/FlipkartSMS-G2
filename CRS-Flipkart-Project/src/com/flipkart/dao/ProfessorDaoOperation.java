@@ -108,10 +108,10 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.ADD_GRADE);
 			
 			
-			statement.setString(1, studentId);
+			statement.setString(1, grade);
 			statement.setString(2, courseId);
-			statement.setInt(3, semester);
-			statement.setString(4, grade);
+			statement.setString(3, studentId);
+			statement.setInt(4, semester);
 			int row = statement.executeUpdate();
 			
 			if(row==1)
