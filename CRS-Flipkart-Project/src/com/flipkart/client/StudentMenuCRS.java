@@ -254,10 +254,10 @@ public class StudentMenuCRS {
 			System.out.println("You haven't registered for any course");
 			return null;
 		}
+
 		System.out.println("-----------------------------------------------------------------------------------------");
-
 		System.out.println(String.format("%-20s %-20s %-20s", "COURSE CODE", "COURSE NAME", "INSTRUCTOR"));
-
+		System.out.println("-----------------------------------------------------------------------------------------");
 		for (Course obj : course_registered) {
 
 			System.out.println(
@@ -283,7 +283,7 @@ public class StudentMenuCRS {
 			System.out.println(e.getMessage());
 		}
 
-
+		System.out.println("-----------------------------------------------------------------------------------------");
 		System.out.println(String.format("%-20s %-20s %-20s", "COURSE CODE", "COURSE NAME", "GRADE"));
 		System.out.println("-----------------------------------------------------------------------------------------");
 
