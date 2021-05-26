@@ -3,7 +3,7 @@ package com.flipkart.client;
 
 import java.util.Scanner;
 
-import com.flipkart.constant.Role;
+import com.flipkart.constant.RoleConstants;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.exception.UserNotFoundException;
@@ -13,7 +13,7 @@ import com.flipkart.service.StudentOperation;
 import com.flipkart.service.UserInterface;
 import com.flipkart.service.UserOperation;
 
-import static com.flipkart.constant.Role.STUDENT;
+import static com.flipkart.constant.RoleConstants.STUDENT;
 
 public class Runner {
 
@@ -93,16 +93,16 @@ public class Runner {
 			if (loggedin) {
 				String role = userInterface.getRole(userId);
 //				Role userRole = Role.stringToName(role);
-				Role userRole = Role.stringToName("ADMIN");
+				RoleConstants userRole = RoleConstants.stringToName("ADMIN");
 				switch (userRole) {
 				case ADMIN:
 					System.out.println(" Login Successful");
-					AdminClient adminMenu = new AdminClient();
+					AdminMenuCRS adminMenu = new AdminMenuCRS();
 					adminMenu.createMenu();
 					break;
 				case PROFESSOR:
 					System.out.println(" Login Successful");
-					ProfessorClient professorMenu = new ProfessorClient();
+					ProfessorMenuCRS professorMenu = new ProfessorMenuCRS();
 					professorMenu.professorMenu(userId);
 
 					break;

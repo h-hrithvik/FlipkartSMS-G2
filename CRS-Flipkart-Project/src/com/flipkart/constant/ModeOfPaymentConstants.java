@@ -5,7 +5,7 @@ package com.flipkart.constant;
  * @author JEDI-02
  *
  */
-public enum ModeOfPayment {
+public enum ModeOfPaymentConstants {
 
     CREDIT_CARD,NET_BANKING,DEBIT_CARD;
 
@@ -14,16 +14,16 @@ public enum ModeOfPayment {
      * @param value
      * @return
      */
-    public static ModeOfPayment getModeofPayment(int value)
+    public static ModeOfPaymentConstants getModeofPayment(int value)
     {
         switch(value)
         {
             case 1:
-                return ModeOfPayment.CREDIT_CARD;
+                return ModeOfPaymentConstants.CREDIT_CARD;
             case 2:
-                return ModeOfPayment.NET_BANKING;
+                return ModeOfPaymentConstants.NET_BANKING;
             case 3:
-                return ModeOfPayment.DEBIT_CARD;
+                return ModeOfPaymentConstants.DEBIT_CARD;
             default:
                 return null;
 

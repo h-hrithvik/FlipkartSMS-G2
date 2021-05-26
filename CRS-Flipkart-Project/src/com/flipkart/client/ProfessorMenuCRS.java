@@ -21,7 +21,7 @@ import com.flipkart.exception.StudentNotRegisteredException;
  * @author hp
  *
  */
-public class ProfessorClient {
+public class ProfessorMenuCRS {
 	ProfessorInterface professorobj=new ProfessorOperation();
 	public void professorMenu(String professorId)
 	{

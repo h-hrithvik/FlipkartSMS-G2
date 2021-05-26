@@ -20,7 +20,7 @@ import com.flipkart.service.AdminInterface;
  * @author arya_
  *
  */
-public class AdminClient {
+public class AdminMenuCRS {
 	
 	AdminInterface adminObj =new AdminOperation();
 	Scanner scanner = new Scanner(System.in);

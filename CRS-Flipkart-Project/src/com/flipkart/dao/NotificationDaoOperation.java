@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import com.flipkart.constant.ModeOfPayment;
-import com.flipkart.constant.NotificationType;
+import com.flipkart.constant.ModeOfPaymentConstants;
+import com.flipkart.constant.NotificationTypeConstants;
 import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.service.NotificationOperation;
 import com.flipkart.utils.DBUtils;
@@ -22,7 +22,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface{
      * @throws SQLException
      */
     @Override
-    public int sendNotification(NotificationType type, int studentId,ModeOfPayment modeOfPayment) throws SQLException{
+    public int sendNotification(NotificationTypeConstants type, int studentId,ModeOfPaymentConstants modeOfPayment) throws SQLException{
         int notificationId=0;
         Connection connection=DBUtils.getConnection();
         try
@@ -60,7 +60,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface{
      * @return: reference id of the transaction
      * @throws SQLException
      */
-    public UUID addPayment(int studentId, ModeOfPayment modeOfPayment) throws SQLException
+    public UUID addPayment(int studentId, ModeOfPaymentConstants modeOfPayment) throws SQLException
     {
         UUID referenceId;
         Connection connection=DBUtils.getConnection();
