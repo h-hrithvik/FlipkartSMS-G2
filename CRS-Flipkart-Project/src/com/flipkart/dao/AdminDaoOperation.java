@@ -215,7 +215,7 @@ public class AdminDaoOperation implements AdminDaoInterface{
 	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException,ProfessorNotDeletedException{
 		statement = null;
 		try {
-			String sql = SQLQueriesConstants.DELETE_PROFESSOR_QUERY;	// TO BE CHANGED
+			String sql = SQLQueriesConstants.DELETE_PROFESSOR_QUERY;	
 			statement = connection.prepareStatement(sql);
 			
 			statement.setString(1,prefessorId);

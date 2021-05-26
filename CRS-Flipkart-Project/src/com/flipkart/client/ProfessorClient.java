@@ -3,14 +3,23 @@
  */
 package com.flipkart.client;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import com.flipkart.service.ProfessorInterface;
+import com.flipkart.service.ProfessorOperation;
+import com.flipkart.bean.Course;
+import com.flipkart.bean.EnrolledStudent;
+import com.flipkart.exception.GradeNotAddedException;
 
 /**
  * @author hp
  *
  */
 public class ProfessorClient {
-	
+	ProfessorInterface professorobj=new ProfessorOperation();
 	public void professorMenu(String professorId)
 	{
 		Scanner sc=new Scanner(System.in);
@@ -44,7 +53,6 @@ public class ProfessorClient {
 					break;
 				case 4:
 					//logout from the system
-					returnToLogin();
 					return;
 				default:
 					System.out.println("Select right option.");
@@ -56,23 +64,87 @@ public class ProfessorClient {
 		
 	}
 
-	private void returnToLogin() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	private void addGrade(String professorId) {
 		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
 		
+		String studentId;
+		String courseId;
+		String grade;
+		int semester;
+		try
+		{
+			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
+			enrolledStudents=professorobj.viewStudents(professorId);
+			for(EnrolledStudent obj: enrolledStudents)
+			{
+				System.out.println(String.format("%20s %20s %20s %20s",obj.getCourseId(), obj.getCourseName(),obj.getStudentId(),obj.getSemester()));
+			}
+			List<Course> coursesEnrolled=new ArrayList<Course>();
+			coursesEnrolled	=professorobj.getCourses(professorId);
+			System.out.println("----------------Add Grade--------------");
+			System.out.println("Enter student Id");
+			studentId=sc.nextLine();
+			System.out.println("Enter course Id");
+			courseId=sc.nextLine();
+			System.out.println("Enter grade");
+			grade=sc.nextLine();
+			System.out.println("Enter semester");
+			semester=sc.nextInt();
+			if(ProfessorValidator.isValidStudent(enrolledStudents, studentId) && ProfessorValidator.isValidCourse(coursesEnrolled, courseId))
+			{
+				professorobj.addGrade(studentId, courseId, semester,grade);
+				System.out.println("Grade added successfully for "+studentId);
+			}
+			else
+			{
+				System.out.println("Invalid data entered, try again!");
+			}
+		}
+		catch(GradeNotAddedException ex)
+		{
+			System.out.println(ex.getMessage());
+			
+		}
+		catch(SQLException ex)
+		{
+			System.out.println("Grade not added, SQL exception occured "+ex.getMessage());
+		}
 	}
 
 	private void viewStudents(String professorId) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(String.format("%20s %20s %20s %20s","COURSE ID","COURSE NAME","STUDENTS ID","SEMESTER" ));
+		try
+		{
+			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
+			enrolledStudents=professorobj.viewStudents(professorId);
+			for(EnrolledStudent obj: enrolledStudents)
+			{
+				System.out.println(String.format("%20s %20s %20s %20s",obj.getCourseId(), obj.getCourseName(),obj.getStudentId(),obj.getSemester()));
+			}
+			
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex.getMessage()+"Something went wrong, please try again later!");
+		}
 	}
 
 	private void getCourses(String professorId) {
 		// TODO Auto-generated method stub
-		
+		try
+		{
+			List<Course> coursesEnrolled=professorobj.getCourses(professorId);
+			System.out.println(String.format("%20s %20s %20s","COURSE ID","COURSE NAME","SEATS AVAILABLE" ));
+			for(Course obj: coursesEnrolled)
+			{
+				System.out.println(String.format("%20s %20s %20s",obj.getCourseId(), obj.getCourseName(),10- obj.getSeats()));
+			}		
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Something went wrong!"+ex.getMessage());
+		}
 	}
 }
