@@ -14,6 +14,8 @@ import java.util.List;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.constant.SQLQueriesConstants;
+import com.flipkart.exception.PaymentNotFoundException;
+import com.flipkart.bean.Payment;
 import com.flipkart.utils.DBUtils;
 
 /**
@@ -186,7 +188,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 	}
 
 	@Override
-	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
+	public ReportCard viewReportCard(String studentId, int semester) throws SQLException,PaymentNotFoundException {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtils.getConnection();
 		ReportCard reportCard = null;
@@ -196,8 +198,16 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt.setInt(2, semester);
 			ResultSet queryResult = stmt.executeQuery();
 			
-			AdminDaoOperation obj = new AdminDaoOperation();
-			HashMap<String, String> grades = obj.fetchGrades(studentId, semester);
+			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_REGISTERED_COURSES);
+			stmt.setString(1, studentId);
+			stmt.setInt(2, semester);
+			ResultSet queryResult2 = stmt.executeQuery();
+			
+			HashMap<String, String> grades = new HashMap<String, String>();
+			while(queryResult2.next()) {
+				grades.put(queryResult2.getString("course.courseId"), queryResult2.getString("semesterregistration.grade"));
+			}
+
 			while(queryResult.next()) {
 				reportCard = new ReportCard(studentId,grades, semester, queryResult.getFloat("cpi"));
 			}
@@ -209,10 +219,45 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 	}
 
 	@Override
-	public double payFee(String studentId, int semester) throws SQLException {
+	public boolean payFee(Payment payment) throws SQLException {
 		// TODO Auto-generated method stub
+		Connection conn = DBUtils.getConnection();
+		try {
+			stmt = conn.prepareStatement(SQLQueriesConstants.INSERT_PAYMENT);
+			stmt.setString(1, payment.getStudentId());
+			stmt.setString(2, payment.getPaymentId());
+			stmt.setString(3, payment.getStatus());
+			stmt.setInt(4, payment.getAmount());
+			stmt.setString(5, payment.getNotificationId());
+			stmt.setInt(6, payment.getSemester());
+			stmt.execute();
+			return true;
 
-		return 0;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} 
+		
+		return false;
+	}
+	
+	@Override
+	public Payment viewFee(String studentId,int semester) {
+		Connection conn = DBUtils.getConnection();
+		try {
+			stmt = conn.prepareStatement(SQLQueriesConstants.VIEW_PAYMENT);
+			stmt.setString(1, studentId);
+			stmt.setInt(2, semester);
+			
+			
+			ResultSet q = stmt.executeQuery();
+			
+			while(q.next())
+				return new Payment(q.getString("paymentId"),q.getString("studentId_payment"),q.getInt("amount"),q.getString("status"),q.getString("notificationId"),q.getInt("semester"));
+		}
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 
 }

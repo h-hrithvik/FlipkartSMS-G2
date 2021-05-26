@@ -9,9 +9,16 @@ package com.flipkart.bean;
  */
 public class Scholarship extends Payment {
 
+	
+
 	private String scholarId;
 	private float scholarAmount;
 
+	public Scholarship(String paymentId, String studentId, int amount, String status, String notificationId,
+			int semester) {
+		super(paymentId, studentId, amount, status, notificationId, semester);
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * Getter Setter Methods for Scholarship details
 	 *

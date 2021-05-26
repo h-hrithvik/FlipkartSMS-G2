@@ -34,9 +34,11 @@ public class SQLQueriesConstants {
 	public static final String DROP_COURSE_QUERY = "delete from semesterregistration where courseId = ? AND studentId = ? and semester = ?;";
 	public static final String INCREMENT_SEAT_QUERY  = "update course set seats = seats + 1 where courseId = ?;";
 	public static final String VIEW_GRADE = "select course.courseId,course.courseName,semesterregistration.grade from course inner join semesterregistration on course.courseCode = semesterregistration.courseCode where semesterregistration.studentId = ? and semesterregistration.semester = ?;";	
-	public static final String VIEW_REPORT_CARD = "select * from reportcard where studentId_report = ? and semester = ?;";	
+	public static final String VIEW_REPORT_CARD = "select * from reportcard where studentId = ? and semester = ?;";	
 	public static final String GET_SEATS = "select seats from course where courseId = ?;";
-	public static final String INSERT_PAYMENT = "insert into payment(studentId_payment,paymentId,status,amount) values(?,?,?,?);";
+	public static final String INSERT_PAYMENT = "insert into payment(studentId_payment,paymentId,status,amount,notificationId,semester) values(?,?,?,?,?,?);";
+	public static final String VIEW_PAYMENT = "select * from  payment where studentId_payment = ? and semester = ?;";
+
 	public static final String GET_NOTIFICATION = "select * from payment where studentId_payment = ?;";
 	public static final String ADD_GRADE="update semesterregistration set grade=? where courseId=? and studentId=? and semester = ?";
 	public static final String GET_COURSES="select * from course where instructorId=?";
