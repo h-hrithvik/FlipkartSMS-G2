@@ -100,8 +100,8 @@ public class ProfessorMenuCRS {
 			grade=sc.nextLine();
 			System.out.println("Enter semester");
 			semester=sc.nextInt();
-			sc.nextInt();
-			if(true)
+			sc.nextLine();
+			if(ProfessorValidator.isValidEntry(enrolledStudents, studentId,courseId,semester))
 			{
 				try {
 				professorobj.addGrade(studentId, courseId, semester,grade);
@@ -112,10 +112,10 @@ public class ProfessorMenuCRS {
 					System.out.println("Something went wrong "+e.getMessage());
 				}
 			}
-//			else
-//			{
-//				System.out.println("Invalid data entered, try again!");
-//			}
+			else
+			{
+				System.out.println("Invalid data entered, try again!");
+			}
 		}
 		catch(Exception ex)
 		{

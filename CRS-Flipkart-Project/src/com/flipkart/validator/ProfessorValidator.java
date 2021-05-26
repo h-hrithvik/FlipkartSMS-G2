@@ -20,36 +20,19 @@ public class ProfessorValidator {
 	 * @param studentId: current student
 	 * @return true, if student is valid. else, false.
 	 */
-	public static boolean isValidStudent(List<EnrolledStudent> students,String studentId)
+	public static boolean isValidEntry(List<EnrolledStudent> students,String studentId,String courseCode,int semester)
 	{
 		boolean result=false;
 		//check if student exist in ihe students list
-		for(int i=0;i<students.size();i++)
+		for(EnrolledStudent student : students)
 		{
 			//role.equalsIgnoreCase("ADMIN")
-			if(students.get(i).getStudentId()==studentId)
+			if(student.getStudentId().equalsIgnoreCase(studentId) && student.getCourseId().equalsIgnoreCase(courseCode) && student.getSemester()==semester)
 				result=true;
 				
 		}
 		return result;
 	}
 	
-	/**
-	 * Method to check if course exist in the database
-	 * @param assignedCourses: list of courses assigned to the professor
-	 * @param courseCode: course id for which grade needs to be added
-	 * @return true, if course is valid and taught by professor, else false.
-	 */
-	public static boolean isValidCourse(List<Course> assignedCourses,String courseCode)
-	{
-		//check if course is valid
-		boolean result=false;
-		for(int i=0;i<assignedCourses.size();i++)
-		{
-			if(assignedCourses.get(i).getCourseId().equalsIgnoreCase(courseCode))
-				result= true;
-		}
-		return result;
-	}
 
 }
