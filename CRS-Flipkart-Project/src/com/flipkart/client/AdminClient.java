@@ -80,19 +80,19 @@ public class AdminClient {
 			System.out.println(e.getMessage());
 		}
 	}
-	private void approveStudent()
+	private boolean approveStudent()
 	{	
 		System.out.println("Enter Student's ID:");
 		String studentUserIdApproval = scanner.nextLine();
 		
 		try {
 			adminObj.approveStudent(studentUserIdApproval);
-			//send notification from system
-			notificationInterface.sendNotification(NotificationType.REGISTRATION_APPROVAL, studentUserIdApproval, null,0);
+			return true;
 	
 		} catch (StudentNotFoundForVerificationException e) {
 			System.out.println(e.getMessage());
 		}
+		return false;
 	}
 	private void addProfessor()
 	{
