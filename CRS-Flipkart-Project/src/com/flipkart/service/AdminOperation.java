@@ -136,6 +136,7 @@ public class AdminOperation implements AdminInterface {
 	 * 
 	 * @param professorId
 	 * @throws ProfessorNotAddedException
+	 * @throws ProfessorNotDeletedException
 	 */
 	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException {
 		try {
