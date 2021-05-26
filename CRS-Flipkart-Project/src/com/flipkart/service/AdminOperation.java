@@ -98,32 +98,32 @@ public class AdminOperation implements AdminInterface {
 		}
 	}
 
-	
 	/**
 	 * Function to generate report
 	 * 
 	 * @param reportCard
 	 * @throws StudentNotRegisteredException
 	 */
-	int counter=0,sum=0;
+	int counter = 0, sum = 0;
+
 	@Override
-	public void generateReport(String StudentId,int semester) throws StudentNotRegisteredException {
-		
+	public void generateReport(String StudentId, int semester) throws StudentNotRegisteredException {
+
 		try {
 			AdminDaoOperation obj = new AdminDaoOperation();
 			HashMap<String, String> gradecrd = obj.fetchGrades(StudentId, semester);
-			gradecrd.forEach((k,v) -> {
-				counter = counter+1;
-				if(v == "A")
+			gradecrd.forEach((k, v) -> {
+				counter = counter + 1;
+				if (v.toString().equals("A".toString()))
 					sum += 4;
-				else if(v == "B")
+				else if (v.toString().equals("B".toString()))
 					sum += 3;
-				else if(v == "C")
+				else if (v.toString().equals("C".toString()))
 					sum += 2;
 				else
 					sum += 1;
 			});
-			float CPI = sum/counter;
+			float CPI = sum / counter;
 			obj.generateReport(semester, StudentId, CPI);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
