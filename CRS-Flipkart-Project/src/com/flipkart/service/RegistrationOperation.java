@@ -74,24 +74,18 @@ public class RegistrationOperation implements RegistrationInterface {
 
 	@Override
 	public List<Course> viewRegisteredCourses(String studentId, int semester) throws SQLException {
-		// TODO Auto-generated method stub
 		return registrationDaoInterface.viewRegisteredCourses(studentId, semester);
 	}
 
 	@Override
 	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
-		// TODO Auto-generated method stub
-		
-		try {
-			return registrationDaoInterface.viewReportCard(studentId, semester);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PaymentNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+			try {
+				return registrationDaoInterface.viewReportCard(studentId, semester);
+			} catch (SQLException | PaymentNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
 	}
 
 	@Override

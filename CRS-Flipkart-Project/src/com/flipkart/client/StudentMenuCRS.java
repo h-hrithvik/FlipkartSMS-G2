@@ -296,7 +296,7 @@ public class StudentMenuCRS {
 		System.out.println("Semester : " + grade_card.getSem());
 		System.out.println("CPI : " + grade_card.getCPI());
 		
-		System.out.println(String.format("%-20s %-20s %-20s", "COURSE CODE", "GRADE"));
+		System.out.println(String.format("%-20s %-20s", "COURSE CODE", "GRADE"));
 
 		for (HashMap.Entry<String, String> obj : grade_card.getGrades().entrySet()) {
 			System.out.println(String.format("%-20s %-20s", obj.getKey(), obj.getValue()));
