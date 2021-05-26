@@ -66,8 +66,7 @@ public class AdminClient {
 				break;
 				
 			case 7:
-				returnToLogin();
-				break;
+				return;
 				
 			default:
 				System.out.println("Invalid Choice");
@@ -164,10 +163,6 @@ public class AdminClient {
 		}
 	}
 	
-	private void returnToLogin()
-	{
-		
-	}
 	/**
 	 * Function to generate report
 	 */
