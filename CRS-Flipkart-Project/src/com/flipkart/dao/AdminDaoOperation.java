@@ -63,7 +63,7 @@ public class AdminDaoOperation implements AdminDaoInterface{
 	/**
 	 * Add Course using SQL commands
 	 * @param course
-	 * @throws CourseFoundException
+	 * @throws AddCourseException
 	 */
 	public void addCourse(Course course) throws AddCourseException{
 		statement = null;
@@ -227,7 +227,7 @@ public class AdminDaoOperation implements AdminDaoInterface{
 				throw new ProfessorNotAddedException(prefessorId);
 			}
 
-			System.out.println("Professor with prefessorId: " + prefessorId + " deleted.");
+			System.out.println("Professor with professorId: " + prefessorId + " deleted.");
 			
 		}catch(SQLException se) {
 			
