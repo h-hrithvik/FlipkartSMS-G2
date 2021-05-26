@@ -1,19 +1,13 @@
-/**
- * 
- */
+
 package com.flipkart.client;
 
 import java.util.Scanner;
-import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
-import com.flipkart.service.StudentInterface;
 import com.flipkart.service.StudentOperation;
 
 import static com.flipkart.constant.Role.STUDENT;
 
 public class Runner {
-
-	StudentOperation studentOperation = new StudentOperation();
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -21,7 +15,7 @@ public class Runner {
 		printMenu();
 		int Input=sc.nextInt();
 		
-		while(Input!=4 && loggedIn)
+		while(Input!=4)
 		{
 			switch(Input)
 			{	

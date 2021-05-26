@@ -27,23 +27,24 @@ public class NotificationDaoOperation implements NotificationDaoInterface{
         Connection connection=DBUtils.getConnection();
         try
         {
+            UUID referenceId=addPayment(studentId, modeOfPayment);
             //INSERT_NOTIFICATION = "insert into notification(studentId,type,referenceId) values(?,?,?);";
-            PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.INSERT_NOTIFICATION);
-            statement.setInt(1, studentId);
-            statement.setString(2,type.toString());
-            if(type==NotificationType.PAYMENT)
-            {
-                //insert into payment, get reference id and add here
-                UUID referenceId=addPayment(studentId, modeOfPayment);
-                statement.setString(3, referenceId.toString());
-            }
-            else
-                statement.setString(3,"");
-
-            statement.executeUpdate();
-            ResultSet results=statement.getGeneratedKeys();
-            if(results.next())
-                notificationId=results.getInt(1);
+//            PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.INSERT_NOTIFICATION);
+//            statement.setInt(1, studentId);
+//            statement.setString(2,type.toString());
+//            if(type==NotificationType.PAYMENT)
+//            {
+//                //insert into payment, get reference id and add here
+//                UUID referenceId=addPayment(studentId, modeOfPayment);
+//                statement.setString(3, referenceId.toString());
+//            }
+//            else
+//                statement.setString(3,"");
+//
+//            statement.executeUpdate();
+//            ResultSet results=statement.getGeneratedKeys();
+//            if(results.next())
+//                notificationId=results.getInt(1);
         }
         catch(SQLException ex)
         {
