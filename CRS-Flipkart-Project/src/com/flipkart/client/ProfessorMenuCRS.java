@@ -39,9 +39,9 @@ public class ProfessorMenuCRS {
 		int in=1;
 		while(in!=4)
 		{
-			System.out.println("------------------------------------------");
-			System.out.println("              PROFESSOR MENU              ");
-			System.out.println("------------------------------------------");
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------PROFESSOR MENU---------------------------------------");
+			System.out.println("---------------------------------------------------------------------------------------------\n");
 
 			System.out.println("1. View Courses");
 			System.out.println("2. View Enrolled Students");
@@ -49,7 +49,7 @@ public class ProfessorMenuCRS {
 			System.out.println("4. Logout");
 
 			System.out.println("------------------------------------------");
-			System.out.println("  ENTER YOUR CHOICE");
+			System.out.print("ENTER YOUR CHOICE--->:\t");
 			System.out.println();
 
 			in=sc.nextInt();
@@ -84,7 +84,6 @@ public class ProfessorMenuCRS {
 	}
 
 	private void addGrade(String professorId){
-		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		
 		String studentId;
@@ -93,6 +92,10 @@ public class ProfessorMenuCRS {
 		int semester;
 		try
 		{
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------CURRENT ENROLLED STUDENTS------------------------------");
+			System.out.println("---------------------------------------------------------------------------------------------\n");
+
 			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
 			enrolledStudents=professorInterface.viewStudents(professorId);
 			for(EnrolledStudent obj: enrolledStudents)
@@ -101,7 +104,7 @@ public class ProfessorMenuCRS {
 			}
 			List<Course> coursesEnrolled=new ArrayList<Course>();
 			coursesEnrolled	=professorInterface.getCourses(professorId);
-			System.out.println("----------------Add Grade--------------");
+			System.out.println("---------------------------------------------ADD GRADE----------------------------------------\n");
 			System.out.println("Enter student Id");
 			studentId=sc.nextLine();
 			System.out.println("Enter course Id");
@@ -132,13 +135,20 @@ public class ProfessorMenuCRS {
 			System.out.println(ex.getMessage());
 			
 		}
-		
-		
+
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 	}
 
 	private void viewStudents(String professorId) {
-		// TODO Auto-generated method stub
+
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------CURRENT ENROLLED STUDENTS------------------------------");
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		System.out.println(String.format("%20s %20s %20s %20s","COURSE ID","COURSE NAME","STUDENTS ID","SEMESTER" ));
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		try
 		{
 			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
@@ -153,12 +163,19 @@ public class ProfessorMenuCRS {
 		{
 			System.out.println(ex.getMessage()+"Something went wrong, please try again later!");
 		}
+
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 	}
 
 	private void getCourses(String professorId) {
-		// TODO Auto-generated method stub
+
 		try
 		{
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------CURRENT COURSES------------------------------");
+			System.out.println("---------------------------------------------------------------------------------------------\n");
+
 			List<Course> coursesEnrolled=professorInterface.getCourses(professorId);
 			System.out.println(String.format("%20s %20s %20s","COURSE ID","COURSE NAME","STUDENTS REGISTERED" ));
 			for(Course obj: coursesEnrolled)
@@ -170,5 +187,7 @@ public class ProfessorMenuCRS {
 		{
 			System.out.println("Something went wrong!"+ex.getMessage());
 		}
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 	}
 }
