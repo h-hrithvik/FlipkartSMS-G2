@@ -36,8 +36,8 @@ public class ProfessorMenuCRS {
 	{
 		Scanner sc=new Scanner(System.in);
 		
-		int in=1;
-		while(in!=4)
+		String in="1";
+		while(in!="4")
 		{
 			System.out.println("\n\n----------------------------------------------------------------------------------------");
 			System.out.println("----------------------------------------PROFESSOR MENU---------------------------------------");
@@ -52,25 +52,25 @@ public class ProfessorMenuCRS {
 			System.out.print("ENTER YOUR CHOICE--->:\t");
 			System.out.println();
 
-			in=sc.nextInt();
+			in=sc.nextLine();
 			//input user
 			
 			switch(in)
 			{
-				case 1:
+				case "1":
 					//view all the courses taught by the professor
 					getCourses(professorId);
 					break;
-				case 2:
+				case "2":
 					//view all the enrolled students for the course
 					viewStudents(professorId);
 					break;
 					
-				case 3:
+				case "3":
 					//add grade for a student
 					addGrade(professorId);
 					break;
-				case 4:
+				case "4":
 					//logout from the system
 					return;
 				default:

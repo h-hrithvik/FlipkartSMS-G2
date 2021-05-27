@@ -67,39 +67,39 @@ public class StudentMenuCRS {
 			System.out.println("------------------------------------------");
 			System.out.print("ENTER YOUR CHOICE---->:\t");
 
-			int choice = sc.nextInt();
+			String choice = sc.nextLine();
 
 			switch (choice) {
-			case 1:
+			case "1":
 				registerCourses(studentId);
 				break;
 
-			case 2:
+			case "2":
 				addCourse(studentId);
 				break;
 
-			case 3:
+			case "3":
 
 				dropCourse(studentId);
 				break;
 
-			case 4:
+			case "4":
 				viewCourse(studentId);
 				break;
 
-			case 5:
+			case "5":
 				viewRegisteredCourse(studentId);
 				break;
 
-			case 6:
+			case "6":
 				viewGradeCard(studentId);
 				break;
 
-			case 7:
+			case "7":
 				make_payment(studentId);
 				break;
 
-			case 8:
+			case "8":
 				return;
 
 			default:
