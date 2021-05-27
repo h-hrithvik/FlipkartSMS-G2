@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import org.apache.log4j.Logger;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.constant.SQLQueriesConstants;
@@ -19,13 +19,48 @@ import com.flipkart.bean.Payment;
 import com.flipkart.utils.DBUtils;
 
 /**
- * @author WIN 10
+ *
+ * @author JEDI-03
+ * Class to implement Registration Dao Operations
+ * This class communicates with the database.
  *
  */
+
 public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
+	private static volatile RegistrationDaoOperation instance=null;
+	private static Logger logger = Logger.getLogger(RegistrationDaoOperation.class);
 	private PreparedStatement stmt = null;
 
+	/**
+	 * Default Constructor
+	 */
+	private RegistrationDaoOperation()
+	{}
+
+	/**
+	 * Method to make RegistrationDaoOperation Singleton
+	 * @return
+	 */
+	public static RegistrationDaoOperation getInstance()
+	{
+		if(instance==null)
+		{
+			synchronized(RegistrationDaoOperation.class){
+				instance=new RegistrationDaoOperation();
+			}
+		}
+		return instance;
+	}
+
+	/**
+	 * Number of registered courses for a student
+	 *
+	 * @param studentId id of the student
+	 * @param semester semester number of the student
+	 * @return Number of registered courses for a student
+	 * @throws SQLException
+	 */
 	@Override
 	public int numOfRegisteredCourses(String studentId, int semester) throws SQLException{
 		
@@ -47,18 +82,26 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 		catch (SQLException e) 
 		{
 
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 
 		} 
 		catch (Exception e)
 		{
 
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		
 		return count;
 	}
-	
+
+
+	/**
+	 * Method to add course in database
+	 * @param courseId id of the course
+	 * @param studentId id of the student
+	 * @return boolean indicating if the course is added successfully
+	 * @throws SQLException
+	 */
 	@Override
 	public boolean addCourse(String courseId, String studentId, int semester) throws SQLException {
 
@@ -78,13 +121,20 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 			return true;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 		return false;
 	}
-	
+
+	/**
+	 * Method checks if the student is registered for that course
+	 * @param courseCode code of the course
+	 * @param studentId id of the student
+	 * @return Students registration status
+	 * @throws SQLException
+	 */
 	@Override
-	public boolean isRegistered(String courseCode, String studentId, int semetser) throws SQLException{
+	public boolean isRegistered(String courseCode, String studentId, int semester) throws SQLException{
 		
 		Connection conn = DBUtils.getConnection();
 		
@@ -94,7 +144,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt = conn.prepareStatement(SQLQueriesConstants.IS_REGISTERED);
 			stmt.setString(1, courseCode);
 			stmt.setString(2, studentId);
-			stmt.setInt(3, semetser);
+			stmt.setInt(3, semester);
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next())
@@ -104,7 +154,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 		}
 		catch(Exception e)
 		{
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		
 		
@@ -112,7 +162,13 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 		
 	}
 
-
+	/**
+	 * Drop Course selected by student
+	 * @param courseId id for selected course
+	 * @param studentId id of the logged in student
+	 * @return status of drop course operation
+	 * @throws SQLException
+	 */
 	@Override
 	public boolean removeCourse(String courseId, String studentId, int semester) throws SQLException {
 		Connection conn = DBUtils.getConnection();
@@ -132,15 +188,22 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 
 		return true;
 	}
 
+
+	/**
+	 * Method to get the list of courses available from course catalog
+	 * @param studentId id of the student
+	 * @param semester semester of the student
+	 * @return list of courses
+	 * @throws SQLException
+	 */
 	@Override
 	public List<Course> viewCourses(String studentId, int semester) throws SQLException {
-		// TODO Auto-generated method stub
 		List<Course> availableCourseList = new ArrayList<>();
 		Connection conn = DBUtils.getConnection();
 
@@ -157,15 +220,23 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			}
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 
 		return availableCourseList;
 	}
 
+
+	/**
+	 * Method to view courses already registered by the student
+	 * @param studentId id of the student
+	 * @param semester semester of the student
+	 * @return
+	 * @throws SQLException
+	 */
 	@Override
 	public List<Course> viewRegisteredCourses(String studentId, int semester) throws SQLException {
-		// TODO Auto-generated method stub
+
 		Connection conn = DBUtils.getConnection();
 		List<Course> registeredCourseList = new ArrayList<>();
 		try {
@@ -181,12 +252,20 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 
 		return registeredCourseList;
 	}
 
+
+	/**
+	 * Method to retrieve report card
+	 * @param studentId id of the student
+	 * @param semester semester of the student
+	 * @return Report card object
+	 * @throws SQLException
+	 */
 	@Override
 	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
 		// TODO Auto-generated method stub
@@ -197,20 +276,26 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt.setString(1, studentId);
 			stmt.setInt(2, semester);
 			ResultSet queryResult = stmt.executeQuery();
-			
-			AdminDaoOperation obj = new AdminDaoOperation();
+
+			AdminDaoInterface obj=AdminDaoOperation.getInstance();
 			HashMap<String, String> grades = obj.fetchGrades(studentId, semester);
 			while(queryResult.next()) {
 				reportCard = new ReportCard(studentId,grades, semester, queryResult.getFloat("cpi"));
 			}
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 		return reportCard;
 	}
 
 
+	/**
+	 * Method to pay fee
+	 * @param payment payment object
+	 * @return boolean value for successful/unsuccessful payment
+	 * @throws SQLException
+	 */
 	@Override
 	public boolean payFee(Payment payment) throws SQLException {
 		// TODO Auto-generated method stub
@@ -227,12 +312,19 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			return true;
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} 
 		
 		return false;
 	}
-	
+
+
+	/**
+	 * Method to view the fee to be paid by the student
+	 * @param studentId id of the student
+	 * @param semester semester of the student
+	 * @return Payment object
+	 */
 	@Override
 	public Payment viewFee(String studentId,int semester) {
 		Connection conn = DBUtils.getConnection();
@@ -248,7 +340,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 				return new Payment(q.getString("paymentId"),q.getString("studentId_payment"),q.getInt("amount"),q.getString("status"),q.getString("notificationId"),q.getInt("semester"));
 		}
 		catch(SQLException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		return null;
 	}

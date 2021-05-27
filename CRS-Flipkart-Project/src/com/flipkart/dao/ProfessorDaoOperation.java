@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.EnrolledStudent;
@@ -16,15 +17,41 @@ import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.utils.DBUtils;
 
 /**
- * @author hp
+ * @author JEDI-02
  *
  */
 public class ProfessorDaoOperation implements ProfessorDaoInterface{
-	
+
+	private static volatile ProfessorDaoOperation instance=null;
+	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
+
+	/**
+	 * Default Constructor
+	 */
+	private ProfessorDaoOperation()
+	{
+
+	}
+
+	/**
+	 * Method to make ProfessorDaoOperation Singleton
+	 * @return
+	 */
+	public static ProfessorDaoOperation getInstance()
+	{
+		if(instance==null)
+		{
+			// This is a synchronized block, when multiple threads will access this instance
+			synchronized(ProfessorDaoOperation.class){
+				instance=new ProfessorDaoOperation();
+			}
+		}
+		return instance;
+	}
 
 	/**
 	 * Method to get Courses by Professor Id using SQL Commands
-	 * @param userId, professor id of the professor
+	 * @param profId professor id of the professor
 	 * @return get the courses offered by the professor.
 	 */
 	@Override
@@ -44,7 +71,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		}
 		catch(SQLException e)
 		{
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		return courseList;
 		
@@ -72,7 +99,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		}
 		catch(SQLException e)
 		{
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		return enrolledStudents;
 	}
@@ -89,7 +116,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.ADD_GRADE);
 			
-			System.out.println(grade + "   " + courseId);
+			logger.debug(grade + "   " + courseId);
 			statement.setString(1, grade);
 			statement.setString(2, courseId);
 			statement.setString(3, studentId);
@@ -103,7 +130,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		}
 		catch(SQLException e)
 		{
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		return false;
 	}

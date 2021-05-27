@@ -15,8 +15,9 @@ import com.flipkart.exception.UserAlreadyExistException;
 public class StudentOperation implements StudentInterface {
 	
 	StudentDaoInterface studentDaoInterface= new StudentDaoOperation();
-	RegistrationDaoInterface registerationDaoInterface= new RegistrationDaoOperation();
-	
+	RegistrationDaoInterface registrationDaoInterface = RegistrationDaoOperation.getInstance();
+
+
 
 	@Override
 	public int checkIsVerified(String studentId) throws StudentNotRegisteredException {
@@ -40,7 +41,7 @@ public class StudentOperation implements StudentInterface {
 		
 		
 		try {
-			return registerationDaoInterface.viewReportCard(studentId, semester);
+			return registrationDaoInterface.viewReportCard(studentId, semester);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

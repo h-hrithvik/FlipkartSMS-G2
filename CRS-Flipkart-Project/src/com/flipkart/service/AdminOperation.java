@@ -4,7 +4,7 @@
 package com.flipkart.service;
 
 import java.util.HashMap;
-
+import org.apache.log4j.Logger;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.ReportCard;
@@ -20,12 +20,40 @@ import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 
 /**
- * @author arya_
+ *
+ * @author JEDI-02
+ * Implementations of Admin Operations
  *
  */
+
 public class AdminOperation implements AdminInterface {
 
-	@Override
+	private static Logger logger = Logger.getLogger(AdminOperation.class);
+	private static volatile AdminOperation instance = null;
+
+	private AdminOperation()
+	{
+
+	}
+
+	/**
+	 * Method to make AdminOperation Singleton
+	 */
+	public static AdminOperation getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(AdminOperation.class){
+				instance = new AdminOperation();
+			}
+		}
+		return instance;
+	}
+
+
+	AdminDaoInterface adminDaoOperation =AdminDaoOperation.getInstance();
+
+
 	/**
 	 * Method to Delete Course from Course Catalog
 	 * 
@@ -33,53 +61,53 @@ public class AdminOperation implements AdminInterface {
 	 * @throws CourseNotFoundException
 	 * @throws CourseNotDeletedException
 	 */
+	@Override
 	public void removeCourse(String courseId) throws CourseNotFoundException, CourseNotDeletedException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
-			obj.deleteCourse(courseId);
+			adminDaoOperation.deleteCourse(courseId);
 		} catch (CourseNotFoundException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} catch (CourseNotDeletedException e) {
-			System.out.println(e.getMessage());
+			logger.info(e.getMessage());
 		}
 	}
 
-	@Override
+
 	/**
 	 * Method to add Course to Course Catalog
 	 * 
 	 * @param course : Course object storing details of a course
 	 * @throws AddCourseException
 	 */
+	@Override
 	public void addCourse(Course course) throws AddCourseException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
-			obj.addCourse(course);
+			adminDaoOperation.addCourse(course);
 		} catch (AddCourseException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
-	@Override
+
 	/**
 	 * Method to approve a Student
 	 * 
-	 * @param studentId
-	 * @throws StudentNotFoundForApprovalException
+	 * @param studentId id of student to be approved
+	 * @throws StudentNotFoundForVerificationException
 	 * @return Approval Status
 	 */
+	@Override
 	public boolean approveStudent(String studentId) throws StudentNotFoundForVerificationException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
-			obj.approveStudent(studentId);
+			adminDaoOperation.approveStudent(studentId);
 			return true;
 		} catch (StudentNotFoundForVerificationException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		return false;
 	}
 
-	@Override
+
 	/**
 	 * Method to add Professor to DB
 	 * 
@@ -87,22 +115,26 @@ public class AdminOperation implements AdminInterface {
 	 * @throws ProfessorNotAddedException
 	 * @throws UserAlreadyExistException
 	 */
+	@Override
 	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
-			obj.addProfessor(professor);
+			adminDaoOperation.addProfessor(professor);
 		} catch (ProfessorNotAddedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} catch (UserAlreadyExistException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
-	
+
+
+
+
 	/**
-	 * Function to generate report
-	 * 
-	 * @param reportCard
+	 * Method to generate report
+	 *
+	 * @param StudentId id of student
+	 * @param semester semester of student
 	 * @throws StudentNotRegisteredException
 	 */
 	int counter=0,sum=0;
@@ -110,8 +142,7 @@ public class AdminOperation implements AdminInterface {
 	public void generateReport(String StudentId, int semester) throws StudentNotRegisteredException {
 
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
-			HashMap<String, String> gradecrd = obj.fetchGrades(StudentId, semester);
+			HashMap<String, String> gradecrd = adminDaoOperation.fetchGrades(StudentId, semester);
 			gradecrd.forEach((k, v) -> {
 				counter = counter + 1;
 				if (v.toString().equals("A".toString()))
@@ -124,28 +155,28 @@ public class AdminOperation implements AdminInterface {
 					sum += 1;
 			});
 			float CPI = sum / counter;
-			obj.generateReport(semester, StudentId, CPI);
+			adminDaoOperation.generateReport(semester, StudentId, CPI);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
-	@Override
+
 	/**
 	 * Method to delete Professor from DB
 	 * 
-	 * @param professorId
+	 * @param professorId id of professor
 	 * @throws ProfessorNotAddedException
 	 * @throws ProfessorNotDeletedException
 	 */
+	@Override
 	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException {
 		try {
-			AdminDaoOperation obj = new AdminDaoOperation();
-			obj.removeProfessor(professorId);
+			adminDaoOperation.removeProfessor(professorId);
 		} catch (ProfessorNotAddedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		} catch (ProfessorNotDeletedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 

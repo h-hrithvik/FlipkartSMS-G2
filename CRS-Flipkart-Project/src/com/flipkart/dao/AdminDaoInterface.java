@@ -18,6 +18,8 @@ import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.exception.UserNotApprovedExecption;
 import com.flipkart.exception.UserNotFoundException;
 
+import java.util.HashMap;
+
 /**
  * @author arya_
  *
@@ -78,5 +80,13 @@ public interface AdminDaoInterface {
 	 * @throws StudentNotRegisteredException
 	 */
 	public void generateReport(int semester,String StudentId,float CPI) throws StudentNotRegisteredException;
+
+	/**
+	 * Method to fetch grades of a student by semester Id
+	 * @param StudentId id of the student
+	 * @param semester semester to fetch grades for
+	 * @return hashmap of courseId with corresponding grades of the student
+	 */
+	public HashMap<String, String> fetchGrades(String StudentId, int semester);
 
 }

@@ -4,6 +4,9 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.Scanner;
 
+import com.flipkart.service.ProfessorInterface;
+import com.flipkart.service.ProfessorOperation;
+import org.apache.log4j.Logger;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Payment;
 import com.flipkart.bean.ReportCard;
@@ -18,17 +21,24 @@ import com.flipkart.service.RegistrationOperation;
 
 /**
  *
- * @author anshuman The class displays the menu for student client
+ * @author JEDI-03
+ *  The class displays the menu for student client
  *
  */
+
 public class StudentMenuCRS {
 
 	Scanner sc = new Scanner(System.in);
 
-	RegistrationInterface registrationInterface = new RegistrationOperation();
+	private static Logger logger = Logger.getLogger(StudentMenuCRS.class);
+
+	RegistrationInterface registrationInterface = RegistrationOperation.getInstance();
+	ProfessorInterface professorInterface = ProfessorOperation.getInstance();
+
 	private int semester = 1;
 
 	private boolean is_registered;
+
 
 	/**
 	 * Method to generate Student Menu for course registration, addition, removal
@@ -96,6 +106,7 @@ public class StudentMenuCRS {
 		}
 	}
 
+
 	/**
 	 * Select course for registration
 	 * 
@@ -132,6 +143,7 @@ public class StudentMenuCRS {
 
 	}
 
+
 	/**
 	 * Add course for registration
 	 * 
@@ -162,6 +174,7 @@ public class StudentMenuCRS {
 
 	}
 
+
 	/**
 	 * Method to check if student is already registered
 	 * 
@@ -171,6 +184,7 @@ public class StudentMenuCRS {
 	private boolean getRegistrationStatus(String studentId) {
 		return true;
 	}
+
 
 	/**
 	 * Drop Course
@@ -233,8 +247,9 @@ public class StudentMenuCRS {
 
 
 		return course_available;
-		// TODO
+
 	}
+
 
 	/**
 	 * View Registered Courses
@@ -267,8 +282,9 @@ public class StudentMenuCRS {
 		System.out.println("-----------------------------------------------------------------------------------------");
 
 		return course_registered;
-		// TODO
+
 	}
+
 
 	/**
 	 * View grade card for particular student
@@ -304,6 +320,7 @@ public class StudentMenuCRS {
 		System.out.println("-----------------------------------------------------------------------------------------");
 	}
 
+
 	/**
 	 * Make Payment for selected courses. Student is provided with an option to pay
 	 * the fees and select the mode of payment.
@@ -311,7 +328,6 @@ public class StudentMenuCRS {
 	 * @param studentId
 	 */
 	private void make_payment(String studentId) {
-		// TODO
 		
 		
 		List<Course> course_registered = null;
@@ -424,7 +440,7 @@ public class StudentMenuCRS {
 			
 		}
 		catch( PaymentNotFoundException |SQLException ex) {
-			System.out.println(ex.getMessage());
+			logger.error(ex.getMessage());
 		}
 		
 	}

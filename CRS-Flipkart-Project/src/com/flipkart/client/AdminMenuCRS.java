@@ -3,6 +3,7 @@
  */
 package com.flipkart.client;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
 
 import com.flipkart.service.AdminOperation;
 import com.flipkart.bean.Course;
@@ -16,13 +17,20 @@ import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
+
 /**
- * @author arya_
+ *
+ * @author JEDI-03
+ * Class that display Admin Client Menu
  *
  */
+
+
 public class AdminMenuCRS {
-	
-	AdminInterface adminObj =new AdminOperation();
+
+	private static Logger logger = Logger.getLogger(AdminMenuCRS.class);
+
+	AdminInterface adminOperation =AdminOperation.getInstance();
 	Scanner scanner = new Scanner(System.in);
 
 	public void createMenu(){		
@@ -98,11 +106,12 @@ public class AdminMenuCRS {
 		Course course = new Course(courseCode, courseName, instructorId, 10);
 		
 		try {
-			adminObj.addCourse(course);
+			adminOperation.addCourse(course);
 		} catch (AddCourseException e) {
 			System.out.println(e.getMessage());
 		}	
 	}
+
 
 	/**
 	 * Method to delete course from DB
@@ -113,11 +122,12 @@ public class AdminMenuCRS {
 		String courseCode = scanner.next();
 		
 		try {
-			adminObj.removeCourse(courseCode);
+			adminOperation.removeCourse(courseCode);
 		} catch (CourseNotFoundException | CourseNotDeletedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
+
 
 	/**
 	 * Method to approve studentId
@@ -128,14 +138,15 @@ public class AdminMenuCRS {
 		String studentUserIdApproval = scanner.nextLine();
 		
 		try {
-			adminObj.approveStudent(studentUserIdApproval);
+			adminOperation.approveStudent(studentUserIdApproval);
 			return true;
 	
 		} catch (StudentNotFoundForVerificationException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		return false;
 	}
+
 
 	/**
 	 * Method to add Professor from DB
@@ -165,12 +176,13 @@ public class AdminMenuCRS {
 
 		Professor professor = new Professor(professorName,phoneNo,address,userId,password,"Professor",professorId,department);
 		try {
-			adminObj.addProfessor(professor);
+			adminOperation.addProfessor(professor);
 		} catch (ProfessorNotAddedException | UserAlreadyExistException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
-	
+
+
 	/**
 	 * Method to delete Professor from DB
 	 */	
@@ -180,12 +192,13 @@ public class AdminMenuCRS {
 		String professorId = scanner.next();
 		
 		try {
-			adminObj.removeProfessor(professorId);
+			adminOperation.removeProfessor(professorId);
 		} catch (ProfessorNotAddedException | ProfessorNotDeletedException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
-	
+
+
 	/**
 	 * Function to generate report
 	 */
@@ -197,9 +210,9 @@ public class AdminMenuCRS {
 		System.out.println("Enter student Semester:");
 		int studentSem = scanner.nextInt();						
 		try {
-			adminObj.generateReport(studentId,studentSem);
+			adminOperation.generateReport(studentId,studentSem);
 		} catch (StudentNotRegisteredException e) {
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}	
 	}
 }

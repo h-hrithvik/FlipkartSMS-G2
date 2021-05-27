@@ -9,7 +9,7 @@ import java.util.UUID;
 import com.flipkart.constant.ModeOfPaymentConstants;
 import com.flipkart.constant.NotificationTypeConstants;
 import com.flipkart.constant.SQLQueriesConstants;
-import com.flipkart.service.NotificationOperation;
+
 import com.flipkart.utils.DBUtils;
 
 public class NotificationDaoOperation implements NotificationDaoInterface{

@@ -13,6 +13,8 @@ import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 
+import java.util.HashMap;
+
 /**
  * @author arya_
  *
@@ -70,4 +72,5 @@ public interface AdminInterface {
 	 * @throws StudentNotRegisteredException
 	 */
 	void generateReport(String userId, int semester) throws StudentNotRegisteredException;
+
 }

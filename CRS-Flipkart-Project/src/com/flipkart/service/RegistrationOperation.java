@@ -18,11 +18,43 @@ import com.flipkart.exception.StudentNotRegisteredException;
 
 public class RegistrationOperation implements RegistrationInterface {
 
-	public RegistrationOperation() {
+	private static volatile RegistrationOperation instance = null;
+
+	/**
+	 * Default constructor
+	 */
+	private RegistrationOperation() {
 	}
 
-	RegistrationDaoInterface registrationDaoInterface = new RegistrationDaoOperation();
+	/**
+	 * Method to make Registration Operation Singleton
+	 *
+	 * @return
+	 */
+	public static RegistrationOperation getInstance() {
+		if (instance == null) {
+			synchronized (RegistrationOperation.class) {
+				instance = new RegistrationOperation();
+			}
+		}
+		return instance;
+	}
 
+	RegistrationDaoInterface registrationDaoInterface = RegistrationDaoOperation.getInstance();
+
+
+	/**
+	 * Method to add Course selected by student
+	 *
+	 * @param courseId id of course
+	 * @param studentId id of student
+	 * @param semester semester of student
+	 * @return boolean indicating if the course is added successfully
+	 * @throws CourseNotFoundException
+	 * @throws AddCourseException
+	 * @throws CourseLimitReachedException
+	 * @throws SQLException
+	 */
 	@Override
 	public boolean addCourse(String courseId, String studentId, int semester) throws CourseNotFoundException,AddCourseException, CourseLimitReachedException, SQLException {
 
@@ -35,48 +67,79 @@ public class RegistrationOperation implements RegistrationInterface {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		catch(CourseLimitReachedException e) {
+		} catch(CourseLimitReachedException e) {
 			e.printStackTrace();
 		} catch (CourseAlreadyRegisteredException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return registrationDaoInterface.addCourse(courseId, studentId, semester);
 	}
 
+
+	/**
+	 *  Method to drop Course selected by student
+	 *
+	 * @param courseId id of course
+	 * @param studentId id of student
+	 * @param semester semester of student
+	 * @return boolean indicating if the course is dropped successfully
+	 * @throws CourseNotDeletedException
+	 * @throws SQLException
+	 */
 	@Override
 	public boolean dropCourse(String courseId, String studentId, int semester)
 			throws CourseNotDeletedException, SQLException {
-		// TODO Auto-generated method stub
 		try {
 			if(!registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
 				throw new StudentNotRegisteredException(studentId);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (StudentNotRegisteredException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return registrationDaoInterface.removeCourse(courseId, studentId, semester);
 	}
 
+
+	/**
+	 * Method to view the list of available courses
+	 *
+	 * @param studentId id of student
+	 * @param semester semester of student
+	 * @return List of courses
+	 * @throws SQLException
+	 */
 	@Override
 	public List<Course> viewCourses(String studentId, int semester) throws SQLException {
 		// TODO Auto-generated method stub
 		return registrationDaoInterface.viewCourses(studentId, semester);
 	}
 
+
+	/**
+	 * Method to view the list of courses registered by the student
+	 *
+	 * @param studentId id of student
+	 * @param semester semester of student
+	 * @return List of registered courses
+	 * @throws SQLException
+	 */
 	@Override
 	public List<Course> viewRegisteredCourses(String studentId, int semester) throws SQLException {
 		return registrationDaoInterface.viewRegisteredCourses(studentId, semester);
 	}
 
+
+	/**
+	 * Method to view report card for students
+	 * @param studentId id of student
+	 * @param semester semester of student
+	 * @return report card object
+	 * @throws SQLException
+	 */
 	@Override
 	public ReportCard viewReportCard(String studentId, int semester) throws SQLException {
 			try {
@@ -88,12 +151,28 @@ public class RegistrationOperation implements RegistrationInterface {
 			return null;
 	}
 
+
+	/**
+	 * Method for Fee payment for selected courses
+	 * @param payment payment object with payment details
+	 * @return boolean for successful/unsuccessful payment
+	 * @throws PaymentNotFoundException
+	 * @throws SQLException
+	 */
 	@Override
 	public boolean payFee(Payment payment) throws PaymentNotFoundException,SQLException {
-		// TODO Auto-generated method stub
 		return registrationDaoInterface.payFee(payment);
 	}
-	
+
+
+	/**
+	 * Method to view the total fee
+	 *
+	 * @param studentId id of student
+	 * @param semester semester for fee payment
+	 * @return Payment object containing payment details
+	 * @throws SQLException
+	 */
 	@Override
 	public Payment viewFee(String studentId,int semester) throws SQLException{
 		return registrationDaoInterface.viewFee(studentId, semester);

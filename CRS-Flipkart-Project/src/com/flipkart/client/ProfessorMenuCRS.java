@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import org.apache.log4j.Logger;
 import com.flipkart.service.ProfessorInterface;
 import com.flipkart.service.ProfessorOperation;
 import com.flipkart.validator.ProfessorValidator;
@@ -18,11 +18,20 @@ import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 
 /**
- * @author hp
+ *
+ * @author JEDI-02
+ * Class that display Professor Client Menu
  *
  */
 public class ProfessorMenuCRS {
-	ProfessorInterface professorobj=new ProfessorOperation();
+
+	ProfessorInterface professorInterface=ProfessorOperation.getInstance();
+
+	/**
+	 * Method to create Professor menu
+	 * @param professorId: professor id obtained after logging into the system
+	 * returns displays all the options for the professor, and provides navigation
+	 */
 	public void professorMenu(String professorId)
 	{
 		Scanner sc=new Scanner(System.in);
@@ -85,13 +94,13 @@ public class ProfessorMenuCRS {
 		try
 		{
 			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
-			enrolledStudents=professorobj.viewStudents(professorId);
+			enrolledStudents=professorInterface.viewStudents(professorId);
 			for(EnrolledStudent obj: enrolledStudents)
 			{
 				System.out.println(String.format("%20s %20s %20s %20s",obj.getCourseId(), obj.getCourseName(),obj.getStudentId(),obj.getSemester()));
 			}
 			List<Course> coursesEnrolled=new ArrayList<Course>();
-			coursesEnrolled	=professorobj.getCourses(professorId);
+			coursesEnrolled	=professorInterface.getCourses(professorId);
 			System.out.println("----------------Add Grade--------------");
 			System.out.println("Enter student Id");
 			studentId=sc.nextLine();
@@ -105,7 +114,7 @@ public class ProfessorMenuCRS {
 			if(ProfessorValidator.isValidEntry(enrolledStudents, studentId,courseId,semester))
 			{
 				try {
-				professorobj.addGrade(studentId, courseId, semester,grade);
+					professorInterface.addGrade(studentId, courseId, semester,grade);
 				System.out.println("Grade added successfully for "+studentId);
 				}
 				catch(Exception e)
@@ -133,7 +142,7 @@ public class ProfessorMenuCRS {
 		try
 		{
 			List<EnrolledStudent> enrolledStudents=new ArrayList<EnrolledStudent>();
-			enrolledStudents=professorobj.viewStudents(professorId);
+			enrolledStudents=professorInterface.viewStudents(professorId);
 			for(EnrolledStudent obj: enrolledStudents)
 			{
 				System.out.println(String.format("%20s %20s %20s %20s",obj.getCourseId(), obj.getCourseName(),obj.getStudentId(),obj.getSemester()));
@@ -150,7 +159,7 @@ public class ProfessorMenuCRS {
 		// TODO Auto-generated method stub
 		try
 		{
-			List<Course> coursesEnrolled=professorobj.getCourses(professorId);
+			List<Course> coursesEnrolled=professorInterface.getCourses(professorId);
 			System.out.println(String.format("%20s %20s %20s","COURSE ID","COURSE NAME","STUDENTS REGISTERED" ));
 			for(Course obj: coursesEnrolled)
 			{
