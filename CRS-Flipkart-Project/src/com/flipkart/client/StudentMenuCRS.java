@@ -50,9 +50,10 @@ public class StudentMenuCRS {
 
 		is_registered = getRegistrationStatus(studentId);
 		while (is_registered) {
-			System.out.println("------------------------------------------");
-			System.out.println("               STUDENT MENU");
-			System.out.println("------------------------------------------");
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------------STUDENT MENU--------------------------------");
+			System.out.println("-----------------------------------------------------------------------------------------\n");
+
 			System.out.println("1. Course Registration");
 			System.out.println("2. Add Course");
 			System.out.println("3. Drop Course");
@@ -62,8 +63,7 @@ public class StudentMenuCRS {
 			System.out.println("7. Make Payment");
 			System.out.println("8. Logout");
 			System.out.println("------------------------------------------");
-			System.out.println("  ENTER YOUR CHOICE");
-			System.out.println();
+			System.out.print("ENTER YOUR CHOICE---->:\t");
 
 			int choice = sc.nextInt();
 
@@ -113,6 +113,9 @@ public class StudentMenuCRS {
 	 * @param studentId
 	 */
 	private void registerCourses(String studentId) {
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------COURSES REGISTERATION-------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------\n");
 		System.out.println("Enter Semester : ");
 		semester = sc.nextInt();
 		sc.nextLine();
@@ -128,7 +131,7 @@ public class StudentMenuCRS {
 				String courseId = sc.nextLine();
 
 				if (registrationInterface.addCourse(courseId, studentId, semester)) {
-					System.out.println("Course " + courseId + " registered sucessfully.");
+					System.out.println("Course " + courseId + " registered successfully.");
 					count++;
 				} else {
 					System.out.println(" You have already registered for Course : " + courseId);
@@ -139,6 +142,7 @@ public class StudentMenuCRS {
 		}
 
 		System.out.println("Registration Successful");
+		System.out.println("-----------------------------------------------------------------------------------------\n\n");
 		is_registered = true;
 
 	}
@@ -158,6 +162,9 @@ public class StudentMenuCRS {
 				return;
 
 			try {
+				System.out.println("\n\n----------------------------------------------------------------------------------------");
+				System.out.println("----------------------------------------------ADD COURSE-----------------------------------");
+				System.out.println("-----------------------------------------------------------------------------------------\n");
 				System.out.println("Enter Course Code : ");
 				String courseCode = sc.next();
 				if (registrationInterface.addCourse(courseCode, studentId, semester)) {
@@ -165,6 +172,8 @@ public class StudentMenuCRS {
 				} else {
 					System.out.println(" You have already registered for Course : " + courseCode);
 				}
+				System.out.println("-----------------------------------------------------------------------------------------\n");
+
 			} catch (AddCourseException | CourseNotFoundException | CourseLimitReachedException | SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -199,12 +208,17 @@ public class StudentMenuCRS {
 			if (registeredCourseList == null)
 				return;
 
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------------ADD COURSE-----------------------------------");
+			System.out.println("-----------------------------------------------------------------------------------------\n");
+
 			System.out.println("Enter the Course Code : ");
 			String courseCode = sc.nextLine();
 
 			try {
 				registrationInterface.dropCourse(courseCode, studentId, semester);
 				System.out.println("You have successfully dropped Course : " + courseCode);
+				System.out.println("-----------------------------------------------------------------------------------------\n");
 
 			} catch (CourseNotFoundException | SQLException | CourseNotDeletedException e) {
 
@@ -236,6 +250,9 @@ public class StudentMenuCRS {
 			return null;
 		}
 
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("------------------------------------AVAILABLE COURSES---------------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------\n");
 		System.out
 				.println(String.format("%-20s %-20s %-20s %-20s", "COURSE CODE", "COURSE NAME", "INSTRUCTOR", "SEATS"));
 		System.out.println("-----------------------------------------------------------------------------------------");
@@ -270,6 +287,10 @@ public class StudentMenuCRS {
 			System.out.println("You haven't registered for any course");
 			return null;
 		}
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("------------------------------------REGISTERED COURSES-----------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------\n");
+
 		System.out.println("-----------------------------------------------------------------------------------------");
 
 		System.out.println(String.format("%-20s %-20s %-20s", "COURSE CODE", "COURSE NAME", "INSTRUCTOR"));
@@ -301,7 +322,9 @@ public class StudentMenuCRS {
 		}
 
 
-		
+
+		System.out.println("----------------------------------------------------------------------------------------");
+		System.out.println("------------------------------------REPORT CARD----------------------------------------");
 		System.out.println("-----------------------------------------------------------------------------------------");
 
 		if (grade_card == null) {
