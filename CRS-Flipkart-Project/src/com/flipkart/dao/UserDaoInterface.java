@@ -9,16 +9,16 @@ public interface UserDaoInterface {
 	 * @param userId
 	 * @param password
 	 * @throws UserNotFoundException
+	 * @return boolean for successful/unsuccessful login
 	 */
 	public boolean verifyCredentials(String userId,String password) throws UserNotFoundException;
-	
+
 	/**
 	 * Method to update password of user in DataBase
-	 * @param userID
-	 * @throws UserNotFoundException
+	 * @param userId
+	 * @param password
 	 * @return Update Password operation Status
 	 */
-
 	public boolean updatePassword(String userId, String password) throws UserNotFoundException;
 	
 	/**

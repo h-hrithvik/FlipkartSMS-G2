@@ -12,7 +12,7 @@ public interface StudentInterface {
 	/**
 	 * Function to know whether the student profile is verified by admin or not
 	 * 
-	 * @param student
+	 * @param studentId
 	 * @throws StudentNotRegisteredException
 	 * @return verified status
 	 */
@@ -21,7 +21,7 @@ public interface StudentInterface {
 	/**
 	 * Function to view report card for student
 	 * 
-	 * @param student
+	 * @param studentId
 	 * @throws StudentNotRegisteredException
 	 * @return report card
 	 */
