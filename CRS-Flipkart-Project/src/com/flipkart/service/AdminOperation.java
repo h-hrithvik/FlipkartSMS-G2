@@ -3,6 +3,7 @@
  */
 package com.flipkart.service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import org.apache.log4j.Logger;
 import com.flipkart.bean.Course;
@@ -18,6 +19,7 @@ import com.flipkart.exception.ProfessorNotDeletedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
+import com.flipkart.exception.UserNotFoundException;
 
 /**
  *
@@ -139,10 +141,13 @@ public class AdminOperation implements AdminInterface {
 	 */
 	int counter=0,sum=0;
 	@Override
-	public void generateReport(String StudentId, int semester) throws StudentNotRegisteredException {
+	public void generateReport(String StudentId, int semester) throws StudentNotRegisteredException  {
 
 		try {
 			HashMap<String, String> gradecrd = adminDaoOperation.fetchGrades(StudentId, semester);
+			if(gradecrd == null) {
+				throw new StudentNotRegisteredException(StudentId);
+			}
 			gradecrd.forEach((k, v) -> {
 				counter = counter + 1;
 				if (v.toString().equals("A".toString()))
@@ -156,7 +161,7 @@ public class AdminOperation implements AdminInterface {
 			});
 			float CPI = (float)sum/counter;
 			adminDaoOperation.generateReport(semester, StudentId, CPI);
-		} catch (Exception e) {
+		} catch (StudentNotRegisteredException  e) {
 			logger.error(e.getMessage());
 		}
 	}
@@ -173,9 +178,7 @@ public class AdminOperation implements AdminInterface {
 	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException {
 		try {
 			adminDaoOperation.removeProfessor(professorId);
-		} catch (ProfessorNotAddedException e) {
-			logger.error(e.getMessage());
-		} catch (ProfessorNotDeletedException e) {
+		} catch (ProfessorNotDeletedException|UserNotFoundException e) {
 			logger.error(e.getMessage());
 		}
 	}

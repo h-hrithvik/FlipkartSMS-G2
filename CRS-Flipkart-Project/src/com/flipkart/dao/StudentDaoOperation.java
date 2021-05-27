@@ -85,13 +85,21 @@ public class StudentDaoOperation implements StudentDaoInterface {
 				ResultSet results=preparedStatementStudent.getGeneratedKeys();
 				if(results.next())
 					studentId=results.getString(0);
+				System.out.println("----------------------------------SUCCESSFULLY REGISTERED-----------------------------\n");
+
+
+			}
+			else {
+				throw new UserAlreadyExistException(student.getUserId());
 			}
 			
 			
 		}
-		catch(Exception ex)
+		catch(UserAlreadyExistException|SQLException ex)
 		{
-			throw new UserAlreadyExistException(student.getUserId());
+			System.out.println("-----------------REGISTERATION FAILED!!-------------------------");
+			logger.error("User with user id : "+ student.getUserId()+" already exists.");
+			
 		}
 		return studentId;
 	}

@@ -71,7 +71,7 @@ public interface AdminDaoInterface {
 	 * @throws ProfessorNotAddedException
 	 * @throws UserNotFoundException
 	 */
-	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException,ProfessorNotDeletedException;
+	public void removeProfessor(String prefessorId) throws ProfessorNotAddedException,ProfessorNotDeletedException, UserNotFoundException;
 
 	/**
 	 * Function to generate report

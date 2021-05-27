@@ -101,7 +101,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	public void addCourse(Course course) throws AddCourseException {
 		statement = null;
 		try {
-
+			
 			String sql = SQLQueriesConstants.ADD_COURSE_QUERY;
 			statement = connection.prepareStatement(sql);
 
@@ -113,16 +113,17 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 			logger.info(row + " course added");
 			if (row == 0) {
-				logger.info("Course with courseId: " + course.getCourseId() + "not added in catalog.");
+				
 				throw new AddCourseException(course.getCourseId());
 			}
 
 			logger.info("Course with courseId: " + course.getCourseId() + " is added to catalog.");
 
-		} catch (SQLException se) {
+		} catch (AddCourseException | SQLException se) {
 
-			logger.error(se.getMessage());
-			throw new AddCourseException(course.getCourseId());
+			
+			logger.error("Kindly check your InstructorId or your CourseID.");
+			logger.error("Course not added.......Try again!!");
 
 		}
 	}
@@ -247,7 +248,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	 * @throws ProfessorNotAddedException
 	 * @throws ProfessorNotDeletedException
 	 */
-	public void removeProfessor(String professorId) throws ProfessorNotAddedException, ProfessorNotDeletedException {
+	public void removeProfessor(String professorId) throws UserNotFoundException, ProfessorNotDeletedException {
 		statement = null;
 		try {
 			String sql = SQLQueriesConstants.DELETE_PROFESSOR_QUERY;
@@ -259,7 +260,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			System.out.println(row + " entries deleted.");
 			if (row == 0) {
 				logger.info(professorId + " not found!");
-				throw new ProfessorNotAddedException(professorId);
+				throw new UserNotFoundException(professorId);
 			}
 			sql = SQLQueriesConstants.DELETE_USER_QUERY;
 			statement = connection.prepareStatement(sql);
@@ -302,10 +303,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			logger.info("User with userId: " + StudentId + " added.");
 
 		} catch (SQLException se) {
-
-			logger.error(se.getMessage());
-			throw new StudentNotRegisteredException(StudentId);
-
+			logger.error("Either Student Not Registered or grades not added.");
 		}
 	}
 

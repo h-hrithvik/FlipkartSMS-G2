@@ -98,13 +98,11 @@ public class RegistrationOperation implements RegistrationInterface {
 			throws CourseNotDeletedException, SQLException {
 		try {
 			if(!registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
-				throw new StudentNotRegisteredException(studentId);
+				throw new SQLException();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (StudentNotRegisteredException e) {
-			e.printStackTrace();
-		}
+			logger.error("");
+		} 
 		return registrationDaoInterface.removeCourse(courseId, studentId, semester);
 	}
 

@@ -136,7 +136,7 @@ public class StudentMenuCRS {
 					System.out.println("Course " + courseId + " registered successfully.");
 					count++;
 				} else {
-					System.out.println(" You have already registered for Course : " + courseId);
+					System.out.println(" Either you had already registered for Course or Invalid course Id. ");
 				}
 			} catch (AddCourseException | CourseNotFoundException | CourseLimitReachedException | SQLException e) {
 				System.out.println(e.getMessage());
