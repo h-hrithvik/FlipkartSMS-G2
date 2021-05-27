@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.flipkart.client;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
@@ -37,9 +35,9 @@ public class AdminMenuCRS {
 		
 		int in=0;
 		while(in!=7) {
-			System.out.println("------------------------------------------");
-			System.out.println("            ADMIN MENU");
-			System.out.println("------------------------------------------");
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("---------------------------------------------ADMIN MENU---------------------------------------");
+			System.out.println("---------------------------------------------------------------------------------------------\n");
 
 			System.out.println("1. Add Course to catalog");
 			System.out.println("2. Delete Course from catalog");
@@ -50,8 +48,8 @@ public class AdminMenuCRS {
 			System.out.println("7. Exit Admin Menu");
 
 			System.out.println("------------------------------------------");
-			System.out.println("  ENTER YOUR CHOICE");
-			System.out.println();
+			System.out.print("ENTER YOUR CHOICE--->:\t");
+
 
 			in=scanner.nextInt();
 			scanner.nextLine();
@@ -94,6 +92,10 @@ public class AdminMenuCRS {
 	 */
 	private void addCourse()
 	{
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("---------------------------------------ADD COURSE TO CATALOG--------------------------------");
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		System.out.println("Enter Course Code:");
 		String courseCode = scanner.nextLine();
 		
@@ -109,7 +111,9 @@ public class AdminMenuCRS {
 			adminOperation.addCourse(course);
 		} catch (AddCourseException e) {
 			System.out.println(e.getMessage());
-		}	
+		}
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 	}
 
 
@@ -118,6 +122,10 @@ public class AdminMenuCRS {
 	 */
 	private void deleteCourse()
 	{
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("-----------------------------------DELETE COURSE FROM CATALOG--------------------------------");
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		System.out.println("Enter Course Code:");
 		String courseCode = scanner.next();
 		
@@ -126,6 +134,8 @@ public class AdminMenuCRS {
 		} catch (CourseNotFoundException | CourseNotDeletedException e) {
 			logger.error(e.getMessage());
 		}
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 	}
 
 
@@ -133,7 +143,11 @@ public class AdminMenuCRS {
 	 * Method to approve studentId
 	 */
 	private boolean approveStudent()
-	{	
+	{
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("---------------------------------------APPROVE STUDENT--------------------------------------");
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		System.out.println("Enter Student's ID:");
 		String studentUserIdApproval = scanner.nextLine();
 		
@@ -144,6 +158,8 @@ public class AdminMenuCRS {
 		} catch (StudentNotFoundForVerificationException e) {
 			logger.error(e.getMessage());
 		}
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		return false;
 	}
 
@@ -153,6 +169,10 @@ public class AdminMenuCRS {
 	 */
 	private void addProfessor()
 	{
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("---------------------------------------ADD PROFESOR----------------------------------------");
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		System.out.println("Enter Professor Name:");
 		String professorName = scanner.next();
 
@@ -180,6 +200,9 @@ public class AdminMenuCRS {
 		} catch (ProfessorNotAddedException | UserAlreadyExistException e) {
 			logger.error(e.getMessage());
 		}
+
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 	}
 
 
@@ -188,6 +211,10 @@ public class AdminMenuCRS {
 	 */	
 	private void removeProfessor() 
 	{
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("---------------------------------------REMOVE PROFESOR----------------------------------------");
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		System.out.println("Enter Professor Code:");
 		String professorId = scanner.next();
 		
@@ -204,6 +231,10 @@ public class AdminMenuCRS {
 	 */
 	private void generateReport()
 	{
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("---------------------------------------GENERATE PROFESOR----------------------------------------");
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 		System.out.println("Enter student Id:");
 		String studentId = scanner.nextLine();
 		
@@ -213,6 +244,8 @@ public class AdminMenuCRS {
 			adminOperation.generateReport(studentId,studentSem);
 		} catch (StudentNotRegisteredException e) {
 			logger.error(e.getMessage());
-		}	
+		}
+		System.out.println("---------------------------------------------------------------------------------------------\n");
+
 	}
 }
