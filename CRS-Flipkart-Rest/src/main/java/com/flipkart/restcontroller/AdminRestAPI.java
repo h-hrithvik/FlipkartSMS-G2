@@ -25,6 +25,7 @@ import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
 import com.flipkart.service.AdminOperation;
@@ -120,8 +121,34 @@ public class AdminRestAPI {
 			return Response.status(201).entity("Professor with professorId: " + professor.getUserId() + " added").build();
 		} catch (ProfessorNotAddedException | UserAlreadyExistException e) {
 			return Response.status(409).entity(e.getMessage()).build();
+		}				
+	}
+	
+	/**
+	 * /admin/genReport
+	 * REST- for generating report card
+	 * @param studentId 
+	 * @param student Semester
+	 * @return
+	 */
+	@POST
+	@Path("/genReport")
+	@Consumes("application/json")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response generateReport(
+			@NotNull
+			@QueryParam("studentId") String studentId,
+			
+			@NotNull
+			@QueryParam("Semester") int studentSem) throws ValidationException{
+		
+		try {
+			adminOperation.generateReport(studentId,studentSem);
+			return Response.status(201).entity("Generated Report Card for studentId: " + studentId ).build();
+		} catch (StudentNotRegisteredException e) {
+			return Response.status(409).entity(e.getMessage()).build();
 		}
-				
+						
 	}
 
 }
