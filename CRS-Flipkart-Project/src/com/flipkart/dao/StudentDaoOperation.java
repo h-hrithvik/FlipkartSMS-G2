@@ -3,6 +3,7 @@
  */
 package com.flipkart.dao;
 
+import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,14 +23,32 @@ import com.flipkart.utils.DBUtils;
  *
  */
 public class StudentDaoOperation implements StudentDaoInterface {
-
+	
+	private static volatile StudentDaoOperation instance=null;
+	private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
 	
 	/**
 	 * Default Constructor
 	 */
-	public StudentDaoOperation()
+	private StudentDaoOperation()
 	{
 		
+	}
+	
+	/**
+	 * Method to make StudentDaoOperation Singleton
+	 * @return
+	 */
+	public static StudentDaoOperation getInstance()
+	{
+		if(instance==null)
+		{
+			// This is a synchronized block, when multiple threads will access this instance
+			synchronized(StudentDaoOperation.class){
+				instance=new StudentDaoOperation();
+			}
+		}
+		return instance;
 	}
 	
 	/**
@@ -54,12 +73,9 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			preparedStatement.setString(5, student.getPhoneNumber().toString());
 			preparedStatement.setString(6, student.getAddress().toString());
 			int rowsAffected=preparedStatement.executeUpdate();
-//			System.out.println(rowsAffected);
 			if(rowsAffected==1)
 			{
 				//add the student record
-//				System.out.println(rowsAffected);
-				//"insert into student (userId,branchName,batch,isApproved) values (?,?,?,?)";
 				PreparedStatement preparedStatementStudent;
 				preparedStatementStudent=connection.prepareStatement(SQLQueriesConstants.ADD_STUDENT,Statement.RETURN_GENERATED_KEYS);
 				preparedStatementStudent.setString(1,student.getUserId().toString());
@@ -102,7 +118,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		}
 		catch(SQLException e)
 		{
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		
 		return "";
@@ -132,7 +148,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		}
 		catch(SQLException e)
 		{
-			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 		}
 		
 		return 0;

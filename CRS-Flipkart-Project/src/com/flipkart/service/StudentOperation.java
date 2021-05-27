@@ -11,11 +11,34 @@ import com.flipkart.dao.StudentDaoOperation;
 import com.flipkart.exception.PaymentNotFoundException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
+import org.apache.log4j.Logger;
 
 public class StudentOperation implements StudentInterface {
 	
-	StudentDaoInterface studentDaoInterface= new StudentDaoOperation();
+	private static volatile StudentOperation instance=null;
+	private static Logger logger = Logger.getLogger(StudentOperation.class);
+	StudentDaoInterface studentDaoInterface=StudentDaoOperation.getInstance();
 	RegistrationDaoInterface registrationDaoInterface = RegistrationDaoOperation.getInstance();
+
+	private StudentOperation()
+	{
+		
+	}
+	/**
+	 * Method to make StudentOperation Singleton
+	 * @return
+	 */
+	public static StudentOperation getInstance()
+	{
+		if(instance==null)
+		{
+			// This is a synchronized block, when multiple threads will access this instance
+			synchronized(StudentOperation.class){
+				instance=new StudentOperation();
+			}
+		}
+		return instance;
+	}
 
 
 
