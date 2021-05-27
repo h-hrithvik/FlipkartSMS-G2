@@ -185,7 +185,7 @@ public class AdminMenuCRS {
 		System.out.println("Enter Phone:");
 		String phoneNo = scanner.next();
 		
-		System.out.println("Enter User Id:");
+		System.out.println("Enter Email Id:");
 		String userId = scanner.next();
 		
 		System.out.println("Enter Password:");
@@ -194,8 +194,7 @@ public class AdminMenuCRS {
 		System.out.println("Enter Address:");
 		String address = scanner.next();
 
-		System.out.println("Enter Professor Id:");
-		String professorId = scanner.next();
+		String professorId = userId;
 
 		System.out.println("Enter Department:");
 		String department = scanner.next();
