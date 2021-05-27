@@ -5,6 +5,8 @@ package com.flipkart.restcontroller;
 
 import javax.validation.Valid;
 import javax.validation.ValidationException;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.ws.rs.Consumes;
@@ -17,9 +19,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.flipkart.bean.Course;
+import com.flipkart.bean.Professor;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.StudentNotFoundForVerificationException;
+import com.flipkart.exception.UserAlreadyExistException;
 import com.flipkart.service.AdminInterface;
 import com.flipkart.service.AdminOperation;
 
@@ -42,7 +48,7 @@ public class AdminRestAPI {
 	@Path("/deleteCourse")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteCourse(
-			@Size(min = 1 , max = 10 , message = "Course Code length should be between 4 and 10 character")
+			//@Size(min = 1 , max = 10 , message = "Course Code length should be between 4 and 10 character")
 			@NotNull
 			@QueryParam("courseId") String courseCode) throws ValidationException{
 		
@@ -74,6 +80,48 @@ public class AdminRestAPI {
 			return Response.status(409).entity(e.getMessage()).build();
 		}
 			
+	}
+	
+	/**
+	 * /admin/approveStudent
+	 * REST-service for approving the student admission
+	 * @param studentId
+	 * @return
+	 */
+	@PUT
+	@Path("/approveStudent")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response approveStudent(
+			@NotNull
+			@QueryParam("studentId") String studentId) throws ValidationException{
+		try {
+			adminOperation.approveStudent(studentId);
+			return Response.status(201).entity("Student with studentId: " + studentId + " approved").build();
+	
+		} catch (StudentNotFoundForVerificationException e) {
+			return Response.status(409).entity(e.getMessage()).build();
+		}		
+	}
+	
+	/**
+	 * /admin/addProfessor
+	 * REST-service for addding a new professor
+	 * @param professor
+	 * @return
+	 */
+	@POST
+	@Path("/addProfessor")
+	@Consumes("application/json")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addProfessor(@Valid Professor professor) throws ValidationException{
+		 
+		try {
+			adminOperation.addProfessor(professor);
+			return Response.status(201).entity("Professor with professorId: " + professor.getUserId() + " added").build();
+		} catch (ProfessorNotAddedException | UserAlreadyExistException e) {
+			return Response.status(409).entity(e.getMessage()).build();
+		}
+				
 	}
 
 }
