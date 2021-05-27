@@ -24,6 +24,7 @@ import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseNotDeletedException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorNotAddedException;
+import com.flipkart.exception.ProfessorNotDeletedException;
 import com.flipkart.exception.StudentNotFoundForVerificationException;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
@@ -149,6 +150,28 @@ public class AdminRestAPI {
 			return Response.status(409).entity(e.getMessage()).build();
 		}
 						
+	}
+	
+	/**
+	 * /admin/deleteProfessor
+	 * REST-services for removing a professor from database
+	 * @param courseCode
+	 * @return
+	 */
+	@PUT
+	@Path("/deleteProfessor")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response removeProfessor(
+			@NotNull
+			@QueryParam("professorId") String professorId) throws ValidationException{
+		
+		try {
+			adminOperation.removeProfessor(professorId);
+			return Response.status(201).entity("Course with courseCode: " + professorId + " deleted from catalog").build();
+		} catch (ProfessorNotAddedException | ProfessorNotDeletedException e) {
+			return Response.status(409).entity(e.getMessage()).build();
+		}
+		
 	}
 
 }
