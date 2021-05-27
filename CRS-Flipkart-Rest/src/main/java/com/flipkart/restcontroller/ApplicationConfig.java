@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flipkart.restcontroller;
+package com.flipkart.restController;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
