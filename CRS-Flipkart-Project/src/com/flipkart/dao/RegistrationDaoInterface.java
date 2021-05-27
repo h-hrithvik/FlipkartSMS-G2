@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.PaymentNotFoundException;
 import com.flipkart.bean.Payment;
 
@@ -27,8 +28,9 @@ public interface RegistrationDaoInterface {
 	 * @param studentId
 	 * @return boolean indicating if the course is added successfully
 	 * @throws SQLException
+	 * @throws CourseNotFoundException 
 	 */
-	public boolean addCourse(String courseId, String studentId, int semester) throws SQLException;
+	public boolean addCourse(String courseId, String studentId, int semester) throws  SQLException;
 
 	/**
 	 * Drop Course selected by student

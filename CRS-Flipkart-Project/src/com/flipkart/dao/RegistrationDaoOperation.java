@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.constant.SQLQueriesConstants;
+import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.PaymentNotFoundException;
 import com.flipkart.bean.Payment;
 import com.flipkart.utils.DBUtils;
@@ -79,16 +80,16 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			return count;
 
 		}
-		catch (SQLException e) 
-		{
-
-			logger.error(e.getMessage());
-
-		} 
+//		catch (SQLException e) 
+//		{
+//
+//			logger.error(e.getMessage());
+//
+//		} 
 		catch (Exception e)
 		{
-
-			logger.error(e.getMessage());
+			
+			logger.error("");
 		}
 		
 		return count;
@@ -121,7 +122,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 
 			return true;
 		} catch (SQLException e) {
-			logger.error(e.getMessage());
+			logger.error("");
 		} 
 		return false;
 	}

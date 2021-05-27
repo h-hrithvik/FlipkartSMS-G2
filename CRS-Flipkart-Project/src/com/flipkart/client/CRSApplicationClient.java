@@ -50,7 +50,7 @@ public class CRSApplicationClient {
 		printMenu();
 		int Input=sc.nextInt();
 		
-		while(Input!=4)
+		while(Input!=3)
 		{
 			switch(Input)
 			{	
@@ -60,12 +60,15 @@ public class CRSApplicationClient {
 				case 2:
 					loginUser();
 					break;
+				case 3:
+					break;
 				default:
 					System.out.println("Enter a valid input");
 			}
 			printMenu();
 			Input = sc.nextInt();
 		}
+		System.out.println("*******************************Thank you for using our Application.*********************************");
 		sc.close();
 	}
 
@@ -116,6 +119,8 @@ public class CRSApplicationClient {
 			StudentOperation studentOperation = new StudentOperation();
 			studentOperation.registerStudent(name, mobileNumber, address, userId, password, String.valueOf(STUDENT),
 					rollNumber, branch, false);
+			System.out.println("----------------------------------SUCCESSFULLY REGISTERED-----------------------------\n");
+
 			System.out.println("-----------------------------------------------------------------------------------------\n");
 
 		} catch (UserAlreadyExistException ex) {

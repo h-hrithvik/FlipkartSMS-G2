@@ -19,6 +19,7 @@ public interface RegistrationInterface {
 	 * @return true/false for successful/unsuccessful operation of adding a course.
 	 * @throws AddCourseException
 	 * @throws SQLException 
+	 * @throws  
 	 */
 	public boolean addCourse(String courseId, String studentId, int semester) throws CourseNotFoundException,AddCourseException, CourseLimitReachedException, SQLException;
 

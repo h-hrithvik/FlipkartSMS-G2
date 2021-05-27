@@ -3,11 +3,14 @@ package com.flipkart.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Payment;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.dao.RegistrationDaoInterface;
 import com.flipkart.dao.RegistrationDaoOperation;
+import com.flipkart.dao.StudentDaoOperation;
 import com.flipkart.exception.AddCourseException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.CourseLimitReachedException;
@@ -19,6 +22,7 @@ import com.flipkart.exception.StudentNotRegisteredException;
 public class RegistrationOperation implements RegistrationInterface {
 
 	private static volatile RegistrationOperation instance = null;
+	private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
 
 	/**
 	 * Default constructor
@@ -66,12 +70,13 @@ public class RegistrationOperation implements RegistrationInterface {
 				throw new CourseAlreadyRegisteredException(courseId);
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			logger.error("");
 		} catch(CourseLimitReachedException e) {
-			e.printStackTrace();
+			logger.error("");
 		} catch (CourseAlreadyRegisteredException e) {
-			e.printStackTrace();
+			logger.error("");
 		}
 
 		return registrationDaoInterface.addCourse(courseId, studentId, semester);

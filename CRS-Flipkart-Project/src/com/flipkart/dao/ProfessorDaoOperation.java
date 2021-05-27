@@ -116,7 +116,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface{
 		try {
 			PreparedStatement statement = connection.prepareStatement(SQLQueriesConstants.ADD_GRADE);
 			
-			logger.debug(grade + "   " + courseId);
+			logger.info(courseId + " ->  " + grade);
 			statement.setString(1, grade);
 			statement.setString(2, courseId);
 			statement.setString(3, studentId);

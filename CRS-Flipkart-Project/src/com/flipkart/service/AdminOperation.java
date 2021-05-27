@@ -154,7 +154,7 @@ public class AdminOperation implements AdminInterface {
 				else
 					sum += 1;
 			});
-			float CPI = sum / counter;
+			float CPI = (float)sum/counter;
 			adminDaoOperation.generateReport(semester, StudentId, CPI);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
