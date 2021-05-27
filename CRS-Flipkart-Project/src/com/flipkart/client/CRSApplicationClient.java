@@ -4,7 +4,7 @@ package com.flipkart.client;
 import java.util.Scanner;
 
 import javax.management.relation.Role;
-
+import org.apache.log4j.Logger;
 import com.flipkart.constant.RoleConstants;
 import com.flipkart.exception.StudentNotRegisteredException;
 import com.flipkart.exception.UserAlreadyExistException;
@@ -18,6 +18,11 @@ import com.flipkart.service.UserOperation;
 import static com.flipkart.constant.RoleConstants.STUDENT;
 
 public class CRSApplicationClient {
+
+	private static Logger logger = Logger.getLogger(CRSApplicationClient.class);
+	static boolean loggedin = false;
+
+	UserInterface userInterface =UserOperation.getInstance();
 
 	public static void main(String[] args) throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);

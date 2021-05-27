@@ -12,14 +12,17 @@ import com.flipkart.exception.UserNotFoundException;
 import com.flipkart.utils.DBUtils;
 
 public class UserDaoOperation implements UserDaoInterface {
+
 	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
 	private static volatile UserDaoOperation instance=null;
+
 	/**
-	 * @param userId
-	 * @param password
-	 * @throws UserNotFoundException
+	 * Default Constructor
 	 */
-//	Connection connection = DBUtils.getConnection();
+	private UserDaoOperation()
+	{
+
+	}
 
 	public static UserDaoOperation getInstance()
 	{
@@ -32,7 +35,13 @@ public class UserDaoOperation implements UserDaoInterface {
 		}
 		return instance;
 	}
-	
+
+	/**
+	 * Method to update password of user in DataBase
+	 * @param userId
+	 * @param password
+	 * @return Update Password operation Status
+	 */
 	@Override
 	public boolean updatePassword(String userId, String password) throws UserNotFoundException {
 		Connection connection = DBUtils.getConnection();
@@ -49,6 +58,7 @@ public class UserDaoOperation implements UserDaoInterface {
 		} 
 		return false;
 	}
+
 
 	/**
 	 * Method to verify credentials of Users from DataBase
@@ -73,13 +83,7 @@ public class UserDaoOperation implements UserDaoInterface {
 		} catch (SQLException e) {
 			logger.error(e.getMessage());
 		}
-//		finally {
-//			try {
-//				connection.close();
-//			} catch (SQLException e) {
-//				System.out.println(e.getMessage());
-//			}
-//		}
+
 		return false;
 	}
 
