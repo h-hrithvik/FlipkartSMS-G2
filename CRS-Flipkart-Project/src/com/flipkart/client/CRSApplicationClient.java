@@ -22,9 +22,9 @@ public class CRSApplicationClient {
 	public static void main(String[] args) throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
 		boolean logge2dIn = false;
-		System.out.println("=============================================================");
-		System.out.println("*******   WELCOME to Course Registration System!!!  *********");
-		System.out.println("==============================================================");
+		System.out.println("================================================================================");
+		System.out.println("********************WELCOME to Course Registration System!!!********************");
+		System.out.println("================================================================================");
 
 		printMenu();
 		int Input=sc.nextInt();
@@ -49,15 +49,16 @@ public class CRSApplicationClient {
 	}
 
 	public static void printMenu() {
-		System.out.println("------------------------------------------");
-		System.out.println("			  MAIN MENU");
-		System.out.println("------------------------------------------");
+		System.out.println("\n\n----------------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------MAIN MENU-----------------------------------");
+		System.out.println("-----------------------------------------------------------------------------------------\n");
+
 		System.out.println("1. Signup");
 		System.out.println("2. Login ");
 		System.out.println("3. Exit");
 		System.out.println("------------------------------------------");
-		System.out.println("  ENTER YOUR CHOICE");
-		System.out.println();
+		System.out.print("ENTER YOUR CHOICE----->:\t");
+
 	}
 	
 	private static void registerStudent() {
@@ -67,9 +68,9 @@ public class CRSApplicationClient {
 
 		try {
 			// input all the student details
-			System.out.println("------------------------------------------");
-			System.out.println("        STUDENT REGISTRATION");
-			System.out.println("------------------------------------------");
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------------STUDENT SIGN UP------------------------------");
+			System.out.println("-----------------------------------------------------------------------------------------\n");
 
 			System.out.println("Name:");
 			name = sc.nextLine();
@@ -89,6 +90,7 @@ public class CRSApplicationClient {
 			StudentOperation studentOperation = new StudentOperation();
 			studentOperation.registerStudent(name, mobileNumber, address, userId, password, String.valueOf(STUDENT),
 					rollNumber, branch, false);
+			System.out.println("-----------------------------------------------------------------------------------------\n");
 
 		} catch (UserAlreadyExistException ex) {
 			ex.getMessage();
@@ -100,9 +102,9 @@ public class CRSApplicationClient {
 
 		String userId, password;
 		try {
-			System.out.println("------------------------------------------");
-			System.out.println("                LOGIN");
-			System.out.println("------------------------------------------");
+			System.out.println("\n\n----------------------------------------------------------------------------------------");
+			System.out.println("---------------------------------------------LOGIN----------------------------------------");
+			System.out.println("-----------------------------------------------------------------------------------------\n");
 
 			System.out.println("Email:");
 			userId = sc.next();
@@ -146,6 +148,7 @@ public class CRSApplicationClient {
 			} else {
 				System.out.println("Invalid Credentials!");
 			}
+			System.out.println("-----------------------------------------------------------------------------------------\n");
 
 		} catch (UserNotFoundException ex) {
 			System.out.println(ex.getMessage());
