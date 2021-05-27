@@ -28,10 +28,12 @@ import com.flipkart.service.RegistrationOperation;
 
 public class StudentMenuCRS {
 
+	/*
+	 * Getting all reqiured objects for all the operations
+	 * 
+	 * */
 	Scanner sc = new Scanner(System.in);
-
 	private static Logger logger = Logger.getLogger(StudentMenuCRS.class);
-
 	RegistrationInterface registrationInterface = RegistrationOperation.getInstance();
 	ProfessorInterface professorInterface = ProfessorOperation.getInstance();
 
@@ -170,7 +172,7 @@ public class StudentMenuCRS {
 				if (registrationInterface.addCourse(courseCode, studentId, semester)) {
 					System.out.println(" You have successfully registered for Course : " + courseCode);
 				} else {
-					System.out.println(" You have already registered for Course : " + courseCode);
+					System.out.println(" Course not found!! " );
 				}
 				System.out.println("-----------------------------------------------------------------------------------------\n");
 
@@ -217,7 +219,7 @@ public class StudentMenuCRS {
 
 			try {
 				registrationInterface.dropCourse(courseCode, studentId, semester);
-				System.out.println("You have successfully dropped Course : " + courseCode);
+				System.out.println("You have successfully dropped Course with courseId: " + courseCode);
 				System.out.println("-----------------------------------------------------------------------------------------\n");
 
 			} catch (CourseNotFoundException | SQLException | CourseNotDeletedException e) {

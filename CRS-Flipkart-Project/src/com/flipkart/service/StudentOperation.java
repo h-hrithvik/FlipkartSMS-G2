@@ -20,7 +20,7 @@ public class StudentOperation implements StudentInterface {
 	StudentDaoInterface studentDaoInterface=StudentDaoOperation.getInstance();
 	RegistrationDaoInterface registrationDaoInterface = RegistrationDaoOperation.getInstance();
 
-	private StudentOperation()
+	public StudentOperation()
 	{
 		
 	}

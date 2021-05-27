@@ -17,13 +17,29 @@ import com.flipkart.service.UserOperation;
 
 import static com.flipkart.constant.RoleConstants.STUDENT;
 
+
+
+/*
+ * The class displays the menu
+ *  for CRS project
+ *
+ */
+ 
 public class CRSApplicationClient {
 
+	/*
+	 * Getting all reqiured objects for all the operations
+	 * 
+	 * */
 	private static Logger logger = Logger.getLogger(CRSApplicationClient.class);
 	static boolean loggedin = false;
-
 	UserInterface userInterface =UserOperation.getInstance();
 
+	
+	/*
+	 * Main Menu of the project
+	 * 
+	 * */
 	public static void main(String[] args) throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
 		boolean logge2dIn = false;
@@ -53,6 +69,7 @@ public class CRSApplicationClient {
 		sc.close();
 	}
 
+	
 	public static void printMenu() {
 		System.out.println("\n\n----------------------------------------------------------------------------------------");
 		System.out.println("----------------------------------------------MAIN MENU-----------------------------------");
@@ -66,6 +83,10 @@ public class CRSApplicationClient {
 
 	}
 	
+	/*
+	 *Student signup function 
+	 * 
+	 * */
 	private static void registerStudent() {
 		Scanner sc = new Scanner(System.in);
 
@@ -102,6 +123,10 @@ public class CRSApplicationClient {
 		}
 	}
 
+	/*
+	 *Student Login after signup 
+	 * 
+	 * */
 	private static void loginUser() throws StudentNotRegisteredException {
 		Scanner sc = new Scanner(System.in);
 

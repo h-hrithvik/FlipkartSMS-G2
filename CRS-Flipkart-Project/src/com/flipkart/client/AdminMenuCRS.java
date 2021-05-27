@@ -26,11 +26,17 @@ import com.flipkart.service.AdminInterface;
 
 public class AdminMenuCRS {
 
+	/*
+	 * Getting all reqiured objects for all the operations
+	 * 
+	 * */
 	private static Logger logger = Logger.getLogger(AdminMenuCRS.class);
-
 	AdminInterface adminOperation =AdminOperation.getInstance();
 	Scanner scanner = new Scanner(System.in);
 
+	/*
+	 * Creates AdminMenu
+	 * */
 	public void createMenu(){		
 		
 		int in=0;
