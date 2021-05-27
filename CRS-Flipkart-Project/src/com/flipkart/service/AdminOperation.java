@@ -139,7 +139,7 @@ public class AdminOperation implements AdminInterface {
 	 * @param semester semester of student
 	 * @throws StudentNotRegisteredException
 	 */
-	int counter=0,sum=0;
+	float counter=0.0f,sum=0.0f;
 	@Override
 	public void generateReport(String StudentId, int semester) throws StudentNotRegisteredException  {
 
@@ -159,7 +159,9 @@ public class AdminOperation implements AdminInterface {
 				else
 					sum += 1;
 			});
+			
 			float CPI = (float)sum/counter;
+			
 			adminDaoOperation.generateReport(semester, StudentId, CPI);
 		} catch (StudentNotRegisteredException  e) {
 			logger.error(e.getMessage());

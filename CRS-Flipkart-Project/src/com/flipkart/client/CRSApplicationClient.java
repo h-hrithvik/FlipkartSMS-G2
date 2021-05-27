@@ -48,25 +48,25 @@ public class CRSApplicationClient {
 		System.out.println("================================================================================");
 
 		printMenu();
-		String Input=sc.nextLine();
+		int Input=sc.nextInt();
 		
-		while(Input!="3")
+		while(Input!=3)
 		{
 			switch(Input)
 			{	
-				case "1":
+				case 1:
 					registerStudent();
 					break;
-				case "2":
+				case 2:
 					loginUser();
 					break;
-				case "3":
+				case 3:
 					break;
 				default:
 					System.out.println("Enter a valid input");
 			}
 			printMenu();
-			Input = sc.nextLine();
+			Input = sc.nextInt();
 		}
 		System.out.println("*******************************Thank you for using our Application.*********************************");
 		sc.close();

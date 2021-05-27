@@ -63,23 +63,24 @@ public class RegistrationOperation implements RegistrationInterface {
 	public boolean addCourse(String courseId, String studentId, int semester) throws CourseNotFoundException,AddCourseException, CourseLimitReachedException, SQLException {
 
 		try {
-			if (registrationDaoInterface.numOfRegisteredCourses(studentId, semester) == 6) {
+			if (registrationDaoInterface.numOfRegisteredCourses(studentId, semester) >= 6) {
 				throw new CourseLimitReachedException(semester);
 			}
 			if (registrationDaoInterface.isRegistered(courseId, studentId, semester)) {
 				throw new CourseAlreadyRegisteredException(courseId);
 			}
-
+			return registrationDaoInterface.addCourse(courseId, studentId, semester);
 		}
 		catch (SQLException e) {
 			logger.error("");
 		} catch(CourseLimitReachedException e) {
-			logger.error("");
+			logger.error("You cannot register for more than 6 courses.");
 		} catch (CourseAlreadyRegisteredException e) {
 			logger.error("");
 		}
-
-		return registrationDaoInterface.addCourse(courseId, studentId, semester);
+	
+		return false;
+		
 	}
 
 
@@ -101,7 +102,7 @@ public class RegistrationOperation implements RegistrationInterface {
 				throw new SQLException();
 			}
 		} catch (SQLException e) {
-			logger.error("");
+			//logger.error("");
 		} 
 		return registrationDaoInterface.removeCourse(courseId, studentId, semester);
 	}

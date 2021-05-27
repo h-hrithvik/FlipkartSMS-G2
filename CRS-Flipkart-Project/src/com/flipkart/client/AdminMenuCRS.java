@@ -39,8 +39,8 @@ public class AdminMenuCRS {
 	 * */
 	public void createMenu(){		
 		
-		String in="0";
-		while(in!="7") {
+		int in=0;
+		while(in!=7) {
 			System.out.println("\n\n----------------------------------------------------------------------------------------");
 			System.out.println("---------------------------------------------ADMIN MENU---------------------------------------");
 			System.out.println("---------------------------------------------------------------------------------------------\n");
@@ -57,33 +57,34 @@ public class AdminMenuCRS {
 			System.out.print("ENTER YOUR CHOICE--->:\t");
 
 
-			in=scanner.nextLine();
+			in=scanner.nextInt();
+			scanner.nextLine();
 			switch(in) {
-			case "1":
+			case 1:
 				addCourse();
 				break;
 					
-			case "2":
+			case 2:
 				deleteCourse();
 				break;
 					
-			case "3":
+			case 3:
 				approveStudent();
 				break;
 					
-			case "4":
+			case 4:
 				addProfessor();
 				break;
 			
-			case "5":
+			case 5:
 				generateReport();
 				break;
 				
-			case "6":
+			case 6:
 				removeProfessor();
 				break;
 				
-			case "7":
+			case 7:
 				return;
 				
 			default:

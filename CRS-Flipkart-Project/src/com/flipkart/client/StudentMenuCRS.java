@@ -67,39 +67,39 @@ public class StudentMenuCRS {
 			System.out.println("------------------------------------------");
 			System.out.print("ENTER YOUR CHOICE---->:\t");
 
-			String choice = sc.nextLine();
+			int choice = sc.nextInt();
 
 			switch (choice) {
-			case "1":
+			case 1:
 				registerCourses(studentId);
 				break;
 
-			case "2":
+			case 2:
 				addCourse(studentId);
 				break;
 
-			case "3":
+			case 3:
 
 				dropCourse(studentId);
 				break;
 
-			case "4":
+			case 4:
 				viewCourse(studentId);
 				break;
 
-			case "5":
+			case 5:
 				viewRegisteredCourse(studentId);
 				break;
 
-			case "6":
+			case 6:
 				viewGradeCard(studentId);
 				break;
 
-			case "7":
+			case 7:
 				make_payment(studentId);
 				break;
 
-			case "8":
+			case 8:
 				return;
 
 			default:
@@ -121,11 +121,21 @@ public class StudentMenuCRS {
 		System.out.println("Enter Semester : ");
 		semester = sc.nextInt();
 		sc.nextLine();
-		int count = 0;
+
+		
+		
+		List<Course> course_registered = null;
+		try {
+			course_registered = registrationInterface.viewRegisteredCourses(studentId, semester);
+		} catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+		}
+		int count = course_registered.size();
 		while (count < 6) {
 			try {
+				
 				List<Course> courseList = viewCourse(studentId);
-
 				if (courseList == null)
 					return;
 
@@ -172,7 +182,7 @@ public class StudentMenuCRS {
 				if (registrationInterface.addCourse(courseCode, studentId, semester)) {
 					System.out.println(" You have successfully registered for Course : " + courseCode);
 				} else {
-					System.out.println(" Course not found!! " );
+					System.out.println("Course addition failed!!" );
 				}
 				System.out.println("-----------------------------------------------------------------------------------------\n");
 
@@ -211,15 +221,17 @@ public class StudentMenuCRS {
 				return;
 
 			System.out.println("\n\n----------------------------------------------------------------------------------------");
-			System.out.println("----------------------------------------------ADD COURSE-----------------------------------");
+			System.out.println("----------------------------------------------Remove COURSE-----------------------------------");
 			System.out.println("-----------------------------------------------------------------------------------------\n");
 
 			System.out.println("Enter the Course Code : ");
 			String courseCode = sc.nextLine();
 
 			try {
-				registrationInterface.dropCourse(courseCode, studentId, semester);
-				System.out.println("You have successfully dropped Course with courseId: " + courseCode);
+				if(registrationInterface.dropCourse(courseCode, studentId, semester)) {
+					System.out.println("You have successfully dropped Course with courseId: " + courseCode);	
+				}
+				
 				System.out.println("-----------------------------------------------------------------------------------------\n");
 
 			} catch (CourseNotFoundException | SQLException | CourseNotDeletedException e) {

@@ -290,7 +290,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, StudentId);
-			statement.setFloat(2, CPI);
+			statement.setString(2, Float.toString(CPI));
 			statement.setInt(3, semester);
 			int row = statement.executeUpdate();
 

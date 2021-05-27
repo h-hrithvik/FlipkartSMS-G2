@@ -179,8 +179,12 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			stmt.setString(1, courseId);
 			stmt.setString(2, studentId);
 			stmt.setInt(3, semester);
-			stmt.execute();
-
+			int out = stmt.executeUpdate();
+			
+			if(out <= 0) {
+				logger.error("No such course exists.");
+				return false;
+			}
 			stmt = conn.prepareStatement(SQLQueriesConstants.INCREMENT_SEAT_QUERY);
 			stmt.setString(1, courseId);
 			stmt.execute();
@@ -281,7 +285,7 @@ public class RegistrationDaoOperation implements RegistrationDaoInterface {
 			AdminDaoInterface obj=AdminDaoOperation.getInstance();
 			HashMap<String, String> grades = obj.fetchGrades(studentId, semester);
 			while(queryResult.next()) {
-				reportCard = new ReportCard(studentId,grades, semester, queryResult.getFloat("cpi"));
+				reportCard = new ReportCard(studentId,grades, semester, Float.parseFloat(queryResult.getString("cpi")));
 			}
 
 		} catch (Exception e) {
