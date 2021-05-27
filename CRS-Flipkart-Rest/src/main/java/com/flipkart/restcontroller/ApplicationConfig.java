@@ -1,7 +1,7 @@
 /**
- * 
+ *
  */
-package com.flipkart.restController;
+package com.flipkart.restcontroller;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -15,10 +15,11 @@ import org.glassfish.jersey.server.ResourceConfig;
  * */
 
 public class ApplicationConfig extends ResourceConfig {
-	
+
 	public ApplicationConfig() {
-		register(CustomerRestApi.class);	
+		register(CustomerRestApi.class);
+		register(ProfessorRestAPI.class);
 	}
-	
+
 
 }

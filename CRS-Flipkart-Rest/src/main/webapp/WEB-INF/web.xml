@@ -3,11 +3,11 @@
   <display-name>Archetype Created Web Application</display-name>
     
   <servlet>
-       	<servlet-name>jersey-servlet</servlet-name>
+        <servlet-name>jersey-servlet</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
              <param-name>jersey.config.server.provider.packages</param-name>
-             <param-value>com.flipkart.restController</param-value>
+             <param-value>com.flipkart.restcontroller</param-value>
         </init-param>
         <init-param>
 			<param-name>javax.ws.rs.Application</param-name>
