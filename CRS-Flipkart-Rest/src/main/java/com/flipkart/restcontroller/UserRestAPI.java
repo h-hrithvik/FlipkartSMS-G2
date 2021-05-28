@@ -48,10 +48,8 @@ public class UserRestAPI {
 	@Path("/login")
 	public Response loginUser(
 			@NotNull
-			@Email(message = "Invalid User ID: Not in email format")
 			@QueryParam("userId") String userId,
 			@NotNull
-			@Size(min = 1, max = 20 , message = "Password length should be between 1 and 20 characters")
 			@QueryParam("password") String password) throws ValidationException {
 		try {
 			
@@ -116,8 +114,12 @@ public class UserRestAPI {
 		try
 		{
 			StudentOperation studentOperation = new StudentOperation();
-			studentOperation.registerStudent(student.getUserName(), student.getPhoneNumber(), student.getAddress(), student.getUserId(), student.getUserPassword(), String.valueOf(STUDENT),
+			String res = studentOperation.registerStudent(student.getUserName(), student.getPhoneNumber(), student.getAddress(), student.getUserId(), student.getUserPassword(), String.valueOf(STUDENT),
 					student.getRollNumber(), student.getBranch(), false);
+			if(res.equalsIgnoreCase("")) {
+				return Response.status(500).entity("User with userId " + student.getUserId() + " already exists.").build(); 
+
+			}
 		}
 		catch(Exception ex)
 		{

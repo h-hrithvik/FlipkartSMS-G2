@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
         
     <wb-module deploy-name="CRS-Flipkart-Rest">
@@ -13,19 +12,3 @@
     </wb-module>
     
 </project-modules>
-=======
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="CRS-Flipkart-Rest">
-                
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                
-        <property name="java-output-path" value="/CRS-Flipkart-Rest/build/classes"/>
-        <property name="context-root" value="CRS-Flipkart-Rest"/>
-            
-    </wb-module>
-    
-</project-modules>
->>>>>>> 957957b7c35cd92a9ae229f8c251c2b747e033f8

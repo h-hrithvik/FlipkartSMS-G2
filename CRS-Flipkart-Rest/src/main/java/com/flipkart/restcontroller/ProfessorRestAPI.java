@@ -1,4 +1,4 @@
-package com.flipkart.restcontroller;
+package com.flipkart.restController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,6 @@ public class ProfessorRestAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<EnrolledStudent> viewEnrolledStudents(
 			@NotNull
-			@Email(message = "Invalid Professor ID: Not in email format")
 			@QueryParam("profId") String profId) 	{
 		System.out.println(profId);
 		List<EnrolledStudent> students=new ArrayList<EnrolledStudent>();
@@ -41,6 +40,8 @@ public class ProfessorRestAPI {
 		{
 			return null;
 		}	
+		Response.status(201).entity( students.toString()).build();
+
 		return students;
 	}
 	
@@ -49,7 +50,6 @@ public class ProfessorRestAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Course> getCourses(
 			@NotNull
-			@Email(message = "Invalid Professor ID: Not in email format")
 			@QueryParam("profId") String profId) 	{
 		
 		List<Course> courses=new ArrayList<Course>();
@@ -61,6 +61,7 @@ public class ProfessorRestAPI {
 		{
 			return null;
 		}
+	//	Response.status(201).entity( "").build();
 		return courses;
 	}
 	
@@ -70,16 +71,13 @@ public class ProfessorRestAPI {
 	public Response addGrade(
 			@NotNull
 			@QueryParam("studentId") String studentId,
-			
 			@NotNull
 			@QueryParam("courseCode") String courseId,
-			
 			@NotNull
-			@Email(message = "Invalid Professor ID: Not in email format")
 			@QueryParam("profId") String profId,
-			
+			@NotNull
 			@QueryParam("semester") int semester,
-			
+			@NotNull
 			@QueryParam("grade") String grade) {
 		
 		try

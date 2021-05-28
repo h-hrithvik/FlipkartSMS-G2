@@ -51,10 +51,11 @@ public interface AdminDaoInterface {
 	/**
 	 * Add professor using SQL commands
 	 * @param professor
+	 * @return 
 	 * @throws ProfessorNotAddedException
 	 * @throws UserAlreadyExistException 
 	 */
-	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException;
+	public boolean addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException;
 	
 	/**
 	 * Method to add user using SQL commands

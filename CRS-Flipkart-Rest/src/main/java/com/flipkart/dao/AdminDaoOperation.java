@@ -164,7 +164,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	 * @throws ProfessorNotAddedException
 	 * @throws UserAlreadyExistException
 	 */
-	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException {
+	public boolean addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException {
 		try {
 			this.addUser(professor);
 
@@ -193,12 +193,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 			logger.info(row + " professor added.");
 			if (row == 0) {
-				logger.info("Professor with professorId: " + professor.getProfessorId() + " not added.");
-				throw new ProfessorNotAddedException(professor.getProfessorId());
+				return false;
+//				logger.info("Professor with professorId: " + professor.getProfessorId() + " not added.");
+//				throw new ProfessorNotAddedException(professor.getProfessorId());
 			}
-
+		
 			logger.info("Professor with professorId: " + professor.getProfessorId() + " added.");
-
+			return true;
 		} catch (SQLException se) {
 
 			logger.error(se.getMessage());

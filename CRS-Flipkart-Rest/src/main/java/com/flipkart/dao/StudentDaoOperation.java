@@ -83,8 +83,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 				preparedStatementStudent.setBoolean(4, false);
 				preparedStatementStudent.executeUpdate();
 				ResultSet results=preparedStatementStudent.getGeneratedKeys();
-				if(results.next())
-					studentId=results.getString(0);
+				studentId = student.getUserId();
 				System.out.println("----------------------------------SUCCESSFULLY REGISTERED-----------------------------\n");
 
 

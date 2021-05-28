@@ -118,14 +118,15 @@ public class AdminOperation implements AdminInterface {
 	 * @throws UserAlreadyExistException
 	 */
 	@Override
-	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException {
+	public boolean addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException {
 		try {
-			adminDaoOperation.addProfessor(professor);
+			return adminDaoOperation.addProfessor(professor);
 		} catch (ProfessorNotAddedException e) {
 			logger.error(e.getMessage());
 		} catch (UserAlreadyExistException e) {
 			logger.error(e.getMessage());
 		}
+		return false;
 	}
 
 

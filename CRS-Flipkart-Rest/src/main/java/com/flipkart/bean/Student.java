@@ -13,6 +13,9 @@ public class Student extends User {
 	private String branch;
 	private Boolean isVerified;
 
+	public Student() {
+		
+	}
 	/**
 	 * Constructor for student object
 	 * @param userName

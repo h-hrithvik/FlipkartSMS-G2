@@ -52,10 +52,11 @@ public interface AdminInterface {
 	 * Method to add Professor to DB
 	 * 
 	 * @param professor : Professor Object storing details of a professor
+	 * @return 
 	 * @throws ProfessorNotAddedException
 	 * @throws UserAlreadyExistException
 	 */
-	public void addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException;
+	public boolean addProfessor(Professor professor) throws ProfessorNotAddedException, UserAlreadyExistException;
 
 	/**
 	 * Method to delete Professor from DB
